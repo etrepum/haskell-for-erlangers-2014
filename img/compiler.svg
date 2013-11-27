@@ -1,0 +1,52 @@
+<svg viewBox="0 0 1000 1000" class="full diagram">
+  <defs>
+    <marker id="Triangle"
+      viewBox="0 0 10 10" refX="0" refY="5" 
+      markerUnits="strokeWidth"
+      markerWidth="4" markerHeight="3"
+      orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 z" />
+    </marker>
+  </defs>
+  <g class="right-title" transform="translate(1000, 20)">
+    <text>GHC compilation phases</text>
+  </g>
+  <g class="phase parse" transform="translate(500, 85)">
+    <line y1="-85" y2="-65" marker-end="url(#Triangle)" />
+    <ellipse rx="120" ry="35"/>
+    <text>Parse</text>
+  </g>
+  <g class="phase rename" transform="translate(500, 215)">
+    <line y1="-85" y2="-65" marker-end="url(#Triangle)" />
+    <ellipse rx="120" ry="35"/>
+    <text>Rename</text>
+  </g>
+  <g class="phase typecheck" transform="translate(500, 345)">
+    <line y1="-85" y2="-65" marker-end="url(#Triangle)" />
+    <ellipse rx="120" ry="35"/>
+    <text>Typecheck</text>
+  </g>
+  <g class="phase desugar" transform="translate(500, 475)">
+    <line y1="-85" y2="-65" marker-end="url(#Triangle)" />
+    <ellipse rx="120" ry="35"/>
+    <text>Desugar</text>
+  </g>
+  <g class="phase optimize" transform="translate(500, 605)">
+    <line y1="-85" y2="-65" marker-end="url(#Triangle)" />
+    <path d="M 65,35 a 160,80 0 1,0 40,-80" marker-end="url(#Triangle)"/>
+    <text x="220" class="outside">Core</text>
+    <ellipse rx="120" ry="35"/>
+    <text>Optimize</text>
+  </g>
+  <g class="phase codegen" transform="translate(500, 735)">
+    <line y1="-85" y2="-65" marker-end="url(#Triangle)" />
+    <ellipse rx="120" ry="35"/>
+    <text>Code gen</text>
+  </g>
+  <g class="phase llvm" transform="translate(500, 865)">
+    <line y1="-85" y2="-65" marker-end="url(#Triangle)" />
+    <ellipse rx="120" ry="35"/>
+    <text>LLVM</text>
+    <line y1="45" y2="65" marker-end="url(#Triangle)" />
+  </g>
+</svg>

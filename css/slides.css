@@ -1,0 +1,63 @@
+.reveal h1,
+.reveal h2,
+.reveal h3,
+.reveal h4,
+.reveal h5,
+.reveal h6 {
+  font-family: "Helvetica Neue", sans-serif;
+  font-weight: normal;
+}
+
+.reveal { font-family: "Gill Sans", sans-serif; font-weight: normal; }
+
+.reveal section h1 { margin-bottom: 30px; font-size: 3.14em; }
+.reveal section.small-title h1 { font-size: 2.5em; }
+
+.reveal ul { display: block; margin-left: 1em; }
+
+.reveal dl dt { text-align: left; font-weight: bold; }
+.reveal dl dd { text-align: left; margin-left: 1.5em; }
+.syntax pre { box-shadow: none; font-size: 1.2em; }
+.reveal img { max-height: 80%; }
+
+.reveal section pre { box-shadow: none; }
+.small-code pre { font-size: 0.45em; }
+.big-code pre { font-size: 0.9em; box-shadow: none; }
+
+#concurrency-table { width: 100%; color: #666; }
+#concurrency-table .num { text-align: right; }
+#concurrency-table .name { padding-left: 1em; }
+#concurrency-table .bar-ctr { height: 0; z-index: -1}
+#concurrency-table .bar { height: 1.2em; background-color: #ccc; z-index: -1; }
+#concurrency-table .haskell { color: #66f; }
+#concurrency-table .haskell .bar { width: 1.99%; }
+#concurrency-table .erlang .bar { width: 4.0625%; }
+#concurrency-table .go .bar { width: 12.5%; }
+#concurrency-table .java-min .bar { width: 100%; }
+#concurrency-table .c-min .bar { width: 100%; }
+#concurrency-table .java .bar { width: 12.5%; background-color: #fcc; }
+#concurrency-table .c .bar { width: 100%; background-color: #fcc; }
+
+section.logos img { border: none; box-shadow: none; max-width: 150px; vertical-align: middle; margin: 1em; }
+
+svg.full { width: 100%; }
+
+.diagram text { text-anchor: middle; alignment-baseline: central; }
+.diagram rect { fill: none; stroke: black; }
+.diagram circle { stroke: rgb(0, 0, 0); }
+.diagram line { stroke: rgb(0, 0, 0); }
+
+#compiler svg { stroke-width: 8px; }
+.diagram .phase ellipse { fill: none; stroke-width: 8px; stroke: #4C7FB9; }
+.diagram .phase.optimize ellipse { fill: #5183BB; }
+.diagram .phase.optimize text { fill: white; }
+.diagram .phase.optimize text.outside { fill: black; }
+.diagram .phase.optimize path { stroke: black; fill: none; }
+.diagram .right-title text { text-anchor: end; font-weight: bold; }
+
+body > div.reveal {
+  background-image: url(../img/Haskell-Logo-Background.svg);
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: center;
+}
