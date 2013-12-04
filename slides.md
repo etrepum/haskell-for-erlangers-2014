@@ -289,7 +289,7 @@ data Choice = Definitely
             | Possibly
             | NoWay
 
--- product type, 6 possible values (3 * 3)
+-- product type, 9 possible values (3 * 3)
 data Choices = Choices Choice Choice
 
 -- record syntax defines accessors automatically
