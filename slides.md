@@ -1,6 +1,6 @@
-% Why Haskell?
+% Intro to Haskell (for Erlangers)
 % Bob Ippolito
-% December 3, 2013
+% March 7, 2014
 
 # Haskell's Appeal
 
@@ -19,8 +19,6 @@
 - I practice regularly and try to read Haskell often
 - I'm not an expert!
 </section>
-
-<section id="section-history" class="stack">
 
 <section id="haskell-history">
 <h1>Haskell</h1>
@@ -104,10 +102,6 @@ Simon Peyton Jones (2003)
 Haskell: Batteries Included (2008)
 ~   Avoid "avoiding success"
 </section>
-
-</section><!-- #section-history -->
-
-<section id="section-domain" class="stack">
 
 <section id="domain">
 <h1>Domain</h1>
@@ -229,10 +223,6 @@ Imperative
 ~   Programmatic Solid 3D CAD modeler
 </section>
 
-</section><!-- #section-domain -->
-
-<section id="section-get-started">
-
 <section id="haskell-platform">
 <h1>Haskell Platform</h1>
 
@@ -262,8 +252,6 @@ Web
 ~   [FP Haskell Center](https://www.fpcomplete.com/business/haskell-center/overview/)
 </section>
 
-</section><!-- #section-get-started -->
-
 <section id="haskell-syntax">
 <h1>Haskell Syntax</h1>
 
@@ -278,7 +266,6 @@ Values
 ~   Control flow
 </section>
 
-<section id="section-syntax-types" class="stack">
 
 <section id="abstract-data-types" class="big-code small-title">
 <h1>Abstract Data Types</h1>
@@ -339,10 +326,6 @@ instance (Equals a) => Equals [a] where
   isEqual as     bs     = null as && null bs
 ```
 </section>
-
-</section><!-- #section-syntax-types -->
-
-<section id="section-syntax-values" class="stack">
 
 <section id="value-syntax" class="big-code small-title">
 <h1>Bindings &amp; Functions</h1>
@@ -438,8 +421,6 @@ m >> return ()
 ```
 </section>
 
-</section><!-- #section-syntax-values -->
-
 <section id="key-features">
 <h1>Key Features</h1>
 
@@ -451,8 +432,6 @@ m >> return ()
 * Abstractions
 * Multi-paradigm
 </section>
-
-<section id="section-ghci">
 
 <section id="ghci-title">
 <h1>GHCi</h1>
@@ -573,10 +552,6 @@ h> hello
 "HELLO"
 ```
 </section>
-
-</section><!-- #section-ghci -->
-
-<section id="section-declarative" class="stack">
 
 <section id="declarative">
 <h1>Declarative</h1>
@@ -745,10 +720,6 @@ f $ x =  f x
 ```
 </section>
 
-</section><!-- #section-declarative -->
-
-<section id="section-purity" class="stack">
-
 <section id="purity">
 <h1>Pure</h1>
 
@@ -868,10 +839,6 @@ https://ghc.haskell.org/trac/ghc/wiki/RewriteRules
 ```
 </section>
 
-</section><!-- #section-purity -->
-
-<section id="section-lazy" class="stack">
-
 <section id="lazy">
 <h1>Lazy</h1>
 
@@ -963,10 +930,6 @@ takeWhile p (x:xs)
   | otherwise = []
 ```
 </section>
-
-</section><!-- #section-lazy -->
-
-<section id="section-types" class="stack">
 
 <section id="types-and-typeclasses">
 <h1>Types</h1>
@@ -1179,9 +1142,6 @@ reverseSort = map unDown . sort . map Down
 ```
 </section>
 
-</section><!-- #section-types -->
-
-<section id="section-abstractions">
 <section id="abstractions">
 <h1>Abstractions</h1>
 Monoid
@@ -1269,10 +1229,6 @@ instance Monad Maybe where
 ```
 </section>
 
-</section><!-- #section-abstractions -->
-
-<section id="section-parsing" class="stack">
-
 <section id="parsing-title" class="small-title">
 <h1>Parser Combinators</h1>
 </section>
@@ -1305,10 +1261,6 @@ pJSON = choice [ pText, pObject, pArray ]
 ```
 </section>
 
-</section><!-- #section-parsing -->
-
-<section id="section-ffi" class="stack">
-
 <section id="ffi-title" class="small-title">
 <h1>Foreign Function Interface</h1>
 </section>
@@ -1328,10 +1280,6 @@ main :: IO ()
 main = replicateM_ 20 (c_rand >>= print)
 ```
 </section>
-
-</section><!-- #section-ffi -->
-
-<section id="section-parallel" class="stack">
 
 <section id="parallel-title" class="small-title">
 <h1>Parallel Programming</h1>
@@ -1361,10 +1309,6 @@ rot180 g = backpermute e flop g
          (Z :. x - i - 1 :. y - j - 1 :. k)
 ```
 </section>
-
-</section><!-- #section-parallel -->
-
-<section id="section-concurrency" class="stack">
 
 <section id="concurrency-title">
 <h1>Concurrency</h1>
@@ -1452,10 +1396,6 @@ main = do
 ```
 
 </section>
-
-</section><!-- #section-concurrency -->
-
-<section id="section-weaknesses">
 
 <section id="why-not-haskell">
 <h1>Why not Haskell?</h1>
@@ -1554,11 +1494,6 @@ sum = go 0
 ```
 </section>
 
-</section><!-- #section-weaknesses -->
-
-
-<section id="section-libraries" class="stack">
-
 <section id="libraries-title">
 <h1>Notable Libraries</h1>
 </section>
@@ -1647,8 +1582,6 @@ sum = go 0
 
 </section>
 
-</section><!-- #section-libraries -->
-
 <section id="learn-more">
 <h1>Learn More</h1>
 
@@ -1676,15 +1609,15 @@ Practice
 <section id="thanks">
 <h1>Thanks!</h1>
 
-+-------------+----------------------------------------------+
-| **Slides**  | <http://bob.ippoli.to/why-haskell-2013/>     |
-+-------------+----------------------------------------------+
-| **Source**  | [github.com/etrepum/why-haskell-2013]        |
-+-------------+----------------------------------------------+
-| **Email**   | bob@redivi.com                               |
-+-------------+----------------------------------------------+
-| **Twitter** | [&#64;etrepum](https://twitter.com/etrepum)  |
-+-------------+----------------------------------------------+
++-------------+----------------------------------------------------+
+| **Slides**  | <http://bob.ippoli.to/haskell-for-erlangers-2014/> |
++-------------+----------------------------------------------------+
+| **Source**  | [github.com/etrepum/haskell-for-erlangers-2014]    |
++-------------+----------------------------------------------------+
+| **Email**   | bob@redivi.com                                     |
++-------------+----------------------------------------------------+
+| **Twitter** | [&#64;etrepum](https://twitter.com/etrepum)        |
++-------------+----------------------------------------------------+
 
 <!--
 Other interesting presentations:
@@ -1699,7 +1632,7 @@ http://www.haskell.org/tutorial/goodies.html
 
 </section>
 
-[github.com/etrepum/why-haskell-2013]: https://github.com/etrepum/why-haskell-2013
+[github.com/etrepum/haskell-for-erlangers-2014]: https://github.com/etrepum/haskell-for-erlangers-2014
 [hdevtools]: https://github.com/bitc/hdevtools
 [ghc-mod]: http://www.mew.org/~kazu/proj/ghc-mod/en/
 [HLint]: http://community.haskell.org/~ndm/hlint/

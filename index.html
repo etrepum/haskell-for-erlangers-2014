@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="generator" content="pandoc">
   <meta name="author" content="Bob Ippolito" />
-  <title>Why Haskell?</title>
+  <title>Intro to Haskell (for Erlangers)</title>
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
@@ -43,9 +43,9 @@ code > span.er { color: #ff0000; font-weight: bold; }
     <div class="slides">
 
 <section>
-    <h1 class="title">Why Haskell?</h1>
+    <h1 class="title">Intro to Haskell (for Erlangers)</h1>
     <h2 class="author">Bob Ippolito</h2>
-    <h3 class="date">December 3, 2013</h3>
+    <h3 class="date">March 7, 2014</h3>
 </section>
 
 <section id="haskells-appeal" class="slide level1">
@@ -72,8 +72,6 @@ What do I know?
 </section>
 </li>
 </ul>
-<section id="section-history" class="stack">
-
 <section id="haskell-history">
 <h1>
 Haskell
@@ -200,10 +198,6 @@ http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.140.9513&rep=rep1&type=
 </dd>
 </dl>
 </section>
-
-</section><!-- #section-history -->
-
-<section id="section-domain" class="stack">
 
 <section id="domain">
 <h1>
@@ -368,10 +362,6 @@ Standalone Apps
 </dl>
 </section>
 
-</section><!-- #section-domain -->
-
-<section id="section-get-started">
-
 <section id="haskell-platform">
 <h1>
 Haskell Platform
@@ -412,8 +402,6 @@ Editor Support
 </dl>
 </section>
 
-</section><!-- #section-get-started -->
-
 <section id="haskell-syntax">
 <h1>
 Haskell Syntax
@@ -437,7 +425,6 @@ Haskell Syntax
 </dl>
 </section>
 
-<section id="section-syntax-types" class="stack">
 
 <section id="abstract-data-types" class="big-code small-title">
 <h1>
@@ -497,10 +484,6 @@ Typeclass Syntax
                           isEqual as bs
   isEqual as     bs     <span class="fu">=</span> null as <span class="fu">&amp;&amp;</span> null bs</code></pre>
 </section>
-
-</section><!-- #section-syntax-types -->
-
-<section id="section-syntax-values" class="stack">
 
 <section id="value-syntax" class="big-code small-title">
 <h1>
@@ -595,8 +578,6 @@ m <span class="fu">&gt;&gt;=</span> \a <span class="ot">-&gt;</span> return a
 m <span class="fu">&gt;&gt;</span> return ()</code></pre>
 </section>
 
-</section><!-- #section-syntax-values -->
-
 <section id="key-features">
 <h1>
 Key Features
@@ -613,8 +594,6 @@ Key Features
 </section>
 </li>
 </ul>
-<section id="section-ghci">
-
 <section id="ghci-title">
 <h1>
 GHCi
@@ -736,10 +715,6 @@ h<span class="fu">&gt;</span> <span class="fu">:</span>r
 h<span class="fu">&gt;</span> hello
 <span class="st">&quot;HELLO&quot;</span></code></pre>
 </section>
-
-</section><!-- #section-ghci -->
-
-<section id="section-declarative" class="stack">
 
 <section id="declarative">
 <h1>
@@ -900,10 +875,6 @@ f <span class="fu">.</span> g <span class="fu">=</span> \x <span class="ot">-&gt
 f <span class="fu">$</span> x <span class="fu">=</span>  f x</code></pre>
 </section>
 
-</section><!-- #section-declarative -->
-
-<section id="section-purity" class="stack">
-
 <section id="purity">
 <h1>
 Pure
@@ -983,10 +954,6 @@ https://ghc.haskell.org/trac/ghc/wiki/RewriteRules
 <span class="co">    break (==x) = breakByte x</span>
 <span class="co">  #-}</span></code></pre>
 </section>
-
-</section><!-- #section-purity -->
-
-<section id="section-lazy" class="stack">
 
 <section id="lazy">
 <h1>
@@ -1081,10 +1048,6 @@ takeWhile p (x<span class="fu">:</span>xs)
   <span class="fu">|</span> p x       <span class="fu">=</span> x <span class="fu">:</span> takeWhile p xs
   <span class="fu">|</span> otherwise <span class="fu">=</span> []</code></pre>
 </section>
-
-</section><!-- #section-lazy -->
-
-<section id="section-types" class="stack">
 
 <section id="types-and-typeclasses">
 <h1>
@@ -1286,9 +1249,6 @@ Typeclasses
 reverseSort <span class="fu">=</span> map unDown <span class="fu">.</span> sort <span class="fu">.</span> map <span class="dt">Down</span></code></pre>
 </section>
 
-</section><!-- #section-types -->
-
-<section id="section-abstractions">
 <section id="abstractions">
 <h1>
 Abstractions
@@ -1384,10 +1344,6 @@ Monad
   <span class="dt">Nothing</span> <span class="fu">&gt;&gt;=</span> _ <span class="fu">=</span> <span class="dt">Nothing</span></code></pre>
 </section>
 
-</section><!-- #section-abstractions -->
-
-<section id="section-parsing" class="stack">
-
 <section id="parsing-title" class="small-title">
 <h1>
 Parser Combinators
@@ -1420,10 +1376,6 @@ pJSON <span class="fu">=</span> choice [ pText, pObject, pArray ]
     pArray <span class="fu">=</span> <span class="dt">JArray</span> <span class="fu">&lt;$&gt;</span> <span class="st">&quot;[&quot;</span> <span class="fu">.*&gt;</span> (pJSON <span class="ot">`sepBy`</span> <span class="st">&quot;,&quot;</span>) <span class="fu">&lt;*.</span> <span class="st">&quot;]&quot;</span></code></pre>
 </section>
 
-</section><!-- #section-parsing -->
-
-<section id="section-ffi" class="stack">
-
 <section id="ffi-title" class="small-title">
 <h1>
 Foreign Function Interface
@@ -1443,10 +1395,6 @@ foreign <span class="kw">import</span> ccall unsafe &quot;stdlib.h rand&quot;
 <span class="ot">main ::</span> <span class="dt">IO</span> ()
 main <span class="fu">=</span> replicateM_ <span class="dv">20</span> (c_rand <span class="fu">&gt;&gt;=</span> print)</code></pre>
 </section>
-
-</section><!-- #section-ffi -->
-
-<section id="section-parallel" class="stack">
 
 <section id="parallel-title" class="small-title">
 <h1>
@@ -1476,10 +1424,6 @@ rot180 g <span class="fu">=</span> backpermute e flop g
     flop (<span class="dt">Z</span> <span class="fu">:.</span> i         <span class="fu">:.</span> j         <span class="fu">:.</span> k) <span class="fu">=</span>
          (<span class="dt">Z</span> <span class="fu">:.</span> x <span class="fu">-</span> i <span class="fu">-</span> <span class="dv">1</span> <span class="fu">:.</span> y <span class="fu">-</span> j <span class="fu">-</span> <span class="dv">1</span> <span class="fu">:.</span> k)</code></pre>
 </section>
-
-</section><!-- #section-parallel -->
-
-<section id="section-concurrency" class="stack">
 
 <section id="concurrency-title">
 <h1>
@@ -1587,10 +1531,6 @@ main <span class="fu">=</span> <span class="kw">do</span>
   mapM_ takeMVar mvars</code></pre>
 </section>
 
-</section><!-- #section-concurrency -->
-
-<section id="section-weaknesses">
-
 <section id="why-not-haskell">
 <h1>
 Why not Haskell?
@@ -1676,11 +1616,6 @@ sum <span class="fu">=</span> go <span class="dv">0</span>
     go <span class="fu">!</span>acc (x<span class="fu">:</span>xs) <span class="fu">=</span> go (acc <span class="fu">+</span> x) (go xs)
     go  acc []     <span class="fu">=</span> acc</code></pre>
 </section>
-
-</section><!-- #section-weaknesses -->
-
-
-<section id="section-libraries" class="stack">
 
 <section id="libraries-title">
 <h1>
@@ -1814,8 +1749,6 @@ Testing &amp; Profiling
 </dl>
 </section>
 
-</section><!-- #section-libraries -->
-
 <section id="learn-more">
 <h1>
 Learn More
@@ -1852,14 +1785,14 @@ Thanks!
 </h1>
 
 <table>
-<col style="width: 19%" /><col style="width: 65%" /><tbody>
+<col style="width: 19%" /><col style="width: 73%" /><tbody>
 <tr class="odd">
 <td style="text-align: left;"><p><strong>Slides</strong></p></td>
-<td style="text-align: left;"><p><a href="http://bob.ippoli.to/why-haskell-2013/">http://bob.ippoli.to/why-haskell-2013/</a></p></td>
+<td style="text-align: left;"><p><a href="http://bob.ippoli.to/haskell-for-erlangers-2014/">http://bob.ippoli.to/haskell-for-erlangers-2014/</a></p></td>
 </tr>
 <tr class="even">
 <td style="text-align: left;"><p><strong>Source</strong></p></td>
-<td style="text-align: left;"><p><a href="https://github.com/etrepum/why-haskell-2013">github.com/etrepum/why-haskell-2013</a></p></td>
+<td style="text-align: left;"><p><a href="https://github.com/etrepum/haskell-for-erlangers-2014">github.com/etrepum/haskell-for-erlangers-2014</a></p></td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;"><p><strong>Email</strong></p></td>
