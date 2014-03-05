@@ -3,8 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="generator" content="pandoc">
-  <meta name="author" content="Bob Ippolito" />
-  <title>Intro to Haskell(for Erlangers)</title>
+  <title></title>
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
@@ -42,12 +41,19 @@ code > span.er { color: #ff0000; font-weight: bold; }
   <div class="reveal">
     <div class="slides">
 
-<section>
-    <h1 class="title">Intro to Haskell<brchr>(for Erlangers)</h1>
-    <h2 class="author">Bob Ippolito</h2>
-    <h3 class="date">March 7, 2014</h3>
-</section>
 
+<section id="title" class="slide level1">
+<h1></h1>
+<h1>
+    
+Intro to Haskell<br> for Erlangers
+</h1>
+<h3>
+    
+Bob Ippolito (<a href="https://twitter.com/etrepum"><span class="citation" data-cites="etrepum">@etrepum</span></a>)<br> Erlang Factory SF<br> March 7, 2014
+</h3>
+
+</section>
 <section id="who-am-i" class="slide level1">
 <h1>Who am I?</h1>
 <ul>
@@ -63,9 +69,18 @@ code > span.er { color: #ff0000; font-weight: bold; }
 <ul>
 <li>I learn a lot of from studying new languages</li>
 <li>Types are supposed to help you write better software</li>
+<li>I like QuickCheck and Dialyzer</li>
 <li>Good support for parallelism and concurrency</li>
 <li>Will help me understand more CS papers</li>
-<li>Could take a class on it at Facebook</li>
+</ul>
+</section>
+<section id="starting-with-haskell" class="slide level1">
+<h1>Starting with Haskell</h1>
+<ul>
+<li>Intimidated by Haskell for years</li>
+<li>Took a class while at Facebook</li>
+<li>Read several books</li>
+<li>Deliberate practice</li>
 </ul>
 </section>
 <section id="haskells-appeal" class="slide level1">
@@ -88,30 +103,6 @@ code > span.er { color: #ff0000; font-weight: bold; }
 </figcaption>
 </figure>
 
-</section>
-<section id="pre-history" class="slide level1">
-<h1>Pre-History</h1>
-<dl>
-<dt>1930s-1950s</dt>
-<dd>Lambda Calculus (Turing)
-</dd>
-<dd>Combinatory Calculus (Curry &amp; Feys)
-</dd>
-<dd>LISP (McCarthy)
-</dd>
-<dt>1960s-1970s</dt>
-<dd>Operational (Landin) and Denotational (Strachey) semantics
-</dd>
-<dd>ML (Milner)
-</dd>
-<dd>Lazy FP &amp; Graph Reduction (Turner)
-</dd>
-<dt>1980s</dt>
-<dd>Miranda (Turner)
-</dd>
-<dd>Lazy ML (Augustsson &amp; Johnsson)
-</dd>
-</dl>
 </section>
 <section id="early-history" class="slide level1">
 <h1>Early History</h1>
@@ -149,6 +140,17 @@ IFIP 1992 Working Group
 </figure>
 
 </section>
+<section id="ifip-1992-erl" class="slide level1">
+<h1></h1>
+<!-- extracted from history.pdf -->
+<figure>
+<img src="img/ifip-1992-erl.jpg" />
+<figcaption>
+John Hughes (QuickCheck), Philip Wadler (Subtyping for Erlang)
+</figcaption>
+</figure>
+
+</section>
 <section id="evolution" class="slide level1">
 <h1>Evolution</h1>
 <dl>
@@ -164,25 +166,8 @@ IFIP 1992 Working Group
 <dt>2002</dt>
 <dd>Revised Haskell 98 (260 pages)
 </dd>
-</dl>
-</section>
-<section id="fun-quotes" class="slide level1">
-<h1>Fun Quotes</h1>
-<!--
-http://research.microsoft.com/en-us/um/people/simonpj/papers/haskell-retrospective/HaskellRetrospective-2.pdf
-http://research.microsoft.com/en-us/um/people/simonpj/papers/haskell-retrospective/Haskell-Erlang-Jun09.pdf
-http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.140.9513&rep=rep1&type=pdf
--->
-
-<dl>
-<dt>Tony Hoare (1990s?)</dt>
-<dd>I fear that Haskell is doomed to succeed
-</dd>
-<dt>Simon Peyton Jones (2003)</dt>
-<dd>Motto: avoid success at all costs
-</dd>
-<dt>Haskell: Batteries Included (2008)</dt>
-<dd>Avoid &quot;avoiding success&quot;
+<dt>2010</dt>
+<dd>Haskell 2010 (300 pages)
 </dd>
 </dl>
 </section>
@@ -374,12 +359,9 @@ Haskell: Batteries Included
 </dd>
 <dd>Functions
 </dd>
-<dd>Control flow
+<dd><p>Control flow</p>
 </dd>
 </dl>
-</section>
-
-
 </section>
 <section id="abstract-data-types" class="slide level1 big-code">
 <h1>Abstract Data Types</h1>
@@ -396,12 +378,8 @@ Haskell: Batteries Included
                        ,<span class="ot"> sndChoice ::</span> <span class="dt">Choice</span>
                        }</code></pre>
 </section>
-
-<section id="using-types" class="big-code small-title">
-<h1>
-Using Types
-</h1>
-
+<section id="using-types" class="slide level1 big-code">
+<h1>Using Types</h1>
 <pre class="sourceCode haskell"><code class="sourceCode haskell"><span class="co">-- Bindings can be annotated</span>
 <span class="ot">success ::</span> a <span class="ot">-&gt;</span> <span class="dt">Maybe</span> a
 <span class="co">-- Constructors are functions</span>
@@ -517,9 +495,7 @@ m <span class="fu">&gt;&gt;</span> return ()</code></pre>
 <li>Non-strict (lazy) evaluation</li>
 <li>Types and typeclasses</li>
 <li>Abstractions</li>
-<li>Multi-paradigm
-</section>
-</li>
+<li>Multi-paradigm</li>
 </ul>
 </section>
 <section id="ghci" class="slide level1">
@@ -563,8 +539,8 @@ map (<span class="fu">+</span><span class="dv">1</span>)<span class="ot"> ::</sp
 h<span class="fu">&gt;</span> <span class="fu">:</span>t (<span class="fu">&gt;&gt;=</span>)
 <span class="ot">(&gt;&gt;=) ::</span> <span class="dt">Monad</span> m <span class="ot">=&gt;</span> m a <span class="ot">-&gt;</span> (a <span class="ot">-&gt;</span> m b) <span class="ot">-&gt;</span> m b</code></pre>
 </section>
-<section id="ghci-i-typeclass-.big-code" class="slide level1">
-<h1>#{ghci-i-typeclass .big-code}</h1>
+<section id="ghci-i-typeclass" class="slide level1 big-code">
+<h1></h1>
 <h2>
 <code>:i</code> shows typeclass info
 </h2>
@@ -1188,8 +1164,6 @@ reverseSort <span class="fu">=</span> map unDown <span class="fu">.</span> sort 
   <span class="dt">Just</span> f <span class="fu">&lt;*&gt;</span> <span class="dt">Just</span> x <span class="fu">=</span> <span class="dt">Just</span> (f x)
   _      <span class="fu">&lt;*&gt;</span> _      <span class="fu">=</span> <span class="dt">Nothing</span></code></pre>
 </section>
-
-</section>
 <section id="monad" class="slide level1">
 <h1>Monad</h1>
 <pre class="sourceCode haskell"><code class="sourceCode haskell"><span class="kw">class</span> <span class="dt">Monad</span> m <span class="kw">where</span>
@@ -1409,8 +1383,8 @@ main <span class="fu">=</span> <span class="kw">do</span>
   <span class="ot">console</span>.<span class="fu">log</span>(foo);
 }</code></pre>
 </section>
-
-<section id="mutable-state-hs" class="big-code">
+<section id="mutable-state-hs" class="slide level1 big-code">
+<h1></h1>
 <pre class="sourceCode haskell"><code class="sourceCode haskell"><span class="kw">import</span> Control.Concurrent
 <span class="kw">data</span> <span class="dt">Foo</span> <span class="fu">=</span> <span class="dt">Foo</span> {<span class="ot">bar ::</span> <span class="dt">Int</span>,<span class="ot"> baz ::</span> <span class="dt">Int</span>}
          <span class="kw">deriving</span> (<span class="dt">Show</span>)
@@ -1598,10 +1572,10 @@ sum <span class="fu">=</span> go <span class="dv">0</span>
 <section id="thanks" class="slide level1">
 <h1>Thanks!</h1>
 <table>
-<col style="width: 19%" /><col style="width: 73%" /><tbody>
+<col style="width: 19%" /><col style="width: 69%" /><tbody>
 <tr class="odd">
 <td style="text-align: left;"><p><strong>Slides</strong></p></td>
-<td style="text-align: left;"><p><a href="http://bob.ippoli.to/haskell-for-erlangers-2014/">http://bob.ippoli.to/haskell-for-erlangers-2014/</a></p></td>
+<td style="text-align: left;"><p><a href="http://bob.ippoli.to/haskell-for-erlangers-2014/">bob.ippoli.to/haskell-for-erlangers-2014</a></p></td>
 </tr>
 <tr class="even">
 <td style="text-align: left;"><p><strong>Source</strong></p></td>

@@ -1,6 +1,14 @@
-% Intro to Haskell<brchr>(for Erlangers)
-% Bob Ippolito
-% March 7, 2014
+# {#title}
+
+<h1>
+    Intro to Haskell<br>
+    for Erlangers
+</h1>
+<h3>
+    Bob Ippolito (<a href="https://twitter.com/etrepum">@etrepum</a>)<br>
+    Erlang Factory SF<br>
+    March 7, 2014
+</h3>
 
 # Who am I?
 
@@ -16,9 +24,16 @@
 
 - I learn a lot of from studying new languages
 - Types are supposed to help you write better software
+- I like QuickCheck and Dialyzer
 - Good support for parallelism and concurrency
 - Will help me understand more CS papers
-- Could take a class on it at Facebook
+
+# Starting with Haskell
+
+- Intimidated by Haskell for years
+- Took a class while at Facebook
+- Read several books
+- Deliberate practice
 
 # Haskell's Appeal
 
@@ -35,20 +50,6 @@
 <img src="img/HaskellBCurry.jpg">
 <figcaption>**Haskell** B. Curry</figcaption>
 </figure>
-
-# Pre-History
-
-1930s-1950s
-~   Lambda Calculus (Turing)
-~   Combinatory Calculus (Curry & Feys)
-~   LISP (McCarthy)
-1960s-1970s
-~   Operational (Landin) and Denotational (Strachey) semantics
-~   ML (Milner)
-~   Lazy FP & Graph Reduction (Turner)
-1980s
-~   Miranda (Turner)
-~   Lazy ML (Augustsson & Johnsson)
 
 # Early History
 
@@ -74,6 +75,14 @@
 <figcaption>IFIP 1992 Working Group</figcaption>
 </figure>
 
+# {#ifip-1992-erl}
+
+<!-- extracted from history.pdf -->
+<figure>
+<img src="img/ifip-1992-erl.jpg" />
+<figcaption>John Hughes (QuickCheck), Philip Wadler (Subtyping for Erlang)</figcaption>
+</figure>
+
 # Evolution
 
 1992
@@ -83,22 +92,9 @@
 1999
 ~   Haskell 98 - Commitment to stability
 2002
-~   Revised Haskell 98  (260 pages)
-
-# Fun Quotes
-
-<!--
-http://research.microsoft.com/en-us/um/people/simonpj/papers/haskell-retrospective/HaskellRetrospective-2.pdf
-http://research.microsoft.com/en-us/um/people/simonpj/papers/haskell-retrospective/Haskell-Erlang-Jun09.pdf
-http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.140.9513&rep=rep1&type=pdf
--->
-
-Tony Hoare (1990s?)
-~   I fear that Haskell is doomed to succeed
-Simon Peyton Jones (2003)
-~   Motto: avoid success at all costs
-Haskell: Batteries Included (2008)
-~   Avoid "avoiding success"
+~   Revised Haskell 98 (260 pages)
+2010
+~   Haskell 2010 (300 pages)
 
 # Domain
 
@@ -245,7 +241,6 @@ Values
 ~   Instances of constructors
 ~   Functions
 ~   Control flow
-</section>
 
 
 # Abstract Data Types {.big-code}
@@ -264,10 +259,8 @@ data Choices = Choices { fstChoice :: Choice
                        , sndChoice :: Choice
                        }
 ```
-</section>
 
-<section id="using-types" class="big-code small-title">
-<h1>Using Types</h1>
+# Using Types {.big-code}
 
 ```haskell
 -- Bindings can be annotated
@@ -400,7 +393,6 @@ m >> return ()
 * Types and typeclasses
 * Abstractions
 * Multi-paradigm
-</section>
 
 # GHCi
 
@@ -445,7 +437,7 @@ h> :t (>>=)
 (>>=) :: Monad m => m a -> (a -> m b) -> m b
 ```
 
-# #{ghci-i-typeclass .big-code}
+# {#ghci-i-typeclass .big-code}
 
 <h2>`:i` shows typeclass info</h2>
 ```haskell
@@ -1141,7 +1133,6 @@ instance Applicative Maybe where
   Just f <*> Just x = Just (f x)
   _      <*> _      = Nothing
 ```
-</section>
 
 # Monad
 
@@ -1349,9 +1340,9 @@ function main() {
   console.log(foo);
 }
 ```
-</section>
 
-<section id="mutable-state-hs" class="big-code">
+# {#mutable-state-hs .big-code}
+
 ```haskell
 import Control.Concurrent
 data Foo = Foo {bar :: Int, baz :: Int}
@@ -1507,15 +1498,15 @@ Practice
 
 # Thanks!
 
-+-------------+----------------------------------------------------+
-| **Slides**  | <http://bob.ippoli.to/haskell-for-erlangers-2014/> |
-+-------------+----------------------------------------------------+
-| **Source**  | [github.com/etrepum/haskell-for-erlangers-2014]    |
-+-------------+----------------------------------------------------+
-| **Email**   | bob@redivi.com                                     |
-+-------------+----------------------------------------------------+
-| **Twitter** | [&#64;etrepum](https://twitter.com/etrepum)        |
-+-------------+----------------------------------------------------+
++-------------+-------------------------------------------------+
+| **Slides**  | [bob.ippoli.to/haskell-for-erlangers-2014]      |
++-------------+-------------------------------------------------+
+| **Source**  | [github.com/etrepum/haskell-for-erlangers-2014] |
++-------------+-------------------------------------------------+
+| **Email**   | bob@redivi.com                                  |
++-------------+-------------------------------------------------+
+| **Twitter** | [&#64;etrepum](https://twitter.com/etrepum)     |
++-------------+-------------------------------------------------+
 
 <!--
 Other interesting presentations:
@@ -1528,6 +1519,7 @@ http://www.haskell.org/tutorial/goodies.html
 
 -->
 
+[bob.ippoli.to/haskell-for-erlangers-2014]: http://bob.ippoli.to/haskell-for-erlangers-2014/
 [github.com/etrepum/haskell-for-erlangers-2014]: https://github.com/etrepum/haskell-for-erlangers-2014
 [hdevtools]: https://github.com/bitc/hdevtools
 [ghc-mod]: http://www.mew.org/~kazu/proj/ghc-mod/en/
