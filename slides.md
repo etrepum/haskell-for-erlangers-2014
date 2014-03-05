@@ -28,7 +28,7 @@
 - Good support for parallelism and concurrency
 - Will help me understand more CS papers
 
-# Starting with Haskell
+# Starting out
 
 - Intimidated by Haskell for years
 - Took a class while at Facebook
@@ -124,6 +124,9 @@ Finance
     report generation (with [ermine](http://ermine-language.github.io/ermine/))
 Semiconductor Design
 ~   [Bluespec](http://www.slideshare.net/mansu/bluespec-talk) - high-level language for chip design
+Internet
+~   [Facebook](https://skillsmatter.com/skillscasts/4429-simon-marlow) - 
+    Haxl rule engine "fighting spam with pure functions"
 
 # Consumer Apps
 
