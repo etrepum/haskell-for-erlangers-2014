@@ -1,6 +1,24 @@
-% Intro to Haskell (for Erlangers)
+% Intro to Haskell<brchr>(for Erlangers)
 % Bob Ippolito
 % March 7, 2014
+
+# Who am I?
+
+- Not classically trained in CS
+- Erlang user since 2006 (Mochi Media, mochiweb, etc.)
+- Haskell user since 2012
+  (ported [exercism.io](http://exercism.io) curriculum)
+- Currently teaching web technologies to teenagers with
+  [Mission Bit](http://www.missionbit.com/)
+- Doing a bit of advising/investing in startups
+
+# Why learn Haskell?
+
+- I learn a lot of from studying new languages
+- Types are supposed to help you write better software
+- Good support for parallelism and concurrency
+- Will help me understand more CS papers
+- Could take a class on it at Facebook
 
 # Haskell's Appeal
 
@@ -9,29 +27,16 @@
 - Type system makes maintenance easier
 - Nice syntax (not too heavy or lightweight)
 - Fantastic community & ecosystem
-</section>
 
-<section id="what-do-i-know">
-<h1>What do I know?</h1>
-
-- Took a class when I worked at Facebook in 2012
-- Ported the [exercism.io](http://exercism.io) curriculum to Haskell
-- I practice regularly and try to read Haskell often
-- I'm not an expert!
-</section>
-
-<section id="haskell-history">
-<h1>Haskell</h1>
+# Haskell {#haskell-history}
 
 <!-- http://www.haskell.org/haskellwiki/Haskell_Brooks_Curry -->
 <figure>
 <img src="img/HaskellBCurry.jpg">
 <figcaption>**Haskell** B. Curry</figcaption>
 </figure>
-</section>
 
-<section id="pre-history">
-<h1>Pre-History</h1>
+# Pre-History
 
 1930s-1950s
 ~   Lambda Calculus (Turing)
@@ -44,10 +49,8 @@
 1980s
 ~   Miranda (Turner)
 ~   Lazy ML (Augustsson & Johnsson)
-</section>
 
-<section id="early-history">
-<h1>Early History</h1>
+# Early History
 
 <!-- http://www.haskell.org/onlinereport/preface-jfp.html
      http://research.microsoft.com/en-us/um/people/simonpj/papers/history-of-haskell/history.pdf
@@ -62,18 +65,16 @@
 ~   Hudak and Wadler chosen to be editors of the report
 1990 (April 1st!)
 ~   Haskell 1.0 report published (125 pages)
-</section>
 
-<section id="ifip-1992">
+# {#ifip-1992}
+
 <!-- extracted from history.pdf -->
 <figure>
 <img src="img/ifip-1992.jpg" />
 <figcaption>IFIP 1992 Working Group</figcaption>
 </figure>
-</section>
 
-<section id="haskell-evolution">
-<h1>Evolution</h1>
+# Evolution
 
 1992
 ~   Glasgow Haskell Compiler (GHC)
@@ -83,11 +84,8 @@
 ~   Haskell 98 - Commitment to stability
 2002
 ~   Revised Haskell 98  (260 pages)
-</section>
 
-
-<section id="fun-quotes">
-<h1>Fun Quotes</h1>
+# Fun Quotes
 
 <!--
 http://research.microsoft.com/en-us/um/people/simonpj/papers/haskell-retrospective/HaskellRetrospective-2.pdf
@@ -101,10 +99,8 @@ Simon Peyton Jones (2003)
 ~   Motto: avoid success at all costs
 Haskell: Batteries Included (2008)
 ~   Avoid "avoiding success"
-</section>
 
-<section id="domain">
-<h1>Domain</h1>
+# Domain
 
 **General Purpose**
 
@@ -112,10 +108,8 @@ Haskell: Batteries Included (2008)
 * Great for DSEL (Domain Specific Embedded Languages)
 * Has been popular in academia for some time
 * Becoming more popular in industry
-</section>
 
-<section id="commercial-use">
-<h1>Commercial Use</h1>
+# Commercial Use
 <!-- http://www.haskell.org/haskellwiki/Haskell_in_industry -->
 
 Biotech
@@ -134,10 +128,8 @@ Finance
     report generation (with [ermine](http://ermine-language.github.io/ermine/))
 Semiconductor Design
 ~   [Bluespec](http://www.slideshare.net/mansu/bluespec-talk) - high-level language for chip design
-</section>
 
-<section id="consumer-apps">
-<h1>Consumer Apps</h1>
+# Consumer Apps
 
 <!--
 Bump:
@@ -160,10 +152,8 @@ Silk:
 ~   Email inbox prioritization. Shuttered post-acquisition.
 [Bazqux](https://bazqux.com/)
 ~   "RSS reader that shows comments to posts"
-</section>
 
-<section id="commercial-services" class="small-title">
-<h1>Commercial Services</h1>
+# Commercial Services
 
 <!--
 Janrain:
@@ -186,10 +176,8 @@ Skedge:
 ~   Computing platform for scientific and business analytics
 [skedge.me](http://skedge.me/)
 ~   Enterprise appointment scheduling
-</section>
 
-<section id="compilers">
-<h1>Compilers</h1>
+# Compilers
 
 Haskell
 ~   [GHC](http://www.haskell.org/ghc/),
@@ -204,10 +192,8 @@ Compile to JavaScript
 ~   [Fay](http://fay-lang.org/) - Haskell subset
 Imperative
 ~   [Pugs](http://pugscode.org/) - first Perl 6 implementation
-</section>
 
-<section id="standalone-apps">
-<h1>Standalone Apps</h1>
+# Standalone Apps
 
 [Pandoc]
 ~   Markup swiss-army knife (used to make these slides!)
@@ -221,10 +207,8 @@ Imperative
 ~   Manage large files with git (similar to Dropbox)
 [ImplicitCAD](http://www.implicitcad.org/)
 ~   Programmatic Solid 3D CAD modeler
-</section>
 
-<section id="haskell-platform">
-<h1>Haskell Platform</h1>
+# Haskell Platform
 
 <h3>Haskell: Batteries Included</h3>
 
@@ -233,10 +217,9 @@ Imperative
 * Robust and stable set of vetted packages
 * [Cabal](http://www.haskell.org/cabal/); easily fetch more
   packages from [Hackage](http://hackage.haskell.org/)
-</section>
 
-<section id="haskell-editor">
-<h1>Editor Support</h1>
+# Editor Support
+
 Emacs
 ~   [ghc-mod] + [HLint]
 Vim
@@ -250,10 +233,8 @@ Eclipse
 ~   [EclipseFP](http://eclipsefp.github.io/) + [HLint]
 Web
 ~   [FP Haskell Center](https://www.fpcomplete.com/business/haskell-center/overview/)
-</section>
 
-<section id="haskell-syntax">
-<h1>Haskell Syntax</h1>
+# Haskell Syntax
 
 Types
 ~   Defines types and typeclasses
@@ -267,8 +248,7 @@ Values
 </section>
 
 
-<section id="abstract-data-types" class="big-code small-title">
-<h1>Abstract Data Types</h1>
+# Abstract Data Types {.big-code}
 
 ```haskell
 -- sum type, 3 possible values
@@ -305,10 +285,8 @@ case success True of
 2 ^ (1 :: Int)
 
 ```
-</section>
 
-<section id="typeclass-syntax" class="big-code small-title">
-<h1>Typeclass Syntax</h1>
+# Typeclass Syntax {.big-code}
 
 ```haskell
 class Equals a where
@@ -325,10 +303,9 @@ instance (Equals a) => Equals [a] where
                           isEqual as bs
   isEqual as     bs     = null as && null bs
 ```
-</section>
 
-<section id="value-syntax" class="big-code small-title">
-<h1>Bindings &amp; Functions</h1>
+# Bindings &amp; Functions {.big-code}
+
 ```haskell
 
 greeting :: String
@@ -346,10 +323,8 @@ sayHello = \name ->
   let result = (++) greeting name
   in result
 ```
-</section>
 
-<section id="pattern-matching" class="big-code small-title">
-<h1>Pattern Matching</h1>
+# Pattern Matching {.big-code}
 
 ```haskell
 
@@ -363,10 +338,9 @@ isJust = \x ->
     (Just _) -> True
     Nothing  -> False
 ```
-</section>
 
-<section id="guards" class="big-code small-title">
-<h1>Guards</h1>
+# Guards {.big-code}
+
 ```haskell
 
 isNegative :: (Num a) => a -> Bool
@@ -379,10 +353,8 @@ isNegative = \x ->
   then True
   else False
 ```
-</section>
 
-<section id="infix" class="big-code small-title">
-<h1>&#96;Infix&#96; and (Prefix)</h1>
+# &#96;Infix&#96; and (Prefix) {.big-code}
 
 ```haskell
 -- Symbolic operators can be used
@@ -399,10 +371,9 @@ infixr 5 `append`
 a `append` b = a ++ b
 
 ```
-</section>
 
-<section id="do-syntax" class="big-code">
-<h1>Do syntax</h1>
+# Do syntax {.big-code}
+
 ```haskell
 
 do m
@@ -419,10 +390,8 @@ do m
 -- desugars to:
 m >> return ()
 ```
-</section>
 
-<section id="key-features">
-<h1>Key Features</h1>
+# Key Features
 
 * Interactive
 * Declarative
@@ -433,12 +402,12 @@ m >> return ()
 * Multi-paradigm
 </section>
 
-<section id="ghci-title">
-<h1>GHCi</h1>
-<h2>Interactive Haskell</h2>
-</section>
+# GHCi
 
-<section id="runhaskell">
+<h2>Interactive Haskell</h2>
+
+# {#runhaskell}
+
 ```bash
 
 $ runhaskell --help
@@ -449,9 +418,9 @@ The runghc flags are
     --help                Print this usage information
     --version             Print version number
 ```
-</section>
 
-<section id="ghci-start">
+# {#ghci-start}
+
 ```haskell
 
 $ ghci
@@ -461,10 +430,11 @@ Loading package integer-gmp ... linking ... done.
 Loading package base ... linking ... done.
 h> 
 ```
-</section>
 
-<section id="ghci-t" class="big-code small-title">
-<h2>`:t` shows type information</h2>
+# {#ghci-t .big-code}
+
+<h2>
+`:t` shows type information</h2>
 ```haskell
 
 h> :t map
@@ -474,9 +444,9 @@ map (+1) :: Num b => [b] -> [b]
 h> :t (>>=)
 (>>=) :: Monad m => m a -> (a -> m b) -> m b
 ```
-</section>
 
-<section id="ghci-i-typeclass" class="big-code small-title">
+# #{ghci-i-typeclass .big-code}
+
 <h2>`:i` shows typeclass info</h2>
 ```haskell
 
@@ -495,9 +465,9 @@ instance Num Int -- Defined in `GHC.Num'
 instance Num Float -- Defined in `GHC.Float'
 instance Num Double -- Defined in `GHC.Float'
 ```
-</section>
 
-<section id="ghci-i-value" class="big-code small-title">
+# {#ghci-i-value .big-code}
+
 <h2>`:i` shows value info</h2>
 ```haskell
 
@@ -511,9 +481,9 @@ class Monad m where
   	-- Defined in `GHC.Base'
 infixl 1 >>=
 ```
-</section>
 
-<section id="ghci-i-type" class="big-code small-title">
+# {#ghci-i-type .big-code}
+
 <h2>`:i` shows type info</h2>
 ```haskell
 
@@ -531,9 +501,9 @@ instance Read Int -- Defined in `GHC.Read'
 instance Real Int -- Defined in `GHC.Real'
 instance Show Int -- Defined in `GHC.Show'
 ```
-</section>
 
-<section id="ghci-load-reload" class="big-code small-title">
+# {#ghci-load-reload .big-code}
+
 <h2>`:l` load a module</h2>
 <h2>`:r` to reload</h2>
 ```haskell
@@ -551,18 +521,16 @@ Ok, modules loaded: Main.
 h> hello
 "HELLO"
 ```
-</section>
 
-<section id="declarative">
-<h1>Declarative</h1>
+# Declarative
 
 * "Describe the problem, not the solution"
 * Great syntax for this (but not C-like)!
 * Functional code is (often) easier to understand and test
 * Pure, no side-effects?!
-</section>
 
-<section id="merge-sort">
+# {#merge-sort}
+
 ```haskell
 
 -- MergeSort1.hs
@@ -589,9 +557,9 @@ merge as@(a:as') bs@(b:bs')
 merge [] bs = bs
 merge as [] = as
 ```
-</section>
 
-<section id="merge-sort-2">
+# {#merge-sort-2}
+
 ```haskell
 
 -- MergeSort2.hs
@@ -615,9 +583,9 @@ mergeSort = mergeAll . map (:[])
     merge [] bs = bs
     merge as [] = as
 ```
-</section>
 
-<section id="merge-sort-python" class="small-code">
+# {#merge-sort-python .small-code}
+
 ```python
 # merge_sort.py
 def merge_sort(lst):
@@ -653,9 +621,9 @@ def merge2(xs, ys):
     result.extend(ys[j:])
     return result
 ```
-</section>
 
-<section id="side-effects" class="big-code">
+# {#side-effects .big-code}
+
 ```haskell
 
 -- WordCount1.hs
@@ -667,9 +635,8 @@ main = do
   print wordCount
 ```
 
-</section>
+# {#side-effects-2 .big-code}
 
-<section id="side-effects-2" class="big-code">
 ```haskell
 
 -- WordCount2.hs
@@ -680,9 +647,9 @@ main =
     let wordCount = length (words input)
     in print wordCount
 ```
-</section>
 
-<section id="side-effects-3" class="big-code">
+# {#side-effects-3 .big-code}
+
 ```haskell
 
 -- WordCount3.hs
@@ -690,10 +657,8 @@ main =
 main :: IO ()
 main = getContents >>= print . length . words
 ```
-</section>
 
-<section id="side-effects-wtf">
-<h1>what.the `>>=`?</h1>
+# what.the `>>=`?
 
 * `do` is just syntax sugar for the `>>=` (bind) operator.
 * IO is still purely functional, we are just building a graph
@@ -703,10 +668,8 @@ main = getContents >>= print . length . words
   variable for the current world state (behind the scenes)
 * There are ways to cheat and write code that is not pure, but you
   will have to go out of your way to do it
-</section>
 
-<section id=common-combinators class="big-code small-title">
-<h1>Common combinators</h1>
+# Common combinators {.big-code}
 
 ```haskell
 
@@ -718,10 +681,8 @@ f . g = \x -> f (g x)
 ($) :: (a -> b) -> a -> b
 f $ x =  f x
 ```
-</section>
 
-<section id="purity">
-<h1>Pure</h1>
+# Pure
 
 * Haskell's purity implies referential transparency
 * This means that function invocation can be freely replaced with its
@@ -729,9 +690,9 @@ f $ x =  f x
 * Fantastic for optimizations
 * Also enables equational reasoning, which makes it easier to prove
   code correct
-</section>
 
-<section id="compiler">
+# {#compiler}
+
 <!--
 https://ghc.haskell.org/trac/ghc/wiki/Commentary/Compiler/HscMain
 -->
@@ -787,10 +748,9 @@ https://ghc.haskell.org/trac/ghc/wiki/Commentary/Compiler/HscMain
     <line y1="45" y2="65" marker-end="url(#Triangle)" />
   </g>
 </svg>
-</section>
 
-<section id="optimizations">
-<h1>Optimizations</h1>
+# Optimizations
+
 <!--
 http://stackoverflow.com/questions/12653787/what-optimizations-can-ghc-be-expected-to-perform-reliably 
 http://research.microsoft.com/en-us/um/people/simonpj/papers/spec-constr/spec-constr.pdf
@@ -806,10 +766,8 @@ http://www.haskell.org/ghc/docs/latest/html/users_guide/options-optimise.html
 * Worker/Wrapper binds
 * Liberate case
 * Call-pattern specialization (SpecConstr)
-</section>
 
-<section id="ghc-rules">
-<h1>GHC RULES!</h1>
+# GHC RULES!
 <!--
 http://www.haskell.org/haskellwiki/Playing_by_the_rules
 http://www.haskell.org/haskellwiki/GHC/Using_rules
@@ -824,9 +782,8 @@ https://ghc.haskell.org/trac/ghc/wiki/RewriteRules
 * Commonly used for lists, Text, ByteString, etc.
 * Great incentive to write high-level code!
 * ANY LIBRARY CAN USE THIS!
-</section>
 
-<section id="ghc-rules-ex" class="big-code">
+# {#ghc-rules-ex .big-code}
 
 ```haskell
 
@@ -837,24 +794,21 @@ https://ghc.haskell.org/trac/ghc/wiki/RewriteRules
     break (==x) = breakByte x
   #-}
 ```
-</section>
 
-<section id="lazy">
-<h1>Lazy</h1>
+# Lazy
 
 * Call by need (outside in), not call by value (inside out)
 * Non-strict evaluation separates equation from execution
 * No need for special forms for control flow, no value restriction
 * Enables infinite or cyclic data structures
 * Can skip unused computation (better minimum bounds)
-</section>
 
-<section id="lazy-ramsey">
+# {#lazy-ramsey}
+
 ![lazy](img/ramsey-lazy-2013.jpg)
-</section>
 
-<section id="call-by-need">
-<h1>Call by need</h1>
+
+# Call by need
 
 <!--
 https://ghc.haskell.org/trac/ghc/wiki/Commentary/Compiler/GeneratedCode
@@ -864,9 +818,8 @@ http://research.microsoft.com/apps/pubs/default.aspx?id=67083
 * Expressions are translated into a graph (not a tree!)
 * Evaluated with STG (Spineless Tagless G-Machine)
 * Pattern matching forces evaluation
-</section>
 
-<section id="evaluation" class="small-title">
+# {#evaluation}
 
 ```haskell
 
@@ -889,9 +842,8 @@ putStrLn (show 2)
 -- apply show
 putStrLn "2"
 ```
-</section>
 
-<section id="control-flow" class="big-code">
+# {#control-flow .big-code}
 
 ```haskell
 
@@ -908,9 +860,8 @@ a && b = case a of
 const :: a -> b -> a
 const x = \_ -> x
 ```
-</section>
 
-<section id="infinite-programming" class="big-code">
+# {#infinite-programming .big-code}
 
 ```haskell
 
@@ -929,19 +880,16 @@ takeWhile p (x:xs)
   | p x       = x : takeWhile p xs
   | otherwise = []
 ```
-</section>
 
-<section id="types-and-typeclasses">
-<h1>Types</h1>
+# Types
 
 * Enforce constraints at compile time
 * No NULL
 * Can have parametric polymorphism and/or recursion
 * Built-in types are not special (other than syntax)
 * Typeclasses for *ad hoc* polymorphism (overloading)
-</section>
 
-<section id="constraints">
+# {#constraints}
 
 ```haskell
 
@@ -960,18 +908,16 @@ h> let f x = heads True
     Perhaps you meant one of these:
       `reads' (imported from Prelude), `head' (imported from Prelude)
 ```
-</section>
 
-<section id="no-null" class="small-title">
-<h1>No Null References</h1>
+# No Null References
 
 * Haskell doesn't repeat Hoare's "[Billion Dollar Mistake](http://www.infoq.com/presentations/Null-References-The-Billion-Dollar-Mistake-Tony-Hoare)"
 * Instead of `NULL`, wrap the value in a sum type such as `Maybe` or `Either`
 * Bottom ⊥ can be expressed in any type, as it's always possible to
   express a computation that does not terminate
-</section>
 
-<section id="no-null-code" class="big-code">
+# {#no-null-code .big-code}
+
 ```haskell
 
 data Maybe a = Just a
@@ -985,9 +931,8 @@ parseBit '0' = Just 0
 parseBit '1' = Just 1
 parseBit _ = Nothing
 ```
-</section>
 
-<section id="bottoms">
+# {#bottoms}
 ```haskell
 
 h> let x = x in x
@@ -1005,9 +950,8 @@ h> error "this throws an exception"
 h> undefined
 *** Exception: Prelude.undefined
 ```
-</section>
 
-<section id="polymorphic">
+# {#polymorphic}
 
 ```haskell
 
@@ -1031,9 +975,8 @@ treeToList root = go root Nil
     go (Leaf x)     = Cons x
     go (Branch l r) = go l . go r
 ```
-</section>
 
-<section id="built-in-types" class="big-code small-title">
+# {#built-in-types .big-code}
 
 ```haskell
 
@@ -1053,9 +996,9 @@ someDouble = 1
 someRatio :: Rational
 someRatio = 1.2345
 ```
-</section>
 
-<section id="tuples" class="big-code small-title">
+# {#tuples .big-code}
+
 ```haskell
 
 -- [a], type can be written prefix as `[] a`
@@ -1073,18 +1016,15 @@ someOtherTuple = (,) 4 '2'
 someString :: String
 someString = "foo"
 ```
-</section>
 
-<section id="typeclasses">
-<h1>Typeclasses</h1>
+# Typeclasses
 
 * Used for many of the Prelude operators and numeric literals
 * Ad hoc polymorphism (overloading)
 * Many built-in typeclasses can be automatically derived
   (Eq, Ord, Enum, Bounded, Show, and Read)!
-</section>
 
-<section id="typeclass-example" class="big-code">
+# {#typeclass-example .big-code}
 
 ```haskell
 
@@ -1103,9 +1043,8 @@ instance Functor List where
   fmap f (Cons x xs) = Cons (f x) (fmap f xs)
 
 ```
-</section>
 
-<section id="typeclass-example-2" class="big-code">
+# {#typeclass-example-2 .big-code}
 
 <!-- http://www.haskell.org/ghc/docs/latest/html/users_guide/deriving.html -->
 ```haskell
@@ -1119,9 +1058,8 @@ data List a = Cons a (List a)
             deriving (Eq, Functor)
 
 ```
-</section>
 
-<section id="newtype" class="big-code">
+# {#newtype .big-code}
 
 ```haskell
 
@@ -1140,10 +1078,9 @@ reverseSort :: Ord a => [a] -> [a]
 reverseSort = map unDown . sort . map Down
 
 ```
-</section>
 
-<section id="abstractions">
-<h1>Abstractions</h1>
+# Abstractions
+
 Monoid
 ~   Has an identity and an associative operation
 Functor
@@ -1152,10 +1089,9 @@ Applicative
 ~   Functor, but can apply function from inside
 Monad
 ~   Applicative, but can return any structure
-</section>
 
-<section id="monoid" class="big-code small-title">
-<h1>Monoid</h1>
+# Monoid
+
 ```haskell
 class Monoid a where
   mempty :: a
@@ -1169,10 +1105,9 @@ infixr 6 <>
 (<>) :: (Monoid a) => a -> a -> a
 (<>) = mappend
 ```
-</section>
 
-<section id="functor" class="big-code small-title">
-<h1>Functor</h1>
+# Functor
+
 ```haskell
 class Functor f where
   fmap :: (a -> b) -> f a -> f b
@@ -1188,10 +1123,9 @@ infixl 4 <$>
 (<$>) :: Functor f => (a -> b) -> f a -> f b
 (<$>) = fmap
 ```
-</section>
 
-<section id="applicative" class="big-code small-title">
-<h1>Applicative</h1>
+# Applicative
+
 ```haskell
 class (Functor f) => Applicative f where
   pure :: a -> f a
@@ -1209,8 +1143,8 @@ instance Applicative Maybe where
 ```
 </section>
 
-<section id="monad" class="big-code small-title">
-<h1>Monad</h1>
+# Monad
+
 ```haskell
 class Monad m where
   return :: a -> m a
@@ -1227,13 +1161,11 @@ instance Monad Maybe where
   Just x  >>= f = f x
   Nothing >>= _ = Nothing
 ```
-</section>
 
-<section id="parsing-title" class="small-title">
-<h1>Parser Combinators</h1>
-</section>
+# Parser Combinators
 
-<section id="parsing">
+# {#parsing}
+
 ```haskell
 {-# LANGUAGE OverloadedStrings #-}
 module SJSON where
@@ -1259,13 +1191,11 @@ pJSON = choice [ pText, pObject, pArray ]
     pObject = JObject <$> "{" .*> (pPair `sepBy` ",") <*. "}"
     pArray = JArray <$> "[" .*> (pJSON `sepBy` ",") <*. "]"
 ```
-</section>
 
-<section id="ffi-title" class="small-title">
-<h1>Foreign Function Interface</h1>
-</section>
+# Foreign Function Interface
 
-<section id="ffi" class="big-code">
+# {#ffi .big-code}
+
 ```haskell
 
 {-# LANGUAGE ForeignFunctionInterface #-}
@@ -1279,13 +1209,11 @@ foreign import ccall unsafe "stdlib.h rand"
 main :: IO ()
 main = replicateM_ 20 (c_rand >>= print)
 ```
-</section>
 
-<section id="parallel-title" class="small-title">
-<h1>Parallel Programming</h1>
-</section>
+# Parallel Programming
 
-<section id="parallel-flip-image">
+# {#parallel-flip-image}
+
 ```haskell
 -- FlipImage.hs
 import System.Environment
@@ -1308,13 +1236,11 @@ rot180 g = backpermute e flop g
     flop (Z :. i         :. j         :. k) =
          (Z :. x - i - 1 :. y - j - 1 :. k)
 ```
-</section>
 
-<section id="concurrency-title">
-<h1>Concurrency</h1>
-</section>
+# Concurrency
 
-<section id="cost-of-concurrency">
+# {#cost-of-concurrency}
+
 RAM footprint per unit of concurrency (approx)
 
 <table id="concurrency-table">
@@ -1369,9 +1295,9 @@ RAM footprint per unit of concurrency (approx)
     </td>
 </tr>
 </table>
-</section>
 
-<section id="concurrent-http">
+# {#concurrent-http}
+
 ```haskell
 
 import Control.Concurrent
@@ -1395,18 +1321,14 @@ main = do
   mapM_ takeMVar mvars
 ```
 
-</section>
-
-<section id="why-not-haskell">
-<h1>Why not Haskell?</h1>
+# Why not Haskell?
 
 * Lots of new terminology
 * Mutable state takes more effort
 * Laziness changes how you need to reason about code
 * Once you get used to it, these aren't problematic
-</section>
 
-<section id="terminology">
+# {#terminology}
 
 <em>A monad is just a monoid in the category of endofunctors, what's
 the problem?</em>
@@ -1414,9 +1336,9 @@ the problem?</em>
 Terminology from category theory can be intimidating (at first)!
 
 `return` probably doesn't mean what you think it means.
-</section>
 
-<section id="mutable-state-js" class="big-code">
+# {#mutable-state-js .big-code}
+
 ```javascript
 
 function main() {
@@ -1449,18 +1371,18 @@ main = do
   whileLoop
   withMVar fooVar print
 ```
-</section>
 
-<section id="laziness-behavior-1" class="big-code">
+# {#laziness-behavior-1 .big-code}
+
 ```haskell
 
 sum :: Num a => [a] -> a
 sum []     = 0
 sum (x:xs) = x + sum xs
 ```
-</section>
 
-<section id="laziness-behavior-2" class="big-code">
+# {#laziness-behavior-2 .big-code}
+
 ```haskell
 sum :: Num [a] => [a] -> a
 sum = go 0
@@ -1468,9 +1390,9 @@ sum = go 0
     go acc (x:xs) = go (acc + x) (go xs)
     go acc []     = acc
 ```
-</section>
 
-<section id="laziness-behavior-3" class="big-code">
+# {#laziness-behavior-3 .big-code}
+
 ```haskell
 sum :: Num [a] => [a] -> a
 sum = go 0
@@ -1480,9 +1402,9 @@ sum = go 0
     go acc (x:xs)     = go (acc + x) (go xs)
     go acc []         = acc
 ```
-</section>
 
-<section id="laziness-behavior-4" class="big-code">
+# {#laziness-behavior-4 .big-code}
+
 ```haskell
 {-# LANGUAGE BangPatterns #-}
 
@@ -1492,14 +1414,10 @@ sum = go 0
     go !acc (x:xs) = go (acc + x) (go xs)
     go  acc []     = acc
 ```
-</section>
 
-<section id="libraries-title">
-<h1>Notable Libraries</h1>
-</section>
+# Notable Libraries
 
-<section id="libraries-web-frameworks">
-<h1>Web Frameworks</h1>
+# Web Frameworks
 
 [Snap](http://snapframework.com/) 
 ~   HTTP + Templates. Extensible with "Snaplets"
@@ -1510,10 +1428,7 @@ sum = go 0
 [scotty](https://github.com/ku-fpg/scotty)
 ~   Like Ruby Sinatra, great for simple REST apps
 
-</section>
-
-<section id="libraries-writing" class="small-title">
-<h1>Publishing and docs</h1>
+# Publishing and docs
 
 [Haddock](http://www.haskell.org/haddock/)
 ~   Standard library documentation tool for Haskell projects
@@ -1524,20 +1439,14 @@ sum = go 0
 [Pandoc]
 ~   Markup format swiss-army knife (Markdown, LaTeX, EPUB, &hellip;)
 
-</section>
-
-<section id="libraries-parsing" class="small-title">
-<h1>Parser Combinators</h1>
+# Parser Combinators
 
 [Parsec](http://hackage.haskell.org/package/parsec)
 ~   Industrial strength, monadic parser combinator library for Haskell
 [attoparsec](http://hackage.haskell.org/package/attoparsec)
 ~   Like Parsec, but makes a few trade-offs for performance
 
-</section>
-
-<section id="libraries-dev-tools">
-<h1>Dev Tools</h1>
+# Dev Tools
 
 [HLint]
 ~   Suggests improvements for your code
@@ -1550,10 +1459,7 @@ sum = go 0
 [tidal](https://hackage.haskell.org/package/tidal)
 ~   DSL for live coding music patterns ("algorave")
 
-</section>
-
-<section id="libraries-parallel-and-concurrent" class="small-title">
-<h1>Parallel / Distributed</h1>
+# Parallel / Distributed
 
 [repa](http://repa.ouroborus.net/)
 ~   High performance, regular, multi-dimensional arrays (with multi-core!)
@@ -1562,10 +1468,7 @@ sum = go 0
 [Cloud Haskell](http://haskell-distributed.github.io/)
 ~   Erlang-like concurrency and distribution for Haskell
 
-</section>
-
-<section id="libraries-testing" class="small-title">
-<h1>Testing &amp; Profiling</h1>
+# Testing &amp; Profiling
 
 [QuickCheck](http://hackage.haskell.org/package/QuickCheck)
 ~   Property based testing
@@ -1580,10 +1483,7 @@ sum = go 0
 [EKG](https://github.com/tibbe/ekg)
 ~   Embeds a web-server for live monitoring of metrics
 
-</section>
-
-<section id="learn-more">
-<h1>Learn More</h1>
+# Learn More
 
 Books
 ~   [Learn You a Haskell for Great Good](http://learnyouahaskell.com/)
@@ -1604,10 +1504,8 @@ Practice
     [HackerRank](https://www.hackerrank.com/)
 ~   [H-99](http://www.haskell.org/haskellwiki/H-99:_Ninety-Nine_Haskell_Problems),
     [Project Euler](http://projecteuler.net/)
-</section>
 
-<section id="thanks">
-<h1>Thanks!</h1>
+# Thanks!
 
 +-------------+----------------------------------------------------+
 | **Slides**  | <http://bob.ippoli.to/haskell-for-erlangers-2014/> |
@@ -1629,8 +1527,6 @@ http://www.haskell.org/haskellwiki/Learn_Haskell_in_10_minutes
 http://www.haskell.org/tutorial/goodies.html
 
 -->
-
-</section>
 
 [github.com/etrepum/haskell-for-erlangers-2014]: https://github.com/etrepum/haskell-for-erlangers-2014
 [hdevtools]: https://github.com/bitc/hdevtools

@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="generator" content="pandoc">
   <meta name="author" content="Bob Ippolito" />
-  <title>Intro to Haskell (for Erlangers)</title>
+  <title>Intro to Haskell(for Erlangers)</title>
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
@@ -43,11 +43,31 @@ code > span.er { color: #ff0000; font-weight: bold; }
     <div class="slides">
 
 <section>
-    <h1 class="title">Intro to Haskell (for Erlangers)</h1>
+    <h1 class="title">Intro to Haskell<brchr>(for Erlangers)</h1>
     <h2 class="author">Bob Ippolito</h2>
     <h3 class="date">March 7, 2014</h3>
 </section>
 
+<section id="who-am-i" class="slide level1">
+<h1>Who am I?</h1>
+<ul>
+<li>Not classically trained in CS</li>
+<li>Erlang user since 2006 (Mochi Media, mochiweb, etc.)</li>
+<li>Haskell user since 2012 (ported <a href="http://exercism.io">exercism.io</a> curriculum)</li>
+<li>Currently teaching web technologies to teenagers with <a href="http://www.missionbit.com/">Mission Bit</a></li>
+<li>Doing a bit of advising/investing in startups</li>
+</ul>
+</section>
+<section id="why-learn-haskell" class="slide level1">
+<h1>Why learn Haskell?</h1>
+<ul>
+<li>I learn a lot of from studying new languages</li>
+<li>Types are supposed to help you write better software</li>
+<li>Good support for parallelism and concurrency</li>
+<li>Will help me understand more CS papers</li>
+<li>Could take a class on it at Facebook</li>
+</ul>
+</section>
 <section id="haskells-appeal" class="slide level1">
 <h1>Haskell's Appeal</h1>
 <ul>
@@ -55,28 +75,11 @@ code > span.er { color: #ff0000; font-weight: bold; }
 <li>Efficient parallel and concurrent programming</li>
 <li>Type system makes maintenance easier</li>
 <li>Nice syntax (not too heavy or lightweight)</li>
-<li>Fantastic community &amp; ecosystem
-</section>
-</li>
+<li>Fantastic community &amp; ecosystem</li>
 </ul>
-<section id="what-do-i-know">
-<h1>
-What do I know?
-</h1>
-
-<ul>
-<li>Took a class when I worked at Facebook in 2012</li>
-<li>Ported the <a href="http://exercism.io">exercism.io</a> curriculum to Haskell</li>
-<li>I practice regularly and try to read Haskell often</li>
-<li>I'm not an expert!
 </section>
-</li>
-</ul>
-<section id="haskell-history">
-<h1>
-Haskell
-</h1>
-
+<section id="haskell-history" class="slide level1">
+<h1>Haskell</h1>
 <!-- http://www.haskell.org/haskellwiki/Haskell_Brooks_Curry -->
 <figure>
 <img src="img/HaskellBCurry.jpg">
@@ -84,13 +87,10 @@ Haskell
 <strong>Haskell</strong> B. Curry
 </figcaption>
 </figure>
+
 </section>
-
-<section id="pre-history">
-<h1>
-Pre-History
-</h1>
-
+<section id="pre-history" class="slide level1">
+<h1>Pre-History</h1>
 <dl>
 <dt>1930s-1950s</dt>
 <dd>Lambda Calculus (Turing)
@@ -113,12 +113,8 @@ Pre-History
 </dd>
 </dl>
 </section>
-
-<section id="early-history">
-<h1>
-Early History
-</h1>
-
+<section id="early-history" class="slide level1">
+<h1>Early History</h1>
 <!-- http://www.haskell.org/onlinereport/preface-jfp.html
      http://research.microsoft.com/en-us/um/people/simonpj/papers/history-of-haskell/history.pdf
 -->
@@ -142,8 +138,8 @@ Early History
 </dd>
 </dl>
 </section>
-
-<section id="ifip-1992">
+<section id="ifip-1992" class="slide level1">
+<h1></h1>
 <!-- extracted from history.pdf -->
 <figure>
 <img src="img/ifip-1992.jpg" />
@@ -151,13 +147,10 @@ Early History
 IFIP 1992 Working Group
 </figcaption>
 </figure>
+
 </section>
-
-<section id="haskell-evolution">
-<h1>
-Evolution
-</h1>
-
+<section id="evolution" class="slide level1">
+<h1>Evolution</h1>
 <dl>
 <dt>1992</dt>
 <dd>Glasgow Haskell Compiler (GHC)
@@ -173,13 +166,8 @@ Evolution
 </dd>
 </dl>
 </section>
-
-
-<section id="fun-quotes">
-<h1>
-Fun Quotes
-</h1>
-
+<section id="fun-quotes" class="slide level1">
+<h1>Fun Quotes</h1>
 <!--
 http://research.microsoft.com/en-us/um/people/simonpj/papers/haskell-retrospective/HaskellRetrospective-2.pdf
 http://research.microsoft.com/en-us/um/people/simonpj/papers/haskell-retrospective/Haskell-Erlang-Jun09.pdf
@@ -198,25 +186,18 @@ http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.140.9513&rep=rep1&type=
 </dd>
 </dl>
 </section>
-
-<section id="domain">
-<h1>
-Domain
-</h1>
-
+<section id="domain" class="slide level1">
+<h1>Domain</h1>
 <p><strong>General Purpose</strong></p>
 <ul>
 <li>Very effective for parsing and compilation</li>
 <li>Great for DSEL (Domain Specific Embedded Languages)</li>
 <li>Has been popular in academia for some time</li>
-<li>Becoming more popular in industry
-</section>
-</li>
+<li>Becoming more popular in industry</li>
 </ul>
-<section id="commercial-use">
-<h1>
-Commercial Use
-</h1>
+</section>
+<section id="commercial-use" class="slide level1">
+<h1>Commercial Use</h1>
 <!-- http://www.haskell.org/haskellwiki/Haskell_in_industry -->
 
 <dl>
@@ -239,12 +220,8 @@ Commercial Use
 </dd>
 </dl>
 </section>
-
-<section id="consumer-apps">
-<h1>
-Consumer Apps
-</h1>
-
+<section id="consumer-apps" class="slide level1">
+<h1>Consumer Apps</h1>
 <!--
 Bump:
 * https://github.com/MichaelXavier/Angel
@@ -274,12 +251,8 @@ Silk:
 </dd>
 </dl>
 </section>
-
-<section id="commercial-services" class="small-title">
-<h1>
-Commercial Services
-</h1>
-
+<section id="commercial-services" class="slide level1">
+<h1>Commercial Services</h1>
 <!--
 Janrain:
 * https://www.fpcomplete.com/wp-content/uploads/2013/05/janrain%20case%20study.pdf
@@ -309,12 +282,8 @@ Skedge:
 </dd>
 </dl>
 </section>
-
-<section id="compilers">
-<h1>
-Compilers
-</h1>
-
+<section id="compilers" class="slide level1">
+<h1>Compilers</h1>
 <dl>
 <dt>Haskell</dt>
 <dd><a href="http://www.haskell.org/ghc/">GHC</a>, <a href="http://ajhc.metasepi.org/">Ajhc</a>, <a href="https://github.com/valderman/haste-compiler">Haste</a>, <a href="https://github.com/ghcjs/ghcjs">GHCJS</a>
@@ -334,12 +303,8 @@ Compilers
 </dd>
 </dl>
 </section>
-
-<section id="standalone-apps">
-<h1>
-Standalone Apps
-</h1>
-
+<section id="standalone-apps" class="slide level1">
+<h1>Standalone Apps</h1>
 <dl>
 <dt><a href="http://johnmacfarlane.net/pandoc/">Pandoc</a></dt>
 <dd>Markup swiss-army knife (used to make these slides!)
@@ -361,12 +326,8 @@ Standalone Apps
 </dd>
 </dl>
 </section>
-
-<section id="haskell-platform">
-<h1>
-Haskell Platform
-</h1>
-
+<section id="haskell-platform" class="slide level1">
+<h1>Haskell Platform</h1>
 <h3>
 Haskell: Batteries Included
 </h3>
@@ -375,14 +336,11 @@ Haskell: Batteries Included
 <li><a href="http://www.haskell.org/platform">http://www.haskell.org/platform</a></li>
 <li>GHC compiler and GHCi interpreter</li>
 <li>Robust and stable set of vetted packages</li>
-<li><a href="http://www.haskell.org/cabal/">Cabal</a>; easily fetch more packages from <a href="http://hackage.haskell.org/">Hackage</a>
-</section>
-</li>
+<li><a href="http://www.haskell.org/cabal/">Cabal</a>; easily fetch more packages from <a href="http://hackage.haskell.org/">Hackage</a></li>
 </ul>
-<section id="haskell-editor">
-<h1>
-Editor Support
-</h1>
+</section>
+<section id="editor-support" class="slide level1">
+<h1>Editor Support</h1>
 <dl>
 <dt>Emacs</dt>
 <dd><a href="http://www.mew.org/~kazu/proj/ghc-mod/en/">ghc-mod</a> + <a href="http://community.haskell.org/~ndm/hlint/">HLint</a>
@@ -401,12 +359,8 @@ Editor Support
 </dd>
 </dl>
 </section>
-
-<section id="haskell-syntax">
-<h1>
-Haskell Syntax
-</h1>
-
+<section id="haskell-syntax" class="slide level1">
+<h1>Haskell Syntax</h1>
 <dl>
 <dt>Types</dt>
 <dd>Defines types and typeclasses
@@ -426,11 +380,9 @@ Haskell Syntax
 </section>
 
 
-<section id="abstract-data-types" class="big-code small-title">
-<h1>
-Abstract Data Types
-</h1>
-
+</section>
+<section id="abstract-data-types" class="slide level1 big-code">
+<h1>Abstract Data Types</h1>
 <pre class="sourceCode haskell"><code class="sourceCode haskell"><span class="co">-- sum type, 3 possible values</span>
 <span class="kw">data</span> <span class="dt">Choice</span> <span class="fu">=</span> <span class="dt">Definitely</span>
             <span class="fu">|</span> <span class="dt">Possibly</span>
@@ -464,12 +416,8 @@ success <span class="fu">=</span> <span class="dt">Just</span>
 <span class="co">-- Values can be annotated in-line</span>
 <span class="dv">2</span> <span class="fu">^</span> (<span class="dv">1</span><span class="ot"> ::</span> <span class="dt">Int</span>)</code></pre>
 </section>
-
-<section id="typeclass-syntax" class="big-code small-title">
-<h1>
-Typeclass Syntax
-</h1>
-
+<section id="typeclass-syntax" class="slide level1 big-code">
+<h1>Typeclass Syntax</h1>
 <pre class="sourceCode haskell"><code class="sourceCode haskell"><span class="kw">class</span> <span class="dt">Equals</span> a <span class="kw">where</span>
 <span class="ot">  isEqual ::</span> a <span class="ot">-&gt;</span> a <span class="ot">-&gt;</span> <span class="dt">Bool</span>
 
@@ -484,11 +432,8 @@ Typeclass Syntax
                           isEqual as bs
   isEqual as     bs     <span class="fu">=</span> null as <span class="fu">&amp;&amp;</span> null bs</code></pre>
 </section>
-
-<section id="value-syntax" class="big-code small-title">
-<h1>
-Bindings &amp; Functions
-</h1>
+<section id="bindings-functions" class="slide level1 big-code">
+<h1>Bindings &amp; Functions</h1>
 <pre class="sourceCode haskell"><code class="sourceCode haskell">
 <span class="ot">greeting ::</span> <span class="dt">String</span>
 greeting <span class="fu">=</span> <span class="st">&quot;Hello, &quot;</span>
@@ -505,12 +450,8 @@ sayHello <span class="fu">=</span> \name <span class="ot">-&gt;</span>
   <span class="kw">let</span> result <span class="fu">=</span> (<span class="fu">++</span>) greeting name
   <span class="kw">in</span> result</code></pre>
 </section>
-
-<section id="pattern-matching" class="big-code small-title">
-<h1>
-Pattern Matching
-</h1>
-
+<section id="pattern-matching" class="slide level1 big-code">
+<h1>Pattern Matching</h1>
 <pre class="sourceCode haskell"><code class="sourceCode haskell">
 <span class="co">-- Unlike Erlang, pattern matching is only on</span>
 <span class="co">-- constructors, never variables</span>
@@ -522,11 +463,8 @@ isJust <span class="fu">=</span> \x <span class="ot">-&gt;</span>
     (<span class="dt">Just</span> _) <span class="ot">-&gt;</span> <span class="dt">True</span>
     <span class="dt">Nothing</span>  <span class="ot">-&gt;</span> <span class="dt">False</span></code></pre>
 </section>
-
-<section id="guards" class="big-code small-title">
-<h1>
-Guards
-</h1>
+<section id="guards" class="slide level1 big-code">
+<h1>Guards</h1>
 <pre class="sourceCode haskell"><code class="sourceCode haskell">
 <span class="ot">isNegative ::</span> (<span class="dt">Num</span> a) <span class="ot">=&gt;</span> a <span class="ot">-&gt;</span> <span class="dt">Bool</span>
 isNegative x
@@ -538,12 +476,8 @@ isNegative <span class="fu">=</span> \x <span class="ot">-&gt;</span>
   <span class="kw">then</span> <span class="dt">True</span>
   <span class="kw">else</span> <span class="dt">False</span></code></pre>
 </section>
-
-<section id="infix" class="big-code small-title">
-<h1>
-`Infix` and (Prefix)
-</h1>
-
+<section id="infix-and-prefix" class="slide level1 big-code">
+<h1>`Infix` and (Prefix)</h1>
 <pre class="sourceCode haskell"><code class="sourceCode haskell"><span class="co">-- Symbolic operators can be used</span>
 <span class="co">-- prefix when in (parentheses)</span>
 (<span class="fu">+</span>) a b
@@ -557,11 +491,8 @@ x <span class="ot">`elem`</span> xs
 <span class="kw">infixr</span> <span class="dv">5</span> <span class="ot">`append`</span>
 a <span class="ot">`append`</span> b <span class="fu">=</span> a <span class="fu">++</span> b</code></pre>
 </section>
-
-<section id="do-syntax" class="big-code">
-<h1>
-Do syntax
-</h1>
+<section id="do-syntax" class="slide level1 big-code">
+<h1>Do syntax</h1>
 <pre class="sourceCode haskell"><code class="sourceCode haskell">
 <span class="kw">do</span> m
 <span class="co">-- desugars to:</span>
@@ -577,12 +508,8 @@ m <span class="fu">&gt;&gt;=</span> \a <span class="ot">-&gt;</span> return a
 <span class="co">-- desugars to:</span>
 m <span class="fu">&gt;&gt;</span> return ()</code></pre>
 </section>
-
-<section id="key-features">
-<h1>
-Key Features
-</h1>
-
+<section id="key-features" class="slide level1">
+<h1>Key Features</h1>
 <ul>
 <li>Interactive</li>
 <li>Declarative</li>
@@ -594,16 +521,16 @@ Key Features
 </section>
 </li>
 </ul>
-<section id="ghci-title">
-<h1>
-GHCi
-</h1>
+</section>
+<section id="ghci" class="slide level1">
+<h1>GHCi</h1>
 <h2>
 Interactive Haskell
 </h2>
-</section>
 
-<section id="runhaskell">
+</section>
+<section id="runhaskell" class="slide level1">
+<h1></h1>
 <pre class="sourceCode bash"><code class="sourceCode bash">
 $ <span class="kw">runhaskell</span> --help
 <span class="kw">Usage</span>: runghc [runghc flags] [GHC flags] module [program args]
@@ -613,8 +540,8 @@ $ <span class="kw">runhaskell</span> --help
     <span class="kw">--help</span>                Print this usage information
     <span class="kw">--version</span>             Print version number</code></pre>
 </section>
-
-<section id="ghci-start">
+<section id="ghci-start" class="slide level1">
+<h1></h1>
 <pre class="sourceCode haskell"><code class="sourceCode haskell">
 <span class="fu">$</span> ghci
 <span class="dt">GHCi</span>, version <span class="dv">7</span><span class="fu">.</span><span class="dv">6</span><span class="fu">.</span><span class="dv">3</span><span class="fu">:</span> http<span class="fu">://</span>www<span class="fu">.</span>haskell<span class="fu">.</span>org<span class="fu">/</span>ghc<span class="fu">/</span>  <span class="fu">:?</span> for help
@@ -623,8 +550,8 @@ $ <span class="kw">runhaskell</span> --help
 <span class="dt">Loading</span> package base <span class="fu">...</span> linking <span class="fu">...</span> done<span class="fu">.</span>
 h<span class="fu">&gt;</span> </code></pre>
 </section>
-
-<section id="ghci-t" class="big-code small-title">
+<section id="ghci-t" class="slide level1 big-code">
+<h1></h1>
 <h2>
 <code>:t</code> shows type information
 </h2>
@@ -636,8 +563,8 @@ map (<span class="fu">+</span><span class="dv">1</span>)<span class="ot"> ::</sp
 h<span class="fu">&gt;</span> <span class="fu">:</span>t (<span class="fu">&gt;&gt;=</span>)
 <span class="ot">(&gt;&gt;=) ::</span> <span class="dt">Monad</span> m <span class="ot">=&gt;</span> m a <span class="ot">-&gt;</span> (a <span class="ot">-&gt;</span> m b) <span class="ot">-&gt;</span> m b</code></pre>
 </section>
-
-<section id="ghci-i-typeclass" class="big-code small-title">
+<section id="ghci-i-typeclass-.big-code" class="slide level1">
+<h1>#{ghci-i-typeclass .big-code}</h1>
 <h2>
 <code>:i</code> shows typeclass info
 </h2>
@@ -657,8 +584,8 @@ h<span class="fu">&gt;</span> <span class="fu">:</span>i <span class="dt">Num</s
 <span class="kw">instance</span> <span class="dt">Num</span> <span class="dt">Float</span> <span class="co">-- Defined in `GHC.Float&#39;</span>
 <span class="kw">instance</span> <span class="dt">Num</span> <span class="dt">Double</span> <span class="co">-- Defined in `GHC.Float&#39;</span></code></pre>
 </section>
-
-<section id="ghci-i-value" class="big-code small-title">
+<section id="ghci-i-value" class="slide level1 big-code">
+<h1></h1>
 <h2>
 <code>:i</code> shows value info
 </h2>
@@ -673,8 +600,8 @@ h<span class="fu">&gt;</span> <span class="fu">:</span>info (<span class="fu">&g
     <span class="co">-- Defined in `GHC.Base&#39;</span>
 <span class="kw">infixl</span> <span class="dv">1</span> <span class="fu">&gt;&gt;=</span></code></pre>
 </section>
-
-<section id="ghci-i-type" class="big-code small-title">
+<section id="ghci-i-type" class="slide level1 big-code">
+<h1></h1>
 <h2>
 <code>:i</code> shows type info
 </h2>
@@ -693,8 +620,8 @@ h<span class="fu">&gt;</span> <span class="fu">:</span>info <span class="dt">Int
 <span class="kw">instance</span> <span class="dt">Real</span> <span class="dt">Int</span> <span class="co">-- Defined in `GHC.Real&#39;</span>
 <span class="kw">instance</span> <span class="dt">Show</span> <span class="dt">Int</span> <span class="co">-- Defined in `GHC.Show&#39;</span></code></pre>
 </section>
-
-<section id="ghci-load-reload" class="big-code small-title">
+<section id="ghci-load-reload" class="slide level1 big-code">
+<h1></h1>
 <h2>
 <code>:l</code> load a module
 </h2>
@@ -715,21 +642,17 @@ h<span class="fu">&gt;</span> <span class="fu">:</span>r
 h<span class="fu">&gt;</span> hello
 <span class="st">&quot;HELLO&quot;</span></code></pre>
 </section>
-
-<section id="declarative">
-<h1>
-Declarative
-</h1>
-
+<section id="declarative" class="slide level1">
+<h1>Declarative</h1>
 <ul>
 <li>&quot;Describe the problem, not the solution&quot;</li>
 <li>Great syntax for this (but not C-like)!</li>
 <li>Functional code is (often) easier to understand and test</li>
-<li>Pure, no side-effects?!
-</section>
-</li>
+<li>Pure, no side-effects?!</li>
 </ul>
-<section id="merge-sort">
+</section>
+<section id="merge-sort" class="slide level1">
+<h1></h1>
 <pre class="sourceCode haskell"><code class="sourceCode haskell">
 <span class="co">-- MergeSort1.hs</span>
 <span class="kw">module</span> <span class="dt">MergeSort1</span> (mergeSort) <span class="kw">where</span>
@@ -755,8 +678,8 @@ merge as<span class="fu">@</span>(a<span class="fu">:</span>as&#39;) bs<span cla
 merge [] bs <span class="fu">=</span> bs
 merge as [] <span class="fu">=</span> as</code></pre>
 </section>
-
-<section id="merge-sort-2">
+<section id="merge-sort-2" class="slide level1">
+<h1></h1>
 <pre class="sourceCode haskell"><code class="sourceCode haskell">
 <span class="co">-- MergeSort2.hs</span>
 <span class="kw">module</span> <span class="dt">MergeSort2</span> (mergeSort) <span class="kw">where</span>
@@ -779,8 +702,8 @@ mergeSort <span class="fu">=</span> mergeAll <span class="fu">.</span> map (<spa
     merge [] bs <span class="fu">=</span> bs
     merge as [] <span class="fu">=</span> as</code></pre>
 </section>
-
-<section id="merge-sort-python" class="small-code">
+<section id="merge-sort-python" class="slide level1 small-code">
+<h1></h1>
 <pre class="sourceCode python"><code class="sourceCode python"><span class="co"># merge_sort.py</span>
 <span class="kw">def</span> merge_sort(lst):
     <span class="kw">if</span> not lst:
@@ -815,8 +738,8 @@ mergeSort <span class="fu">=</span> mergeAll <span class="fu">.</span> map (<spa
     result.extend(ys[j:])
     <span class="kw">return</span> result</code></pre>
 </section>
-
-<section id="side-effects" class="big-code">
+<section id="side-effects" class="slide level1 big-code">
+<h1></h1>
 <pre class="sourceCode haskell"><code class="sourceCode haskell">
 <span class="co">-- WordCount1.hs</span>
 
@@ -826,8 +749,8 @@ main <span class="fu">=</span> <span class="kw">do</span>
   <span class="kw">let</span> wordCount <span class="fu">=</span> length (words input)
   print wordCount</code></pre>
 </section>
-
-<section id="side-effects-2" class="big-code">
+<section id="side-effects-2" class="slide level1 big-code">
+<h1></h1>
 <pre class="sourceCode haskell"><code class="sourceCode haskell">
 <span class="co">-- WordCount2.hs</span>
 
@@ -837,34 +760,26 @@ main <span class="fu">=</span>
     <span class="kw">let</span> wordCount <span class="fu">=</span> length (words input)
     <span class="kw">in</span> print wordCount</code></pre>
 </section>
-
-<section id="side-effects-3" class="big-code">
+<section id="side-effects-3" class="slide level1 big-code">
+<h1></h1>
 <pre class="sourceCode haskell"><code class="sourceCode haskell">
 <span class="co">-- WordCount3.hs</span>
 
 <span class="ot">main ::</span> <span class="dt">IO</span> ()
 main <span class="fu">=</span> getContents <span class="fu">&gt;&gt;=</span> print <span class="fu">.</span> length <span class="fu">.</span> words</code></pre>
 </section>
-
-<section id="side-effects-wtf">
-<h1>
-what.the <code>&gt;&gt;=</code>?
-</h1>
-
+<section id="what.the" class="slide level1">
+<h1>what.the <code>&gt;&gt;=</code>?</h1>
 <ul>
 <li><code>do</code> is just syntax sugar for the <code>&gt;&gt;=</code> (bind) operator.</li>
 <li>IO is still purely functional, we are just building a graph of actions, <em>not</em> executing them in-place!</li>
 <li>Starting from <code>main</code>, the Haskell runtime will <em>interpret</em> these actions</li>
 <li>It works much like continuation passing style, with a state variable for the current world state (behind the scenes)</li>
-<li>There are ways to cheat and write code that is not pure, but you will have to go out of your way to do it
-</section>
-</li>
+<li>There are ways to cheat and write code that is not pure, but you will have to go out of your way to do it</li>
 </ul>
-<section id=common-combinators class="big-code small-title">
-<h1>
-Common combinators
-</h1>
-
+</section>
+<section id="common-combinators" class="slide level1 big-code">
+<h1>Common combinators</h1>
 <pre class="sourceCode haskell"><code class="sourceCode haskell">
 <span class="co">-- Function composition</span>
 <span class="ot">(.) ::</span> (b <span class="ot">-&gt;</span> c) <span class="ot">-&gt;</span> (a <span class="ot">-&gt;</span> b) <span class="ot">-&gt;</span> a <span class="ot">-&gt;</span> c
@@ -874,35 +789,28 @@ f <span class="fu">.</span> g <span class="fu">=</span> \x <span class="ot">-&gt
 <span class="ot">($) ::</span> (a <span class="ot">-&gt;</span> b) <span class="ot">-&gt;</span> a <span class="ot">-&gt;</span> b
 f <span class="fu">$</span> x <span class="fu">=</span>  f x</code></pre>
 </section>
-
-<section id="purity">
-<h1>
-Pure
-</h1>
-
+<section id="pure" class="slide level1">
+<h1>Pure</h1>
 <ul>
 <li>Haskell's purity implies referential transparency</li>
 <li>This means that function invocation can be freely replaced with its return value without changing semantics</li>
 <li>Fantastic for optimizations</li>
-<li>Also enables equational reasoning, which makes it easier to prove code correct
-</section>
-</li>
+<li>Also enables equational reasoning, which makes it easier to prove code correct</li>
 </ul>
-<section id="compiler">
+</section>
+<section id="compiler" class="slide level1">
+<h1></h1>
 <!--
 https://ghc.haskell.org/trac/ghc/wiki/Commentary/Compiler/HscMain
 -->
-<svg viewBox="0 0 1000 1000" class="full diagram"> <defs> <marker id="Triangle"
+<p><svg viewBox="0 0 1000 1000" class="full diagram"> <defs> <marker id="Triangle"
       viewBox="0 0 10 10" refX="0" refY="5" 
       markerUnits="strokeWidth"
       markerWidth="4" markerHeight="3"
-      orient="auto"> <path d="M 0 0 L 10 5 L 0 10 z" /> </marker> </defs> <g class="right-title" transform="translate(1000, 20)"> <text>GHC compilation phases</text> </g> <g class="phase parse" transform="translate(500, 85)"> <line y1="-85" y2="-65" marker-end="url(#Triangle)" /> <ellipse rx="120" ry="35"/> <text>Parse</text> </g> <g class="phase rename" transform="translate(500, 215)"> <line y1="-85" y2="-65" marker-end="url(#Triangle)" /> <ellipse rx="120" ry="35"/> <text>Rename</text> </g> <g class="phase typecheck" transform="translate(500, 345)"> <line y1="-85" y2="-65" marker-end="url(#Triangle)" /> <ellipse rx="120" ry="35"/> <text>Typecheck</text> </g> <g class="phase desugar" transform="translate(500, 475)"> <line y1="-85" y2="-65" marker-end="url(#Triangle)" /> <ellipse rx="120" ry="35"/> <text>Desugar</text> </g> <g class="phase optimize" transform="translate(500, 605)"> <line y1="-85" y2="-65" marker-end="url(#Triangle)" /> <path d="M 65,35 a 160,80 0 1,0 40,-80" marker-end="url(#Triangle)"/> <text x="220" class="outside">Core</text> <ellipse rx="120" ry="35"/> <text>Optimize</text> </g> <g class="phase codegen" transform="translate(500, 735)"> <line y1="-85" y2="-65" marker-end="url(#Triangle)" /> <ellipse rx="120" ry="35"/> <text>Code gen</text> </g> <g class="phase llvm" transform="translate(500, 865)"> <line y1="-85" y2="-65" marker-end="url(#Triangle)" /> <ellipse rx="120" ry="35"/> <text>LLVM</text> <line y1="45" y2="65" marker-end="url(#Triangle)" /> </g> </svg>
+      orient="auto"> <path d="M 0 0 L 10 5 L 0 10 z" /> </marker> </defs> <g class="right-title" transform="translate(1000, 20)"> <text>GHC compilation phases</text> </g> <g class="phase parse" transform="translate(500, 85)"> <line y1="-85" y2="-65" marker-end="url(#Triangle)" /> <ellipse rx="120" ry="35"/> <text>Parse</text> </g> <g class="phase rename" transform="translate(500, 215)"> <line y1="-85" y2="-65" marker-end="url(#Triangle)" /> <ellipse rx="120" ry="35"/> <text>Rename</text> </g> <g class="phase typecheck" transform="translate(500, 345)"> <line y1="-85" y2="-65" marker-end="url(#Triangle)" /> <ellipse rx="120" ry="35"/> <text>Typecheck</text> </g> <g class="phase desugar" transform="translate(500, 475)"> <line y1="-85" y2="-65" marker-end="url(#Triangle)" /> <ellipse rx="120" ry="35"/> <text>Desugar</text> </g> <g class="phase optimize" transform="translate(500, 605)"> <line y1="-85" y2="-65" marker-end="url(#Triangle)" /> <path d="M 65,35 a 160,80 0 1,0 40,-80" marker-end="url(#Triangle)"/> <text x="220" class="outside">Core</text> <ellipse rx="120" ry="35"/> <text>Optimize</text> </g> <g class="phase codegen" transform="translate(500, 735)"> <line y1="-85" y2="-65" marker-end="url(#Triangle)" /> <ellipse rx="120" ry="35"/> <text>Code gen</text> </g> <g class="phase llvm" transform="translate(500, 865)"> <line y1="-85" y2="-65" marker-end="url(#Triangle)" /> <ellipse rx="120" ry="35"/> <text>LLVM</text> <line y1="45" y2="65" marker-end="url(#Triangle)" /> </g> </svg></p>
 </section>
-
-<section id="optimizations">
-<h1>
-Optimizations
-</h1>
+<section id="optimizations" class="slide level1">
+<h1>Optimizations</h1>
 <!--
 http://stackoverflow.com/questions/12653787/what-optimizations-can-ghc-be-expected-to-perform-reliably 
 http://research.microsoft.com/en-us/um/people/simonpj/papers/spec-constr/spec-constr.pdf
@@ -918,14 +826,11 @@ http://www.haskell.org/ghc/docs/latest/html/users_guide/options-optimise.html
 <li>Demand analysis</li>
 <li>Worker/Wrapper binds</li>
 <li>Liberate case</li>
-<li>Call-pattern specialization (SpecConstr)
-</section>
-</li>
+<li>Call-pattern specialization (SpecConstr)</li>
 </ul>
-<section id="ghc-rules">
-<h1>
-GHC RULES!
-</h1>
+</section>
+<section id="ghc-rules" class="slide level1">
+<h1>GHC RULES!</h1>
 <!--
 http://www.haskell.org/haskellwiki/Playing_by_the_rules
 http://www.haskell.org/haskellwiki/GHC/Using_rules
@@ -940,12 +845,11 @@ https://ghc.haskell.org/trac/ghc/wiki/RewriteRules
 <li>Prevent building of intermediate data structures</li>
 <li>Commonly used for lists, Text, ByteString, etc.</li>
 <li>Great incentive to write high-level code!</li>
-<li>ANY LIBRARY CAN USE THIS!
-</section>
-</li>
+<li>ANY LIBRARY CAN USE THIS!</li>
 </ul>
-<section id="ghc-rules-ex" class="big-code">
-
+</section>
+<section id="ghc-rules-ex" class="slide level1 big-code">
+<h1></h1>
 <pre class="sourceCode haskell"><code class="sourceCode haskell">
 <span class="co">{-# RULES</span>
 <span class="co">&quot;ByteString specialise break (x==)&quot; forall x.</span>
@@ -954,30 +858,24 @@ https://ghc.haskell.org/trac/ghc/wiki/RewriteRules
 <span class="co">    break (==x) = breakByte x</span>
 <span class="co">  #-}</span></code></pre>
 </section>
-
-<section id="lazy">
-<h1>
-Lazy
-</h1>
-
+<section id="lazy" class="slide level1">
+<h1>Lazy</h1>
 <ul>
 <li>Call by need (outside in), not call by value (inside out)</li>
 <li>Non-strict evaluation separates equation from execution</li>
 <li>No need for special forms for control flow, no value restriction</li>
 <li>Enables infinite or cyclic data structures</li>
-<li>Can skip unused computation (better minimum bounds)
-</section>
-</li>
+<li>Can skip unused computation (better minimum bounds)</li>
 </ul>
-<section id="lazy-ramsey">
-<img src="img/ramsey-lazy-2013.jpg" alt="lazy" />
 </section>
-
-<section id="call-by-need">
-<h1>
-Call by need
-</h1>
-
+<section id="lazy-ramsey" class="slide level1">
+<h1></h1>
+<figure>
+<img src="img/ramsey-lazy-2013.jpg" alt="lazy" /><figcaption>lazy</figcaption>
+</figure>
+</section>
+<section id="call-by-need" class="slide level1">
+<h1>Call by need</h1>
 <!--
 https://ghc.haskell.org/trac/ghc/wiki/Commentary/Compiler/GeneratedCode
 http://research.microsoft.com/apps/pubs/default.aspx?id=67083
@@ -986,12 +884,11 @@ http://research.microsoft.com/apps/pubs/default.aspx?id=67083
 <ul>
 <li>Expressions are translated into a graph (not a tree!)</li>
 <li>Evaluated with STG (Spineless Tagless G-Machine)</li>
-<li>Pattern matching forces evaluation
-</section>
-</li>
+<li>Pattern matching forces evaluation</li>
 </ul>
-<section id="evaluation" class="small-title">
-
+</section>
+<section id="evaluation" class="slide level1">
+<h1></h1>
 <pre class="sourceCode haskell"><code class="sourceCode haskell">
 <span class="co">-- [1..] is an infinite list, [1, 2, 3, ...]</span>
 print (head (map (<span class="fu">*</span><span class="dv">2</span>) [<span class="dv">1</span><span class="fu">..</span>]))
@@ -1012,9 +909,8 @@ putStrLn (show <span class="dv">2</span>)
 <span class="co">-- apply show</span>
 putStrLn <span class="st">&quot;2&quot;</span></code></pre>
 </section>
-
-<section id="control-flow" class="big-code">
-
+<section id="control-flow" class="slide level1 big-code">
+<h1></h1>
 <pre class="sourceCode haskell"><code class="sourceCode haskell">
 <span class="ot">if&#39; ::</span> <span class="dt">Bool</span> <span class="ot">-&gt;</span> a <span class="ot">-&gt;</span> a <span class="ot">-&gt;</span> a
 if&#39; cond a b <span class="fu">=</span> <span class="kw">case</span> cond <span class="kw">of</span>
@@ -1029,9 +925,8 @@ a <span class="fu">&amp;&amp;</span> b <span class="fu">=</span> <span class="kw
 const<span class="ot"> ::</span> a <span class="ot">-&gt;</span> b <span class="ot">-&gt;</span> a
 const x <span class="fu">=</span> \_ <span class="ot">-&gt;</span> x</code></pre>
 </section>
-
-<section id="infinite-programming" class="big-code">
-
+<section id="infinite-programming" class="slide level1 big-code">
+<h1></h1>
 <pre class="sourceCode haskell"><code class="sourceCode haskell">
 <span class="ot">fib ::</span> [<span class="dt">Integer</span>]
 fib <span class="fu">=</span> <span class="dv">0</span> <span class="fu">:</span> <span class="dv">1</span> <span class="fu">:</span> zipWith (<span class="fu">+</span>) fib (tail fib)
@@ -1048,23 +943,18 @@ takeWhile p (x<span class="fu">:</span>xs)
   <span class="fu">|</span> p x       <span class="fu">=</span> x <span class="fu">:</span> takeWhile p xs
   <span class="fu">|</span> otherwise <span class="fu">=</span> []</code></pre>
 </section>
-
-<section id="types-and-typeclasses">
-<h1>
-Types
-</h1>
-
+<section id="types" class="slide level1">
+<h1>Types</h1>
 <ul>
 <li>Enforce constraints at compile time</li>
 <li>No NULL</li>
 <li>Can have parametric polymorphism and/or recursion</li>
 <li>Built-in types are not special (other than syntax)</li>
-<li>Typeclasses for <em>ad hoc</em> polymorphism (overloading)
-</section>
-</li>
+<li>Typeclasses for <em>ad hoc</em> polymorphism (overloading)</li>
 </ul>
-<section id="constraints">
-
+</section>
+<section id="constraints" class="slide level1">
+<h1></h1>
 <pre class="sourceCode haskell"><code class="sourceCode haskell">
 h<span class="fu">&gt;</span> <span class="kw">let</span> f x <span class="fu">=</span> head <span class="dt">True</span>
 
@@ -1081,20 +971,16 @@ h<span class="fu">&gt;</span> <span class="kw">let</span> f x <span class="fu">=
     <span class="dt">Perhaps</span> you meant one <span class="kw">of</span> these<span class="fu">:</span>
       <span class="ot">`reads&#39; (imported from Prelude), `</span>head&#39; (<span class="kw">import</span>ed from Prelude)</code></pre>
 </section>
-
-<section id="no-null" class="small-title">
-<h1>
-No Null References
-</h1>
-
+<section id="no-null-references" class="slide level1">
+<h1>No Null References</h1>
 <ul>
 <li>Haskell doesn't repeat Hoare's &quot;<a href="http://www.infoq.com/presentations/Null-References-The-Billion-Dollar-Mistake-Tony-Hoare">Billion Dollar Mistake</a>&quot;</li>
 <li>Instead of <code>NULL</code>, wrap the value in a sum type such as <code>Maybe</code> or <code>Either</code></li>
-<li>Bottom ⊥ can be expressed in any type, as it's always possible to express a computation that does not terminate
-</section>
-</li>
+<li>Bottom ⊥ can be expressed in any type, as it's always possible to express a computation that does not terminate</li>
 </ul>
-<section id="no-null-code" class="big-code">
+</section>
+<section id="no-null-code" class="slide level1 big-code">
+<h1></h1>
 <pre class="sourceCode haskell"><code class="sourceCode haskell">
 <span class="kw">data</span> <span class="dt">Maybe</span> a <span class="fu">=</span> <span class="dt">Just</span> a
              <span class="fu">|</span> <span class="dt">Nothing</span>
@@ -1107,8 +993,8 @@ parseBit <span class="ch">&#39;0&#39;</span> <span class="fu">=</span> <span cla
 parseBit <span class="ch">&#39;1&#39;</span> <span class="fu">=</span> <span class="dt">Just</span> <span class="dv">1</span>
 parseBit _ <span class="fu">=</span> <span class="dt">Nothing</span></code></pre>
 </section>
-
-<section id="bottoms">
+<section id="bottoms" class="slide level1">
+<h1></h1>
 <pre class="sourceCode haskell"><code class="sourceCode haskell">
 h<span class="fu">&gt;</span> <span class="kw">let</span> x <span class="fu">=</span> x <span class="kw">in</span> x
 <span class="co">-- Infinite recursion, not a fun case to deal with!</span>
@@ -1125,9 +1011,8 @@ h<span class="fu">&gt;</span> error <span class="st">&quot;this throws an except
 h<span class="fu">&gt;</span> undefined
 <span class="fu">***</span> <span class="dt">Exception</span><span class="fu">:</span> Prelude.undefined</code></pre>
 </section>
-
-<section id="polymorphic">
-
+<section id="polymorphic" class="slide level1">
+<h1></h1>
 <pre class="sourceCode haskell"><code class="sourceCode haskell">
 <span class="co">-- Polymorphic and recursive</span>
 <span class="kw">data</span> <span class="dt">List</span> a <span class="fu">=</span> <span class="dt">Cons</span> a (<span class="dt">List</span> a)
@@ -1149,9 +1034,8 @@ treeToList root <span class="fu">=</span> go root <span class="dt">Nil</span>
     go (<span class="dt">Leaf</span> x)     <span class="fu">=</span> <span class="dt">Cons</span> x
     go (<span class="dt">Branch</span> l r) <span class="fu">=</span> go l <span class="fu">.</span> go r</code></pre>
 </section>
-
-<section id="built-in-types" class="big-code small-title">
-
+<section id="built-in-types" class="slide level1 big-code">
+<h1></h1>
 <pre class="sourceCode haskell"><code class="sourceCode haskell">
 <span class="co">-- (), pronounced &quot;unit&quot;</span>
 <span class="ot">unit ::</span> ()
@@ -1169,8 +1053,8 @@ someDouble <span class="fu">=</span> <span class="dv">1</span>
 <span class="ot">someRatio ::</span> <span class="dt">Rational</span>
 someRatio <span class="fu">=</span> <span class="dv">1</span><span class="fu">.</span><span class="dv">2345</span></code></pre>
 </section>
-
-<section id="tuples" class="big-code small-title">
+<section id="tuples" class="slide level1 big-code">
+<h1></h1>
 <pre class="sourceCode haskell"><code class="sourceCode haskell">
 <span class="co">-- [a], type can be written prefix as `[] a`</span>
 someList,<span class="ot"> someOtherList ::</span> [<span class="dt">Int</span>]
@@ -1187,21 +1071,16 @@ someOtherTuple <span class="fu">=</span> (,) <span class="dv">4</span> <span cla
 <span class="ot">someString ::</span> <span class="dt">String</span>
 someString <span class="fu">=</span> <span class="st">&quot;foo&quot;</span></code></pre>
 </section>
-
-<section id="typeclasses">
-<h1>
-Typeclasses
-</h1>
-
+<section id="typeclasses" class="slide level1">
+<h1>Typeclasses</h1>
 <ul>
 <li>Used for many of the Prelude operators and numeric literals</li>
 <li>Ad hoc polymorphism (overloading)</li>
-<li>Many built-in typeclasses can be automatically derived (Eq, Ord, Enum, Bounded, Show, and Read)!
-</section>
-</li>
+<li>Many built-in typeclasses can be automatically derived (Eq, Ord, Enum, Bounded, Show, and Read)!</li>
 </ul>
-<section id="typeclass-example" class="big-code">
-
+</section>
+<section id="typeclass-example" class="slide level1 big-code">
+<h1></h1>
 <pre class="sourceCode haskell"><code class="sourceCode haskell">
 <span class="kw">module</span> <span class="dt">List</span> <span class="kw">where</span>
 
@@ -1217,9 +1096,8 @@ Typeclasses
   fmap _ <span class="dt">Nil</span>         <span class="fu">=</span> <span class="dt">Nil</span>
   fmap f (<span class="dt">Cons</span> x xs) <span class="fu">=</span> <span class="dt">Cons</span> (f x) (fmap f xs)</code></pre>
 </section>
-
-<section id="typeclass-example-2" class="big-code">
-
+<section id="typeclass-example-2" class="slide level1 big-code">
+<h1></h1>
 <!-- http://www.haskell.org/ghc/docs/latest/html/users_guide/deriving.html -->
 <pre class="sourceCode haskell"><code class="sourceCode haskell">
 <span class="ot">{-# LANGUAGE DeriveFunctor #-}</span>
@@ -1230,9 +1108,8 @@ Typeclasses
             <span class="fu">|</span> <span class="dt">Nil</span>
             <span class="kw">deriving</span> (<span class="dt">Eq</span>, <span class="dt">Functor</span>)</code></pre>
 </section>
-
-<section id="newtype" class="big-code">
-
+<section id="newtype" class="slide level1 big-code">
+<h1></h1>
 <pre class="sourceCode haskell"><code class="sourceCode haskell">
 <span class="kw">import</span> Data.List (sort)
 
@@ -1248,11 +1125,8 @@ Typeclasses
 <span class="ot">reverseSort ::</span> <span class="dt">Ord</span> a <span class="ot">=&gt;</span> [a] <span class="ot">-&gt;</span> [a]
 reverseSort <span class="fu">=</span> map unDown <span class="fu">.</span> sort <span class="fu">.</span> map <span class="dt">Down</span></code></pre>
 </section>
-
-<section id="abstractions">
-<h1>
-Abstractions
-</h1>
+<section id="abstractions" class="slide level1">
+<h1>Abstractions</h1>
 <dl>
 <dt>Monoid</dt>
 <dd>Has an identity and an associative operation
@@ -1268,11 +1142,8 @@ Abstractions
 </dd>
 </dl>
 </section>
-
-<section id="monoid" class="big-code small-title">
-<h1>
-Monoid
-</h1>
+<section id="monoid" class="slide level1">
+<h1>Monoid</h1>
 <pre class="sourceCode haskell"><code class="sourceCode haskell"><span class="kw">class</span> <span class="dt">Monoid</span> a <span class="kw">where</span>
 <span class="ot">  mempty ::</span> a
 <span class="ot">  mappend ::</span> a <span class="ot">-&gt;</span> a <span class="ot">-&gt;</span> a
@@ -1285,11 +1156,8 @@ Monoid
 <span class="ot">(&lt;&gt;) ::</span> (<span class="dt">Monoid</span> a) <span class="ot">=&gt;</span> a <span class="ot">-&gt;</span> a <span class="ot">-&gt;</span> a
 (<span class="fu">&lt;&gt;</span>) <span class="fu">=</span> mappend</code></pre>
 </section>
-
-<section id="functor" class="big-code small-title">
-<h1>
-Functor
-</h1>
+<section id="functor" class="slide level1">
+<h1>Functor</h1>
 <pre class="sourceCode haskell"><code class="sourceCode haskell"><span class="kw">class</span> <span class="dt">Functor</span> f <span class="kw">where</span>
 <span class="ot">  fmap ::</span> (a <span class="ot">-&gt;</span> b) <span class="ot">-&gt;</span> f a <span class="ot">-&gt;</span> f b
 
@@ -1304,11 +1172,8 @@ Functor
 <span class="ot">(&lt;$&gt;) ::</span> <span class="dt">Functor</span> f <span class="ot">=&gt;</span> (a <span class="ot">-&gt;</span> b) <span class="ot">-&gt;</span> f a <span class="ot">-&gt;</span> f b
 (<span class="fu">&lt;$&gt;</span>) <span class="fu">=</span> fmap</code></pre>
 </section>
-
-<section id="applicative" class="big-code small-title">
-<h1>
-Applicative
-</h1>
+<section id="applicative" class="slide level1">
+<h1>Applicative</h1>
 <pre class="sourceCode haskell"><code class="sourceCode haskell"><span class="kw">class</span> (<span class="dt">Functor</span> f) <span class="ot">=&gt;</span> <span class="dt">Applicative</span> f <span class="kw">where</span>
 <span class="ot">  pure ::</span> a <span class="ot">-&gt;</span> f a
   <span class="kw">infixl</span> <span class="dv">4</span> <span class="fu">&lt;*&gt;</span>
@@ -1324,10 +1189,9 @@ Applicative
   _      <span class="fu">&lt;*&gt;</span> _      <span class="fu">=</span> <span class="dt">Nothing</span></code></pre>
 </section>
 
-<section id="monad" class="big-code small-title">
-<h1>
-Monad
-</h1>
+</section>
+<section id="monad" class="slide level1">
+<h1>Monad</h1>
 <pre class="sourceCode haskell"><code class="sourceCode haskell"><span class="kw">class</span> <span class="dt">Monad</span> m <span class="kw">where</span>
 <span class="ot">  return ::</span> a <span class="ot">-&gt;</span> m a
 <span class="ot">  (&gt;&gt;=) ::</span> m a <span class="ot">-&gt;</span> (a <span class="ot">-&gt;</span> m b) <span class="ot">-&gt;</span> m b
@@ -1343,14 +1207,11 @@ Monad
   <span class="dt">Just</span> x  <span class="fu">&gt;&gt;=</span> f <span class="fu">=</span> f x
   <span class="dt">Nothing</span> <span class="fu">&gt;&gt;=</span> _ <span class="fu">=</span> <span class="dt">Nothing</span></code></pre>
 </section>
-
-<section id="parsing-title" class="small-title">
-<h1>
-Parser Combinators
-</h1>
+<section id="parser-combinators" class="slide level1">
+<h1>Parser Combinators</h1>
 </section>
-
-<section id="parsing">
+<section id="parsing" class="slide level1">
+<h1></h1>
 <pre class="sourceCode haskell"><code class="sourceCode haskell"><span class="ot">{-# LANGUAGE OverloadedStrings #-}</span>
 <span class="kw">module</span> <span class="dt">SJSON</span> <span class="kw">where</span>
 <span class="kw">import</span> Prelude <span class="kw">hiding</span> (concat)
@@ -1375,14 +1236,11 @@ pJSON <span class="fu">=</span> choice [ pText, pObject, pArray ]
     pObject <span class="fu">=</span> <span class="dt">JObject</span> <span class="fu">&lt;$&gt;</span> <span class="st">&quot;{&quot;</span> <span class="fu">.*&gt;</span> (pPair <span class="ot">`sepBy`</span> <span class="st">&quot;,&quot;</span>) <span class="fu">&lt;*.</span> <span class="st">&quot;}&quot;</span>
     pArray <span class="fu">=</span> <span class="dt">JArray</span> <span class="fu">&lt;$&gt;</span> <span class="st">&quot;[&quot;</span> <span class="fu">.*&gt;</span> (pJSON <span class="ot">`sepBy`</span> <span class="st">&quot;,&quot;</span>) <span class="fu">&lt;*.</span> <span class="st">&quot;]&quot;</span></code></pre>
 </section>
-
-<section id="ffi-title" class="small-title">
-<h1>
-Foreign Function Interface
-</h1>
+<section id="foreign-function-interface" class="slide level1">
+<h1>Foreign Function Interface</h1>
 </section>
-
-<section id="ffi" class="big-code">
+<section id="ffi" class="slide level1 big-code">
+<h1></h1>
 <pre class="sourceCode haskell"><code class="sourceCode haskell">
 <span class="ot">{-# LANGUAGE ForeignFunctionInterface #-}</span>
 
@@ -1395,14 +1253,11 @@ foreign <span class="kw">import</span> ccall unsafe &quot;stdlib.h rand&quot;
 <span class="ot">main ::</span> <span class="dt">IO</span> ()
 main <span class="fu">=</span> replicateM_ <span class="dv">20</span> (c_rand <span class="fu">&gt;&gt;=</span> print)</code></pre>
 </section>
-
-<section id="parallel-title" class="small-title">
-<h1>
-Parallel Programming
-</h1>
+<section id="parallel-programming" class="slide level1">
+<h1>Parallel Programming</h1>
 </section>
-
-<section id="parallel-flip-image">
+<section id="parallel-flip-image" class="slide level1">
+<h1></h1>
 <pre class="sourceCode haskell"><code class="sourceCode haskell"><span class="co">-- FlipImage.hs</span>
 <span class="kw">import</span> System.Environment
 <span class="kw">import</span> Data.Word
@@ -1424,14 +1279,11 @@ rot180 g <span class="fu">=</span> backpermute e flop g
     flop (<span class="dt">Z</span> <span class="fu">:.</span> i         <span class="fu">:.</span> j         <span class="fu">:.</span> k) <span class="fu">=</span>
          (<span class="dt">Z</span> <span class="fu">:.</span> x <span class="fu">-</span> i <span class="fu">-</span> <span class="dv">1</span> <span class="fu">:.</span> y <span class="fu">-</span> j <span class="fu">-</span> <span class="dv">1</span> <span class="fu">:.</span> k)</code></pre>
 </section>
-
-<section id="concurrency-title">
-<h1>
-Concurrency
-</h1>
+<section id="concurrency" class="slide level1">
+<h1>Concurrency</h1>
 </section>
-
-<section id="cost-of-concurrency">
+<section id="cost-of-concurrency" class="slide level1">
+<h1></h1>
 <p>RAM footprint per unit of concurrency (approx)</p>
 <table id="concurrency-table">
 <tr class="haskell">
@@ -1506,9 +1358,10 @@ Concurrency
 </td>
 </tr>
 </table>
-</section>
 
-<section id="concurrent-http">
+</section>
+<section id="concurrent-http" class="slide level1">
+<h1></h1>
 <pre class="sourceCode haskell"><code class="sourceCode haskell">
 <span class="kw">import</span> Control.Concurrent
 <span class="kw">import</span> Network.HTTP
@@ -1530,28 +1383,23 @@ main <span class="fu">=</span> <span class="kw">do</span>
   mvars <span class="ot">&lt;-</span> mapM startRequest urls
   mapM_ takeMVar mvars</code></pre>
 </section>
-
-<section id="why-not-haskell">
-<h1>
-Why not Haskell?
-</h1>
-
+<section id="why-not-haskell" class="slide level1">
+<h1>Why not Haskell?</h1>
 <ul>
 <li>Lots of new terminology</li>
 <li>Mutable state takes more effort</li>
 <li>Laziness changes how you need to reason about code</li>
-<li>Once you get used to it, these aren't problematic
-</section>
-</li>
+<li>Once you get used to it, these aren't problematic</li>
 </ul>
-<section id="terminology">
-
+</section>
+<section id="terminology" class="slide level1">
+<h1></h1>
 <p><em>A monad is just a monoid in the category of endofunctors, what's the problem?</em></p>
 <p>Terminology from category theory can be intimidating (at first)!</p>
-<code>return</code> probably doesn't mean what you think it means.
+<p><code>return</code> probably doesn't mean what you think it means.</p>
 </section>
-
-<section id="mutable-state-js" class="big-code">
+<section id="mutable-state-js" class="slide level1 big-code">
+<h1></h1>
 <pre class="sourceCode javascript"><code class="sourceCode javascript">
 <span class="kw">function</span> <span class="fu">main</span>() {
   <span class="kw">var</span> foo = {<span class="dt">bar</span>: <span class="dv">1</span>, <span class="dt">baz</span>: <span class="dv">20</span>};
@@ -1581,23 +1429,23 @@ main <span class="fu">=</span> <span class="kw">do</span>
   whileLoop
   withMVar fooVar print</code></pre>
 </section>
-
-<section id="laziness-behavior-1" class="big-code">
+<section id="laziness-behavior-1" class="slide level1 big-code">
+<h1></h1>
 <pre class="sourceCode haskell"><code class="sourceCode haskell">
 sum<span class="ot"> ::</span> <span class="dt">Num</span> a <span class="ot">=&gt;</span> [a] <span class="ot">-&gt;</span> a
 sum []     <span class="fu">=</span> <span class="dv">0</span>
 sum (x<span class="fu">:</span>xs) <span class="fu">=</span> x <span class="fu">+</span> sum xs</code></pre>
 </section>
-
-<section id="laziness-behavior-2" class="big-code">
+<section id="laziness-behavior-2" class="slide level1 big-code">
+<h1></h1>
 <pre class="sourceCode haskell"><code class="sourceCode haskell">sum<span class="ot"> ::</span> <span class="dt">Num</span> [a] <span class="ot">=&gt;</span> [a] <span class="ot">-&gt;</span> a
 sum <span class="fu">=</span> go <span class="dv">0</span>
   <span class="kw">where</span>
     go acc (x<span class="fu">:</span>xs) <span class="fu">=</span> go (acc <span class="fu">+</span> x) (go xs)
     go acc []     <span class="fu">=</span> acc</code></pre>
 </section>
-
-<section id="laziness-behavior-3" class="big-code">
+<section id="laziness-behavior-3" class="slide level1 big-code">
+<h1></h1>
 <pre class="sourceCode haskell"><code class="sourceCode haskell">sum<span class="ot"> ::</span> <span class="dt">Num</span> [a] <span class="ot">=&gt;</span> [a] <span class="ot">-&gt;</span> a
 sum <span class="fu">=</span> go <span class="dv">0</span>
   <span class="kw">where</span>
@@ -1606,8 +1454,8 @@ sum <span class="fu">=</span> go <span class="dv">0</span>
     go acc (x<span class="fu">:</span>xs)     <span class="fu">=</span> go (acc <span class="fu">+</span> x) (go xs)
     go acc []         <span class="fu">=</span> acc</code></pre>
 </section>
-
-<section id="laziness-behavior-4" class="big-code">
+<section id="laziness-behavior-4" class="slide level1 big-code">
+<h1></h1>
 <pre class="sourceCode haskell"><code class="sourceCode haskell"><span class="ot">{-# LANGUAGE BangPatterns #-}</span>
 
 sum<span class="ot"> ::</span> <span class="dt">Num</span> [a] <span class="ot">=&gt;</span> [a] <span class="ot">-&gt;</span> a
@@ -1616,18 +1464,11 @@ sum <span class="fu">=</span> go <span class="dv">0</span>
     go <span class="fu">!</span>acc (x<span class="fu">:</span>xs) <span class="fu">=</span> go (acc <span class="fu">+</span> x) (go xs)
     go  acc []     <span class="fu">=</span> acc</code></pre>
 </section>
-
-<section id="libraries-title">
-<h1>
-Notable Libraries
-</h1>
+<section id="notable-libraries" class="slide level1">
+<h1>Notable Libraries</h1>
 </section>
-
-<section id="libraries-web-frameworks">
-<h1>
-Web Frameworks
-</h1>
-
+<section id="web-frameworks" class="slide level1">
+<h1>Web Frameworks</h1>
 <dl>
 <dt><a href="http://snapframework.com/">Snap</a></dt>
 <dd>HTTP + Templates. Extensible with &quot;Snaplets&quot;
@@ -1643,12 +1484,8 @@ Web Frameworks
 </dd>
 </dl>
 </section>
-
-<section id="libraries-writing" class="small-title">
-<h1>
-Publishing and docs
-</h1>
-
+<section id="publishing-and-docs" class="slide level1">
+<h1>Publishing and docs</h1>
 <dl>
 <dt><a href="http://www.haskell.org/haddock/">Haddock</a></dt>
 <dd>Standard library documentation tool for Haskell projects
@@ -1664,12 +1501,8 @@ Publishing and docs
 </dd>
 </dl>
 </section>
-
-<section id="libraries-parsing" class="small-title">
-<h1>
-Parser Combinators
-</h1>
-
+<section id="parser-combinators-1" class="slide level1">
+<h1>Parser Combinators</h1>
 <dl>
 <dt><a href="http://hackage.haskell.org/package/parsec">Parsec</a></dt>
 <dd>Industrial strength, monadic parser combinator library for Haskell
@@ -1679,12 +1512,8 @@ Parser Combinators
 </dd>
 </dl>
 </section>
-
-<section id="libraries-dev-tools">
-<h1>
-Dev Tools
-</h1>
-
+<section id="dev-tools" class="slide level1">
+<h1>Dev Tools</h1>
 <dl>
 <dt><a href="http://community.haskell.org/~ndm/hlint/">HLint</a></dt>
 <dd>Suggests improvements for your code
@@ -1703,12 +1532,8 @@ Dev Tools
 </dd>
 </dl>
 </section>
-
-<section id="libraries-parallel-and-concurrent" class="small-title">
-<h1>
-Parallel / Distributed
-</h1>
-
+<section id="parallel-distributed" class="slide level1">
+<h1>Parallel / Distributed</h1>
 <dl>
 <dt><a href="http://repa.ouroborus.net/">repa</a></dt>
 <dd>High performance, regular, multi-dimensional arrays (with multi-core!)
@@ -1721,12 +1546,8 @@ Parallel / Distributed
 </dd>
 </dl>
 </section>
-
-<section id="libraries-testing" class="small-title">
-<h1>
-Testing &amp; Profiling
-</h1>
-
+<section id="testing-profiling" class="slide level1">
+<h1>Testing &amp; Profiling</h1>
 <dl>
 <dt><a href="http://hackage.haskell.org/package/QuickCheck">QuickCheck</a></dt>
 <dd>Property based testing
@@ -1748,12 +1569,8 @@ Testing &amp; Profiling
 </dd>
 </dl>
 </section>
-
-<section id="learn-more">
-<h1>
-Learn More
-</h1>
-
+<section id="learn-more" class="slide level1">
+<h1>Learn More</h1>
 <dl>
 <dt>Books</dt>
 <dd><a href="http://learnyouahaskell.com/">Learn You a Haskell for Great Good</a>
@@ -1778,12 +1595,8 @@ Learn More
 </dd>
 </dl>
 </section>
-
-<section id="thanks">
-<h1>
-Thanks!
-</h1>
-
+<section id="thanks" class="slide level1">
+<h1>Thanks!</h1>
 <table>
 <col style="width: 19%" /><col style="width: 73%" /><tbody>
 <tr class="odd">
@@ -1816,8 +1629,6 @@ http://www.haskell.org/tutorial/goodies.html
 -->
 
 </section>
-
-</section>
     </div>
   </div>
 
@@ -1829,10 +1640,9 @@ http://www.haskell.org/tutorial/goodies.html
       // Full list of configuration options available here:
       // https://github.com/hakimel/reveal.js#configuration
       Reveal.initialize({
-        controls: true,
-        progress: true,
         history: true,
-        center: true,
+        center: false,
+        slideNumber: true,
         theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
         transition: 'none', // default/cube/page/concave/zoom/linear/fade/none
 
