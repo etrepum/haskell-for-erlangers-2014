@@ -186,6 +186,9 @@ John Hughes (QuickCheck), Philip Wadler (Subtyping for Erlang)
 <!-- http://www.haskell.org/haskellwiki/Haskell_in_industry -->
 
 <dl>
+<dt>Internet</dt>
+<dd><a href="https://skillsmatter.com/skillscasts/4429-simon-marlow">Facebook</a> - Haxl rule engine &quot;fighting spam with pure functions&quot;
+</dd>
 <dt>Biotech</dt>
 <dd><a href="http://cufp.galois.com/2008/abstracts.html#BalabanDavid">Amgen</a> - informatics, simulation
 </dd>
@@ -202,9 +205,6 @@ John Hughes (QuickCheck), Philip Wadler (Subtyping for Erlang)
 </dd>
 <dt>Semiconductor Design</dt>
 <dd><a href="http://www.slideshare.net/mansu/bluespec-talk">Bluespec</a> - high-level language for chip design
-</dd>
-<dt>Internet</dt>
-<dd><a href="https://skillsmatter.com/skillscasts/4429-simon-marlow">Facebook</a> - Haxl rule engine &quot;fighting spam with pure functions&quot;
 </dd>
 </dl>
 </section>
@@ -366,20 +366,123 @@ Haskell: Batteries Included
 </dd>
 </dl>
 </section>
-<section id="abstract-data-types" class="slide level1 big-code">
-<h1>Abstract Data Types</h1>
+<section id="listsmap2" class="slide level1 big-code">
+<h1>lists:map/2</h1>
+<pre class="sourceCode erlang"><code class="sourceCode erlang"><span class="fu">map(</span><span class="dt">F</span><span class="fu">,</span> <span class="fu">[</span><span class="dt">H</span><span class="fu">|</span><span class="dt">T</span><span class="fu">])</span> <span class="kw">-&gt;</span>
+    <span class="fu">[</span><span class="dt">F</span><span class="fu">(</span><span class="dt">H</span><span class="fu">)|map(</span><span class="dt">F</span><span class="fu">,</span> <span class="dt">T</span><span class="fu">)];</span>
+<span class="fu">map(</span><span class="dt">F</span><span class="fu">,</span> <span class="fu">[])</span> <span class="ch">when</span> <span class="fu">is_function(</span><span class="dt">F</span><span class="fu">,</span> <span class="dv">1</span><span class="fu">)</span> <span class="kw">-&gt;</span> <span class="fu">[].</span></code></pre>
+</section>
+<section id="map" class="slide level1 big-code">
+<h1>map</h1>
+<pre class="sourceCode haskell"><code class="sourceCode haskell">map _ []     <span class="fu">=</span> []
+map f (x<span class="fu">:</span>xs) <span class="fu">=</span> f x <span class="fu">:</span> map f xs</code></pre>
+</section>
+<section id="listsmap2-typed" class="slide level1 big-code">
+<h1>lists:map/2 (typed)</h1>
+<pre class="sourceCode erlang"><code class="sourceCode erlang"><span class="kw">-</span><span class="ch">spec</span> <span class="fu">map(</span><span class="dt">Fun</span><span class="fu">,</span> <span class="dt">List1</span><span class="fu">)</span> <span class="kw">-&gt;</span> <span class="dt">List2</span> <span class="ch">when</span>
+      <span class="dt">Fun</span> <span class="fu">::</span> <span class="kw">fun</span><span class="fu">((</span><span class="dt">A</span><span class="fu">)</span> <span class="kw">-&gt;</span> <span class="dt">B</span><span class="fu">),</span>
+      <span class="dt">List1</span> <span class="fu">::</span> <span class="fu">[</span><span class="dt">A</span><span class="fu">],</span>
+      <span class="dt">List2</span> <span class="fu">::</span> <span class="fu">[</span><span class="dt">B</span><span class="fu">],</span>
+      <span class="dt">A</span> <span class="fu">::</span> <span class="fu">term(),</span>
+      <span class="dt">B</span> <span class="fu">::</span> <span class="fu">term().</span>
+
+<span class="fu">map(</span><span class="dt">F</span><span class="fu">,</span> <span class="fu">[</span><span class="dt">H</span><span class="fu">|</span><span class="dt">T</span><span class="fu">])</span> <span class="kw">-&gt;</span>
+    <span class="fu">[</span><span class="dt">F</span><span class="fu">(</span><span class="dt">H</span><span class="fu">)|map(</span><span class="dt">F</span><span class="fu">,</span> <span class="dt">T</span><span class="fu">)];</span>
+<span class="fu">map(</span><span class="dt">F</span><span class="fu">,</span> <span class="fu">[])</span> <span class="ch">when</span> <span class="fu">is_function(</span><span class="dt">F</span><span class="fu">,</span> <span class="dv">1</span><span class="fu">)</span> <span class="kw">-&gt;</span> <span class="fu">[].</span></code></pre>
+</section>
+<section id="map-typed" class="slide level1 big-code">
+<h1>map (typed)</h1>
+<pre class="sourceCode haskell"><code class="sourceCode haskell">map<span class="ot"> ::</span> (a <span class="ot">-&gt;</span> b) <span class="ot">-&gt;</span> [a] <span class="ot">-&gt;</span> [b]
+map _ []     <span class="fu">=</span> []
+map f (x<span class="fu">:</span>xs) <span class="fu">=</span> f x <span class="fu">:</span> map f xs</code></pre>
+</section>
+<section id="listsfoldr3" class="slide level1 big-code">
+<h1>lists:foldr/3</h1>
+<pre class="sourceCode erlang"><code class="sourceCode erlang"><span class="kw">-</span><span class="ch">spec</span> <span class="fu">foldr(</span><span class="dt">Fun</span><span class="fu">,</span> <span class="dt">Acc0</span><span class="fu">,</span> <span class="dt">List</span><span class="fu">)</span> <span class="kw">-&gt;</span> <span class="dt">Acc1</span> <span class="ch">when</span>
+      <span class="dt">Fun</span> <span class="fu">::</span> <span class="kw">fun</span><span class="fu">((</span><span class="dt">Elem</span> <span class="fu">::</span> <span class="dt">T</span><span class="fu">,</span> <span class="dt">AccIn</span><span class="fu">)</span> <span class="kw">-&gt;</span> <span class="dt">AccOut</span><span class="fu">),</span>
+      <span class="dt">Acc0</span> <span class="fu">::</span> <span class="fu">term(),</span>
+      <span class="dt">Acc1</span> <span class="fu">::</span> <span class="fu">term(),</span>
+      <span class="dt">AccIn</span> <span class="fu">::</span> <span class="fu">term(),</span>
+      <span class="dt">AccOut</span> <span class="fu">::</span> <span class="fu">term(),</span>
+      <span class="dt">List</span> <span class="fu">::</span> <span class="fu">[</span><span class="dt">T</span><span class="fu">],</span>
+      <span class="dt">T</span> <span class="fu">::</span> <span class="fu">term().</span>
+
+<span class="fu">foldr(</span><span class="dt">F</span><span class="fu">,</span> <span class="dt">Accu</span><span class="fu">,</span> <span class="fu">[</span><span class="dt">Hd</span><span class="fu">|</span><span class="dt">Tail</span><span class="fu">])</span> <span class="kw">-&gt;</span>
+    <span class="dt">F</span><span class="fu">(</span><span class="dt">Hd</span><span class="fu">,</span> <span class="fu">foldr(</span><span class="dt">F</span><span class="fu">,</span> <span class="dt">Accu</span><span class="fu">,</span> <span class="dt">Tail</span><span class="fu">));</span>
+<span class="fu">foldr(</span><span class="dt">F</span><span class="fu">,</span> <span class="dt">Accu</span><span class="fu">,</span> <span class="fu">[])</span> <span class="ch">when</span> <span class="fu">is_function(</span><span class="dt">F</span><span class="fu">,</span> <span class="dv">2</span><span class="fu">)</span> <span class="kw">-&gt;</span> <span class="dt">Accu</span><span class="fu">.</span></code></pre>
+</section>
+<section id="foldr" class="slide level1 big-code">
+<h1>foldr</h1>
+<pre class="sourceCode haskell"><code class="sourceCode haskell">foldr<span class="ot"> ::</span> (a <span class="ot">-&gt;</span> b <span class="ot">-&gt;</span> b) <span class="ot">-&gt;</span> b <span class="ot">-&gt;</span> [a] <span class="ot">-&gt;</span> b
+foldr k z <span class="fu">=</span> go
+   <span class="kw">where</span>
+     go []     <span class="fu">=</span> z
+     go (y<span class="fu">:</span>ys) <span class="fu">=</span> y <span class="ot">`k`</span> go ys</code></pre>
+</section>
+<section id="sum-type" class="slide level1 small-title big-code">
+<h1>Sum Type</h1>
+<pre class="sourceCode erlang"><code class="sourceCode erlang"><span class="co">%% sum type, 3 possible values</span>
+<span class="kw">-</span><span class="ch">type</span> <span class="fu">choice()</span> <span class="fu">::</span> <span class="ch">definitely</span>
+                <span class="fu">|</span> <span class="ch">possibly</span>
+                <span class="fu">|</span> <span class="ch">no_way</span><span class="fu">.</span></code></pre>
+</section>
+<section id="sum-type-1" class="slide level1 small-title big-code">
+<h1>Sum Type</h1>
 <pre class="sourceCode haskell"><code class="sourceCode haskell"><span class="co">-- sum type, 3 possible values</span>
 <span class="kw">data</span> <span class="dt">Choice</span> <span class="fu">=</span> <span class="dt">Definitely</span>
             <span class="fu">|</span> <span class="dt">Possibly</span>
-            <span class="fu">|</span> <span class="dt">NoWay</span>
+            <span class="fu">|</span> <span class="dt">NoWay</span></code></pre>
+</section>
+<section id="product-type" class="slide level1 small-title big-code">
+<h1>Product Type</h1>
+<pre class="sourceCode erlang"><code class="sourceCode erlang"><span class="co">%% product type, 9 possible values (3 * 3)</span>
+<span class="kw">-</span><span class="ch">type</span> <span class="fu">choices()</span> <span class="fu">::</span> <span class="fu">{choice(),</span> <span class="fu">choice()}.</span></code></pre>
+</section>
+<section id="product-type-1" class="slide level1 small-title big-code">
+<h1>Product Type</h1>
+<pre class="sourceCode haskell"><code class="sourceCode haskell"><span class="co">-- product type, 9 possible values (3 * 3)</span>
+<span class="kw">data</span> <span class="dt">Choices</span> <span class="fu">=</span> <span class="dt">Choices</span> <span class="dt">Choice</span> <span class="dt">Choice</span></code></pre>
+</section>
+<section id="product-type-record" class="slide level1 small-title big-code">
+<h1>Product Type (Record)</h1>
+<pre class="sourceCode erlang"><code class="sourceCode erlang"><span class="co">%% record syntax</span>
+<span class="kw">-</span><span class="fu">record(</span><span class="ch">choices</span><span class="fu">,</span>
+        <span class="ch">fst_choice</span> <span class="fu">::</span> <span class="fu">choice(),</span>
+        <span class="ch">snd_choice</span> <span class="fu">::</span> <span class="fu">choice()).</span>
 
-<span class="co">-- product type, 9 possible values (3 * 3)</span>
-<span class="kw">data</span> <span class="dt">Choices</span> <span class="fu">=</span> <span class="dt">Choices</span> <span class="dt">Choice</span> <span class="dt">Choice</span>
+<span class="co">%% getters need to be implemented manually</span>
+<span class="kw">-</span><span class="ch">spec</span> <span class="fu">fst_choice(#</span><span class="ch">choices</span><span class="fu">{})</span> <span class="kw">-&gt;</span> <span class="fu">choice().</span>
+<span class="fu">fst_choice(#</span><span class="ch">choices</span><span class="fu">{</span><span class="ch">fst_choices</span><span class="kw">=</span><span class="dt">X</span><span class="fu">})</span> <span class="kw">-&gt;</span> <span class="dt">X</span><span class="fu">.</span>
 
-<span class="co">-- record syntax defines accessors automatically</span>
-<span class="kw">data</span> <span class="dt">Choices</span> <span class="fu">=</span> <span class="dt">Choices</span> {<span class="ot"> fstChoice ::</span> <span class="dt">Choice</span>
-                       ,<span class="ot"> sndChoice ::</span> <span class="dt">Choice</span>
-                       }</code></pre>
+<span class="kw">-</span><span class="ch">spec</span> <span class="fu">snd_choice(#</span><span class="ch">choices</span><span class="fu">{})</span> <span class="kw">-&gt;</span> <span class="fu">choice().</span>
+<span class="fu">snd_choice(#</span><span class="ch">choices</span><span class="fu">{</span><span class="ch">snd_choices</span><span class="kw">=</span><span class="dt">X</span><span class="fu">})</span> <span class="kw">-&gt;</span> <span class="dt">X</span><span class="fu">.</span></code></pre>
+</section>
+<section id="product-type-record-1" class="slide level1 small-title big-code">
+<h1>Product Type (Record)</h1>
+<pre class="sourceCode haskell"><code class="sourceCode haskell"><span class="co">-- record syntax defines accessors automatically</span>
+<span class="kw">data</span> <span class="dt">Choices</span> <span class="fu">=</span>
+  <span class="dt">Choices</span> {<span class="ot"> fstChoice ::</span> <span class="dt">Choice</span>
+          ,<span class="ot"> sndChoice ::</span> <span class="dt">Choice</span>
+          }
+
+<span class="co">-- these getters are automatically defined</span>
+<span class="ot">fstChoice ::</span> <span class="dt">Choices</span> <span class="ot">-&gt;</span> <span class="dt">Choice</span>
+fstChoice (<span class="dt">Choices</span> { fstChoice <span class="fu">=</span> x }) <span class="fu">=</span> x
+
+<span class="ot">sndChoice ::</span> <span class="dt">Choices</span> <span class="ot">-&gt;</span> <span class="dt">Choice</span>
+sndChoice (<span class="dt">Choices</span> { sndChoice <span class="fu">=</span> x }) <span class="fu">=</span> x</code></pre>
+</section>
+<section id="algebraic-data-types-abstract" class="slide level1 small-title big-code">
+<h1>Algebraic Data Types (Abstract)</h1>
+<pre class="sourceCode erlang"><code class="sourceCode erlang"><span class="co">%% abstract data type for a list</span>
+<span class="kw">-</span><span class="ch">type</span> <span class="fu">cons(</span><span class="dt">A</span><span class="fu">)</span> <span class="fu">::</span> <span class="ch">nil</span>
+               <span class="fu">|</span> <span class="fu">{</span><span class="ch">cons</span><span class="fu">,</span> <span class="dt">A</span><span class="fu">,</span> <span class="fu">cons(</span><span class="dt">A</span><span class="fu">)}.</span></code></pre>
+</section>
+<section id="algebraic-data-types-abstract-1" class="slide level1 small-title big-code">
+<h1>Algebraic Data Types (Abstract)</h1>
+<pre class="sourceCode haskell"><code class="sourceCode haskell"><span class="co">-- abstract data type for a list</span>
+<span class="kw">data</span> <span class="dt">List</span> a <span class="fu">=</span> <span class="dt">Nil</span>
+            <span class="fu">|</span> <span class="dt">Cons</span> a (<span class="dt">List</span> a)</code></pre>
 </section>
 <section id="using-types" class="slide level1 big-code">
 <h1>Using Types</h1>

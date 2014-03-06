@@ -108,6 +108,9 @@
 # Commercial Use
 <!-- http://www.haskell.org/haskellwiki/Haskell_in_industry -->
 
+Internet
+~   [Facebook](https://skillsmatter.com/skillscasts/4429-simon-marlow) - 
+    Haxl rule engine "fighting spam with pure functions"
 Biotech
 ~   [Amgen](http://cufp.galois.com/2008/abstracts.html#BalabanDavid) -
     informatics, simulation
@@ -124,9 +127,6 @@ Finance
     report generation (with [ermine](http://ermine-language.github.io/ermine/))
 Semiconductor Design
 ~   [Bluespec](http://www.slideshare.net/mansu/bluespec-talk) - high-level language for chip design
-Internet
-~   [Facebook](https://skillsmatter.com/skillscasts/4429-simon-marlow) - 
-    Haxl rule engine "fighting spam with pure functions"
 
 # Consumer Apps
 
@@ -245,22 +245,150 @@ Values
 ~   Functions
 ~   Control flow
 
+# lists:map/2 {.big-code}
 
-# Abstract Data Types {.big-code}
+```erlang
+map(F, [H|T]) ->
+    [F(H)|map(F, T)];
+map(F, []) when is_function(F, 1) -> [].
+```
+
+# map {.big-code}
+
+```haskell
+map _ []     = []
+map f (x:xs) = f x : map f xs
+```
+
+# lists:map/2 (typed) {.big-code}
+
+```erlang
+-spec map(Fun, List1) -> List2 when
+      Fun :: fun((A) -> B),
+      List1 :: [A],
+      List2 :: [B],
+      A :: term(),
+      B :: term().
+
+map(F, [H|T]) ->
+    [F(H)|map(F, T)];
+map(F, []) when is_function(F, 1) -> [].
+```
+
+# map (typed) {.big-code}
+
+```haskell
+map :: (a -> b) -> [a] -> [b]
+map _ []     = []
+map f (x:xs) = f x : map f xs
+```
+
+# lists:foldr/3 {.big-code}
+
+```erlang
+-spec foldr(Fun, Acc0, List) -> Acc1 when
+      Fun :: fun((Elem :: T, AccIn) -> AccOut),
+      Acc0 :: term(),
+      Acc1 :: term(),
+      AccIn :: term(),
+      AccOut :: term(),
+      List :: [T],
+      T :: term().
+
+foldr(F, Accu, [Hd|Tail]) ->
+    F(Hd, foldr(F, Accu, Tail));
+foldr(F, Accu, []) when is_function(F, 2) -> Accu.
+```
+
+# foldr {.big-code}
+
+```haskell
+foldr :: (a -> b -> b) -> b -> [a] -> b
+foldr k z = go
+   where
+     go []     = z
+     go (y:ys) = y `k` go ys
+```
+
+# Sum Type {.small-title .big-code}
+
+```erlang
+%% sum type, 3 possible values
+-type choice() :: definitely
+                | possibly
+                | no_way.
+```
+
+# Sum Type {.small-title .big-code}
 
 ```haskell
 -- sum type, 3 possible values
 data Choice = Definitely
             | Possibly
             | NoWay
+```
 
+# Product Type {.small-title .big-code}
+
+```erlang
+%% product type, 9 possible values (3 * 3)
+-type choices() :: {choice(), choice()}.
+```
+
+# Product Type {.small-title .big-code}
+
+```haskell
 -- product type, 9 possible values (3 * 3)
 data Choices = Choices Choice Choice
+```
 
+# Product Type (Record) {.small-title .big-code}
+
+```erlang
+%% record syntax
+-record(choices,
+        fst_choice :: choice(),
+        snd_choice :: choice()).
+
+%% getters need to be implemented manually
+-spec fst_choice(#choices{}) -> choice().
+fst_choice(#choices{fst_choices=X}) -> X.
+
+-spec snd_choice(#choices{}) -> choice().
+snd_choice(#choices{snd_choices=X}) -> X.
+```
+
+# Product Type (Record) {.small-title .big-code}
+
+```haskell
 -- record syntax defines accessors automatically
-data Choices = Choices { fstChoice :: Choice
-                       , sndChoice :: Choice
-                       }
+data Choices =
+  Choices { fstChoice :: Choice
+          , sndChoice :: Choice
+          }
+
+-- these getters are automatically defined
+fstChoice :: Choices -> Choice
+fstChoice (Choices { fstChoice = x }) = x
+
+sndChoice :: Choices -> Choice
+sndChoice (Choices { sndChoice = x }) = x
+```
+
+# Algebraic Data Types (Abstract) {.small-title .big-code}
+
+```erlang
+%% abstract data type for a list
+-type cons(A) :: nil
+               | {cons, A, cons(A)}.
+```
+
+# Algebraic Data Types (Abstract) {.small-title .big-code}
+
+```haskell
+-- abstract data type for a list
+data List a = Nil
+            | Cons a (List a)
 ```
 
 # Using Types {.big-code}
