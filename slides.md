@@ -854,6 +854,16 @@ $ ghci
 
 # Do syntax {.big-code .highlight}
 
+<!--
+```erlang
+-spec main([string()]) -> ok.
+main(_Args) ->
+    {ok, Secret} = file:read_file("/etc/passwd"),
+    file:write_file("/tmp/passwd", Secret),
+    ok.
+```
+-->
+
 <pre class="sourceCode erlang"><code class="sourceCode erlang"><span class="kw">-</span><span class="ch">spec</span> <span class="fu">main([string()])</span> <span class="kw">-&gt;</span> <span class="ch">ok</span><span class="fu">.</span>
 <span class="fu">main(</span><span class="dt">_Args</span><span class="fu">)</span> <span class="kw">-&gt;</span>
   <span class="fu">{</span><span class="ch">ok</span><span class="fu">,</span> <span class="dt">Secret</span><span class="fu">}</span> <span class="kw">=</span> <span class="fu">file:read_file(</span><span class="st">"/etc/passwd"</span><span class="fu">)<span class="hl">,</span></span>
@@ -1297,6 +1307,40 @@ https://ghc.haskell.org/trac/ghc/wiki/RewriteRules
 "ByteString specialise break (==x)" forall x.
     break (==x) = breakByte x
   #-}
+```
+
+# GHC RULES {.big-code}
+
+```haskell
+
+{-# RULES
+"ByteString specialise break (x==)" forall x.
+    break ((==) x) = breakByte x
+"ByteString specialise break (==x)" forall x.
+    break (==x) = breakByte x
+  #-}
+
+import Data.ByteString.Char8 (ByteString, break)
+
+splitLine :: ByteString -> (ByteString, ByteString)
+splitLine = break (=='\n')
+```
+
+# GHC RULES {.big-code}
+
+```haskell
+
+{-# RULES
+"ByteString specialise break (x==)" forall x.
+    break ((==) x) = breakByte x
+"ByteString specialise break (==x)" forall x.
+    break (==x) = breakByte x
+  #-}
+
+import Data.ByteString.Char8 (ByteString, break)
+
+splitLine :: ByteString -> (ByteString, ByteString)
+splitLine = breakByte '\n'
 ```
 
 # Lazy

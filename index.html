@@ -932,6 +932,16 @@ prop_itsthere i <span class="fu">=</span> [i] <span class="fu">==</span> toList 
 </section>
 <section id="do-syntax" class="slide level1 big-code highlight">
 <h1>Do syntax</h1>
+<!--
+```erlang
+-spec main([string()]) -> ok.
+main(_Args) ->
+    {ok, Secret} = file:read_file("/etc/passwd"),
+    file:write_file("/tmp/passwd", Secret),
+    ok.
+```
+-->
+
 <pre class="sourceCode erlang"><code class="sourceCode erlang"><span class="kw">-</span><span class="ch">spec</span> <span class="fu">main([string()])</span> <span class="kw">-&gt;</span> <span class="ch">ok</span><span class="fu">.</span>
 <span class="fu">main(</span><span class="dt">_Args</span><span class="fu">)</span> <span class="kw">-&gt;</span>
   <span class="fu">{</span><span class="ch">ok</span><span class="fu">,</span> <span class="dt">Secret</span><span class="fu">}</span> <span class="kw">=</span> <span class="fu">file:read_file(</span><span class="st">"/etc/passwd"</span><span class="fu">)<span class="hl">,</span></span>
@@ -1309,6 +1319,36 @@ https://ghc.haskell.org/trac/ghc/wiki/RewriteRules
 <span class="co">&quot;ByteString specialise break (==x)&quot; forall x.</span>
 <span class="co">    break (==x) = breakByte x</span>
 <span class="co">  #-}</span></code></pre>
+</section>
+<section id="ghc-rules-1" class="slide level1 big-code">
+<h1>GHC RULES</h1>
+<pre class="sourceCode haskell"><code class="sourceCode haskell">
+<span class="co">{-# RULES</span>
+<span class="co">&quot;ByteString specialise break (x==)&quot; forall x.</span>
+<span class="co">    break ((==) x) = breakByte x</span>
+<span class="co">&quot;ByteString specialise break (==x)&quot; forall x.</span>
+<span class="co">    break (==x) = breakByte x</span>
+<span class="co">  #-}</span>
+
+<span class="kw">import</span> Data.ByteString.Char8 (ByteString, break)
+
+<span class="ot">splitLine ::</span> <span class="dt">ByteString</span> <span class="ot">-&gt;</span> (<span class="dt">ByteString</span>, <span class="dt">ByteString</span>)
+splitLine <span class="fu">=</span> break (<span class="fu">==</span><span class="ch">&#39;\n&#39;</span>)</code></pre>
+</section>
+<section id="ghc-rules-2" class="slide level1 big-code">
+<h1>GHC RULES</h1>
+<pre class="sourceCode haskell"><code class="sourceCode haskell">
+<span class="co">{-# RULES</span>
+<span class="co">&quot;ByteString specialise break (x==)&quot; forall x.</span>
+<span class="co">    break ((==) x) = breakByte x</span>
+<span class="co">&quot;ByteString specialise break (==x)&quot; forall x.</span>
+<span class="co">    break (==x) = breakByte x</span>
+<span class="co">  #-}</span>
+
+<span class="kw">import</span> Data.ByteString.Char8 (ByteString, break)
+
+<span class="ot">splitLine ::</span> <span class="dt">ByteString</span> <span class="ot">-&gt;</span> (<span class="dt">ByteString</span>, <span class="dt">ByteString</span>)
+splitLine <span class="fu">=</span> breakByte <span class="ch">&#39;\n&#39;</span></code></pre>
 </section>
 <section id="lazy" class="slide level1">
 <h1>Lazy</h1>
