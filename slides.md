@@ -28,6 +28,63 @@
 - Good support for parallelism and concurrency
 - Will help me understand more CS papers
 
+# {#cost-of-concurrency}
+
+RAM footprint per unit of concurrency (approx)
+
+<table id="concurrency-table">
+<tr class="haskell">
+    <td class="num">1.3KB</td>
+    <td class="name">
+        <div class="bar-ctr"><div class="bar"></div></div>
+        <span>Haskell ThreadId + MVar (GHC 7.6.3, 64-bit)</span>
+    </td>
+</tr>
+<tr class="erlang">
+    <td class="num">2.6 KB</td>
+    <td class="name">
+        <div class="bar-ctr"><div class="bar"></div></div>
+        <span>Erlang process (64-bit)</span>
+    </td>
+</tr>
+<tr class="go">
+    <td class="num">8.0 KB</td>
+    <td class="name">
+        <div class="bar-ctr"><div class="bar"></div></div>
+        <span>Go goroutine</span>
+    </td>
+</tr>
+<tr class="java-min">
+    <td class="num">64.0 KB</td>
+    <td class="name">
+        <div class="bar-ctr"><div class="bar"></div></div>
+        <span>Java thread stack (minimum)</span>
+    </td>
+</tr>
+<tr class="c-min">
+    <td class="num">64.0 KB</td>
+    <td class="name">
+        <div class="bar-ctr"><div class="bar"></div></div>
+        <span>C pthread stack (minimum)</span>
+    </td>
+</tr>
+<tr class="placeholder"><td colspan="2"><hr/></td></td>
+<tr class="java">
+    <td class="num">1 MB</td>
+    <td class="name">
+        <div class="bar-ctr"><div class="bar"></div></div>
+        <span>Java thread stack (default)</span>
+    </td>
+</tr>
+<tr class="c">
+    <td class="num">8 MB</td>
+    <td class="name">
+        <div class="bar-ctr"><div class="bar"></div></div>
+        <span>C pthread stack (default, 64-bit Mac OS X)</span>
+    </td>
+</tr>
+</table>
+
 # Starting out
 
 - Intimidated by Haskell for years
@@ -245,6 +302,15 @@ Values
 ~   Functions
 ~   Control flow
 
+# Relative to Erlang
+
+* Syntax is minimal & familiar
+* Haskell's pattern matching is not as clever as Erlang's
+* Types are kinda like having Dialyzer for every compile<br>
+  (although Dialyzer is smarter than Haskell!)
+* Typeclasses are nice, Erlang doesn't have them
+* Erlang is probably (much) better for long-running systems
+
 # lists:map/2 {.big-code}
 
 ```erlang
@@ -375,7 +441,7 @@ sndChoice :: Choices -> Choice
 sndChoice (Choices { sndChoice = x }) = x
 ```
 
-# Algebraic Data Types (Abstract) {.small-title .big-code}
+# Abstract Data Type {.small-title .big-code}
 
 ```erlang
 %% abstract data type for a list
@@ -383,7 +449,7 @@ sndChoice (Choices { sndChoice = x }) = x
                | {cons, A, cons(A)}.
 ```
 
-# Algebraic Data Types (Abstract) {.small-title .big-code}
+# Abstract Data Type {.small-title .big-code}
 
 ```haskell
 -- abstract data type for a list
@@ -391,13 +457,46 @@ data List a = Nil
             | Cons a (List a)
 ```
 
+# {#types-and-constructors-1 .small-title .big-code .highlight-type}
+
+<h1><span class="hl-type">Types</span> and <span class="hl-constructor">Constructors</span></h1>
+
+<pre class="sourceCode haskell"><code class="sourceCode haskell"><span class="kw">data</span> <span class="dt hl-type">Choice</span> <span class="fu">=</span> <span class="dt hl-constructor">Definitely</span>
+            <span class="fu">|</span> <span class="dt hl-constructor">Possibly</span>
+            <span class="fu">|</span> <span class="dt hl-constructor">NoWay</span>
+
+<span class="kw">data</span> <span class="dt hl-type">Choices</span> <span class="fu">=</span> <span class="dt hl-constructor">Choices</span> <span class="dt hl-type">Choice</span> <span class="dt hl-type">Choice</span>
+
+<span class="ot">mkChoices ::</span> <span class="dt hl-type">Choice</span> <span class="ot">-&gt;</span> <span class="dt hl-type">Choice</span> <span class="ot">-&gt;</span> <span class="dt hl-type">Choices</span>
+mkChoices a b <span class="fu">=</span> <span class="dt hl-constructor">Choices</span> a b
+
+<span class="ot">fstChoice ::</span> <span class="dt hl-type">Choices</span> <span class="ot">-&gt;</span> <span class="dt hl-type">Choice</span>
+fstChoice (<span class="dt hl-constructor">Choices</span> a _) <span class="fu">=</span> a</code></pre>
+
+# {#types-and-constructors-2 .small-title .big-code .highlight-constructor}
+
+<h1><span class="hl-type">Types</span> and <span class="hl-constructor">Constructors</span></h1>
+
+<pre class="sourceCode haskell"><code class="sourceCode haskell"><span class="kw">data</span> <span class="dt hl-type">Choice</span> <span class="fu">=</span> <span class="dt hl-constructor">Definitely</span>
+            <span class="fu">|</span> <span class="dt hl-constructor">Possibly</span>
+            <span class="fu">|</span> <span class="dt hl-constructor">NoWay</span>
+
+<span class="kw">data</span> <span class="dt hl-type">Choices</span> <span class="fu">=</span> <span class="dt hl-constructor">Choices</span> <span class="dt hl-type">Choice</span> <span class="dt hl-type">Choice</span>
+
+<span class="ot">mkChoices ::</span> <span class="dt hl-type">Choice</span> <span class="ot">-&gt;</span> <span class="dt hl-type">Choice</span> <span class="ot">-&gt;</span> <span class="dt hl-type">Choices</span>
+mkChoices a b <span class="fu">=</span> <span class="dt hl-constructor">Choices</span> a b
+
+<span class="ot">fstChoice ::</span> <span class="dt hl-type">Choices</span> <span class="ot">-&gt;</span> <span class="dt hl-type">Choice</span>
+fstChoice (<span class="dt hl-constructor">Choices</span> a _) <span class="fu">=</span> a</code></pre>
+
 # Using Types {.big-code}
 
 ```haskell
 -- Bindings can be annotated
 success :: a -> Maybe a
--- Constructors are functions
-success = Just
+-- Constructors are values
+-- (and product constructors are functions)
+success x = Just x
 
 -- Constructors can be pattern matched
 -- _ is a wildcard
@@ -408,6 +507,249 @@ case success True of
 -- Values can be annotated in-line
 2 ^ (1 :: Int)
 
+```
+
+# Pattern Matching {.big-code}
+
+```erlang
+-spec is_just({just, A} | nothing) -> boolean().
+is_just({just, _}) ->
+    true;
+is_just(nothing) ->
+    false.
+```
+
+# Pattern Matching {.big-code}
+
+```haskell
+isJust :: Maybe a -> Bool
+isJust (Just _) = True
+isJust Nothing  = False
+```
+
+# Pattern Matching {.big-code}
+
+Erlang's pattern matching is very powerful!
+
+```erlang
+-spec is_equal(A, A) -> boolean() when
+      A :: term().
+is_equal(A, A) -> true;
+is_equal(_, _) -> false.
+```
+
+# Pattern Matching {.big-code}
+
+Haskell's... not so much. 
+
+```haskell
+isEqual :: a -> a -> Bool
+isEqual a b = undefined
+```
+
+<blockquote>
+This isn't even possible!
+Only constructors can be pattern matched.
+Types have no built-in equality.
+</blockquote>
+
+# &#96;Infix&#96; and (Prefix) {.big-code}
+
+```erlang
+%% Symbolic operators can be used
+%% as functions from the erlang module
+erlang:'+'(A, B).
+
+```
+
+<blockquote>
+Erlang doesn't have user-defined infix operators
+</blockquote>
+
+# &#96;Infix&#96; and (Prefix) {.big-code}
+
+```haskell
+-- Symbolic operators can be used
+-- prefix when in (parentheses)
+(+) a b
+
+-- Named functions can be used
+-- infix when in `backticks`
+x `elem` xs
+
+-- infixl, infixr define associativity
+-- and precedence (0 lowest, 9 highest)
+infixr 5 `append`
+a `append` b = a ++ b
+
+```
+
+# Functions & Lambdas {.big-code}
+
+```erlang
+-spec add(integer(), integer()) -> integer().
+add(X, Acc) ->
+    X + Acc.
+
+-spec sum_fun([integer()]) -> integer().
+sum_fun(Xs) ->
+    lists:foldl(fun add/2, 0, Xs).
+
+-spec sum_lambda([integer()]) -> integer().
+sum_lambda(Xs) ->
+    lists:foldl(
+        fun (X, Acc) -> X + Acc end,
+        0,
+        Xs).
+```
+
+# Functions & Lambdas {.big-code}
+
+```haskell
+add :: Integer -> Integer -> Integer
+add acc x = acc + x
+
+sumFun :: [Integer] -> Integer
+sumFun xs = foldl add 0 xs
+
+sumLambda :: [Integer] -> Integer
+sumLambda xs = foldl (\acc x -> acc + x) 0 xs
+```
+
+# Functions & Lambdas {.big-code}
+
+* Haskell *only* has functions of one argument
+* `a -> b -> c` is really `a -> (b -> c)`
+* `f a b` is really `(f a) b`
+* Let's leverage that&hellip;
+
+# Functions & Lambdas {.big-code .highlight}
+
+<pre class="sourceCode haskell"><code class="sourceCode haskell"><span class="ot">add ::</span> <span class="dt">Integer</span> <span class="ot">-&gt;</span> <span class="dt">Integer</span> <span class="ot">-&gt;</span> <span class="dt">Integer</span>
+add acc x <span class="fu">=</span> acc <span class="fu">+</span> x
+
+<span class="ot">sumFun ::</span> [<span class="dt">Integer</span>] <span class="ot">-&gt;</span> <span class="dt">Integer</span>
+sumFun <span class="hl">xs</span> <span class="fu">=</span> foldl add <span class="dv">0</span> <span class="hl">xs</span>
+
+<span class="ot">sumLambda ::</span> [<span class="dt">Integer</span>] <span class="ot">-&gt;</span> <span class="dt">Integer</span>
+sumLambda <span class="hl">xs</span> <span class="fu">=</span> foldl (\acc x <span class="ot">-&gt;</span> acc <span class="fu">+</span> x) <span class="dv">0</span> <span class="hl">xs</span></code></pre>
+
+# Functions & Lambdas {.big-code .highlight}
+
+<pre class="sourceCode haskell"><code class="sourceCode haskell"><span class="ot">add ::</span> <span class="dt">Integer</span> <span class="ot">-&gt;</span> <span class="dt">Integer</span> <span class="ot">-&gt;</span> <span class="dt">Integer</span>
+add acc x <span class="fu">=</span> acc <span class="fu hl">+</span> x
+
+<span class="ot">sumFun ::</span> [<span class="dt">Integer</span>] <span class="ot">-&gt;</span> <span class="dt">Integer</span>
+sumFun <span class="fu">=</span> foldl add <span class="dv">0</span>
+
+<span class="ot">sumLambda ::</span> [<span class="dt">Integer</span>] <span class="ot">-&gt;</span> <span class="dt">Integer</span>
+sumLambda <span class="fu">=</span> foldl (\acc x <span class="ot">-&gt;</span> acc <span class="fu hl">+</span> x) <span class="dv">0</span></code></pre>
+
+# Functions & Lambdas {.big-code .highlight}
+
+<pre class="sourceCode haskell"><code class="sourceCode haskell"><span class="ot">add ::</span> <span class="dt">Integer</span> <span class="ot">-&gt;</span> <span class="dt">Integer</span> <span class="ot">-&gt;</span> <span class="dt">Integer</span>
+add acc <span class="hl">x</span> <span class="fu">=</span> <span class="fu">(+)</span> acc <span class="hl">x</span>
+
+<span class="ot">sumFun ::</span> [<span class="dt">Integer</span>] <span class="ot">-&gt;</span> <span class="dt">Integer</span>
+sumFun <span class="fu">=</span> foldl add <span class="dv">0</span>
+
+<span class="ot">sumLambda ::</span> [<span class="dt">Integer</span>] <span class="ot">-&gt;</span> <span class="dt">Integer</span>
+sumLambda <span class="fu">=</span> foldl (\acc <span class="hl">x</span> <span class="ot">-&gt;</span> <span class="fu">(+)</span> acc <span class="hl">x</span>) <span class="dv">0</span></code></pre>
+
+# Functions & Lambdas {.big-code .highlight}
+
+<pre class="sourceCode haskell"><code class="sourceCode haskell"><span class="ot">add ::</span> <span class="dt">Integer</span> <span class="ot">-&gt;</span> <span class="dt">Integer</span> <span class="ot">-&gt;</span> <span class="dt">Integer</span>
+add <span class="hl">acc</span> <span class="fu">=</span> <span class="fu">(+)</span> <span class="hl">acc</span>
+
+<span class="ot">sumFun ::</span> [<span class="dt">Integer</span>] <span class="ot">-&gt;</span> <span class="dt">Integer</span>
+sumFun <span class="fu">=</span> foldl add <span class="dv">0</span>
+
+<span class="ot">sumLambda ::</span> [<span class="dt">Integer</span>] <span class="ot">-&gt;</span> <span class="dt">Integer</span>
+sumLambda <span class="fu">=</span> foldl (\<span class="hl">acc</span> <span class="ot">-&gt;</span> <span class="fu">(+)</span> <span class="hl">acc</span>) <span class="dv">0</span></code></pre>
+
+# Functions & Lambdas {.big-code .highlight}
+
+<pre class="sourceCode haskell"><code class="sourceCode haskell"><span class="ot">add ::</span> <span class="dt">Integer</span> <span class="ot">-&gt;</span> <span class="dt">Integer</span> <span class="ot">-&gt;</span> <span class="dt">Integer</span>
+add <span class="fu">=</span> <span class="fu">(+)</span>
+
+<span class="ot">sumFun ::</span> [<span class="dt">Integer</span>] <span class="ot">-&gt;</span> <span class="dt">Integer</span>
+sumFun <span class="fu">=</span> foldl add <span class="dv">0</span>
+
+<span class="ot">sumLambda ::</span> [<span class="dt">Integer</span>] <span class="ot">-&gt;</span> <span class="dt">Integer</span>
+sumLambda <span class="fu">=</span> foldl <span class="fu">(+)</span> <span class="dv">0</span></code></pre>
+
+# Guards {.big-code}
+
+```erlang
+-spec is_negative(number()) -> boolean().
+is_negative(X) when X < 0 ->
+  true;
+is_negative(_) ->
+  false.
+```
+
+# Guards {.big-code}
+
+```haskell
+isNegative :: (Num a) => a -> Bool
+isNegative x
+  | x < 0     = True
+  | otherwise = False
+```
+
+# Built-in types {.big-code .small-title}
+
+```haskell
+-- (), pronounced "unit"
+unit :: ()
+unit = ()
+
+-- Char
+someChar :: Char
+someChar = 'x'
+
+-- Instances of Num typeclass
+someDouble :: Double
+someDouble = 1
+
+-- Instances of Fractional typeclass
+someRatio :: Rational
+someRatio = 1.2345
+```
+
+# Lists & Tuples {.big-code .small-title}
+
+```erlang
+some_list() ->
+    [1, 2, 3].
+
+some_other_list() ->
+    [4 | [5 | [6 | []]]].
+
+some_tuple() ->
+    {10, $4}.
+
+some_string() ->
+    "foo".
+```
+
+# Lists & Tuples {.big-code .small-title}
+
+```haskell
+-- [a], type can be written prefix as `[] a`
+someList, someOtherList :: [Int]
+someList = [1, 2, 3]
+someOtherList = (:) 4 (5 : (:) 6 [])
+
+-- (a, b), can be written prefix as `(,) a b`
+someTuple, someOtherTuple :: (Int, Char)
+someTuple = (10, '4')
+someOtherTuple = (,) 4 '2'
+
+-- [Char], also known as String
+-- (also see the OverloadedStrings extension)
+someString :: String
+someString = "foo"
 ```
 
 # Typeclass Syntax {.big-code}
@@ -428,72 +770,24 @@ instance (Equals a) => Equals [a] where
   isEqual as     bs     = null as && null bs
 ```
 
-# Bindings &amp; Functions {.big-code}
+# Do syntax {.big-code}
 
-```haskell
-
-greeting :: String
-greeting = "Hello, "
-
-sayHello :: String -> String
-sayHello name = greeting ++ name
--- desugars to:
-sayHello = \name -> (++) greeting name
-
-sayHello name = result
-  where result = greeting ++ name
--- desugars to:
-sayHello = \name ->
-  let result = (++) greeting name
-  in result
+```erlang
+-spec main([string()]) -> ok.
+main(_Args) ->
+  {ok, Secret} = file:read_file("/etc/passwd"),
+  file:write_file("/tmp/passwd", Secret),
+  ok.
 ```
 
-# Pattern Matching {.big-code}
+# Do syntax (IO) {.big-code}
 
 ```haskell
-
--- Unlike Erlang, pattern matching is only on
--- constructors, never variables
-isJust (Just _) = True
-isJust Nothing  = False
--- desugars to:
-isJust = \x ->
-  case x of
-    (Just _) -> True
-    Nothing  -> False
-```
-
-# Guards {.big-code}
-
-```haskell
-
-isNegative :: (Num a) => a -> Bool
-isNegative x
-  | x < 0     = True
-  | otherwise = False
--- desugars to:
-isNegative = \x ->
-  if (<) x 0
-  then True
-  else False
-```
-
-# &#96;Infix&#96; and (Prefix) {.big-code}
-
-```haskell
--- Symbolic operators can be used
--- prefix when in (parentheses)
-(+) a b
-
--- Named functions can be used
--- infix when in `backticks`
-x `elem` xs
-
--- infixl, infixr define associativity
--- and precedence (0 lowest, 9 highest)
-infixr 5 `append`
-a `append` b = a ++ b
-
+main :: IO ()
+main = do
+  secret <- readFile "/etc/passwd"
+  writeFile "/tmp/passwd" secret
+  return ()
 ```
 
 # Do syntax {.big-code}
@@ -515,10 +809,79 @@ do m
 m >> return ()
 ```
 
+# Do syntax ([a]) {.big-code}
+
+```erlang
+-spec flat_map(fun((A) -> [B]), [A]) -> [B] when
+  A :: term(),
+  B :: term().
+flat_map(F, Xs) -> [ Y || X <- Xs, Y <- F(X) ].
+```
+
+# Do syntax ([a]) {.big-code}
+
+```haskell
+flatMap :: (a -> [b]) -> [a] -> [b]
+flatMap f xs = [ y | x <- xs, y <- f x ]
+```
+
+# Do syntax ([a]) {.big-code}
+
+```haskell
+flatMap :: (a -> [b]) -> [a] -> [b]
+flatMap f xs = do
+  x <- xs
+  y <- f x
+  return y
+```
+
+# Do syntax ([a]) {.big-code}
+
+```haskell
+flatMap :: (a -> [b]) -> [a] -> [b]
+flatMap f xs = do
+  x <- xs
+  f x
+```
+
+# Do syntax ([a]) {.big-code}
+
+```haskell
+flatMap :: (a -> [b]) -> [a] -> [b]
+flatMap f xs = xs >>= \x -> f x
+```
+
+# Do syntax ([a]) {.big-code}
+
+```haskell
+flatMap :: (a -> [b]) -> [a] -> [b]
+flatMap f xs = xs >>= f
+```
+
+# Do syntax ([a]) {.big-code}
+
+```haskell
+flatMap :: (a -> [b]) -> [a] -> [b]
+flatMap f xs = flip (>>=) f xs
+```
+
+# Do syntax ([a]) {.big-code}
+
+```haskell
+flatMap :: (a -> [b]) -> [a] -> [b]
+flatMap = flip (>>=)
+```
+
+# Do syntax ([a]) {.big-code}
+
+```haskell
+flatMap :: (a -> [b]) -> [a] -> [b]
+flatMap = (=<<)
+```
+
 # Key Features
 
 * Interactive
-* Declarative
 * Pure
 * Non-strict (lazy) evaluation
 * Types and typeclasses
@@ -643,106 +1006,6 @@ h> :r
 Ok, modules loaded: Main.
 h> hello
 "HELLO"
-```
-
-# Declarative
-
-* "Describe the problem, not the solution"
-* Great syntax for this (but not C-like)!
-* Functional code is (often) easier to understand and test
-* Pure, no side-effects?!
-
-# {#merge-sort}
-
-```haskell
-
--- MergeSort1.hs
-module MergeSort1 (mergeSort) where
-
--- | Bottom-up merge sort.
-mergeSort :: Ord a => [a] -> [a]
-mergeSort [] = []
-mergeSort xs = mergeAll [[x] | x <- xs]
-
-mergeAll :: Ord a => [[a]] -> [a]
-mergeAll [xs] = xs
-mergeAll xss  = mergeAll (mergePairs xss)
-
-mergePairs :: Ord a => [[a]] -> [[a]]
-mergePairs (a:b:xs) =
-  merge a b : mergePairs xs
-mergePairs xs = xs
-
-merge :: Ord a => [a] -> [a] -> [a]
-merge as@(a:as') bs@(b:bs')
- | a > b     = b : merge as bs'
- | otherwise = a : merge as' bs
-merge [] bs = bs
-merge as [] = as
-```
-
-# {#merge-sort-2}
-
-```haskell
-
--- MergeSort2.hs
-module MergeSort2 (mergeSort) where
-
--- | Bottom-up merge sort.
-mergeSort :: Ord a => [a] -> [a]
-mergeSort = mergeAll . map (:[])
-  where
-    mergeAll []   = []
-    mergeAll [xs] = xs
-    mergeAll xss  = mergeAll (mergePairs xss)
-
-    mergePairs (a:b:xs) =
-      merge a b : mergePairs xs
-    mergePairs xs = xs
-
-    merge as@(a:as') bs@(b:bs')
-      | a > b     = b : merge as bs'
-      | otherwise = a : merge as' bs
-    merge [] bs = bs
-    merge as [] = as
-```
-
-# {#merge-sort-python .small-code}
-
-```python
-# merge_sort.py
-def merge_sort(lst):
-    if not lst:
-        return []
-    lists = [[x] for x in lst]
-    while len(lists) > 1:
-        lists = merge_lists(lists)
-    return lists[0]
-
-def merge_lists(lists):
-    result = []
-    for i in range(0, len(lists) // 2):
-        result.append(merge2(lists[i*2], lists[i*2 + 1]))
-    if len(lists) % 2:
-        result.append(lists[-1])
-    return result
-
-def merge2(xs, ys):
-    i = 0
-    j = 0
-    result = []
-    while i < len(xs) and j < len(ys):
-        x = xs[i]
-        y = ys[j]
-        if x > y:
-            result.append(y)
-            j += 1
-        else:
-            result.append(x)
-            i += 1
-    result.extend(xs[i:])
-    result.extend(ys[j:])
-    return result
 ```
 
 # {#side-effects .big-code}
@@ -942,24 +1205,76 @@ http://research.microsoft.com/apps/pubs/default.aspx?id=67083
 * Evaluated with STG (Spineless Tagless G-Machine)
 * Pattern matching forces evaluation
 
-# {#evaluation}
+# Non-Strict Evaluation {.big-code}
 
 ```haskell
-
 -- [1..] is an infinite list, [1, 2, 3, ...]
 print (head (map (*2) [1..]))
+```
+
+# Non-Strict Evaluation {.big-code}
+
+```haskell
+-- [1..] is an infinite list, [1, 2, 3, ...]
+print (head (map (*2) [1..]))
+-- Outside in, print x = putStrLn (show x)
+putStrLn (show (head (map (*2) [1..]))
+```
+
+# Non-Strict Evaluation {.big-code}
+
+```haskell
 -- Outside in, print x = putStrLn (show x)
 putStrLn (show (head (map (*2) [1..]))
 -- head (x:_) = x
 -- map f (x:xs) = f x : map f xs
 -- desugar [1..] syntax
 putStrLn (show (head (map (*2) (enumFrom 1))))
+```
+
+# Non-Strict Evaluation {.big-code}
+
+```haskell
+-- desugar [1..] syntax
+putStrLn (show (head (map (*2) (enumFrom 1))))
 -- enumFrom n = n : enumFrom (succ n)
-putStrLn (show (head (map (*2) (1 : enumFrom (succ 1)))))
+putStrLn (show (head (map (*2)
+                          (1 : enumFrom (succ 1)))))
+```
+
+# Non-Strict Evaluation {.big-code}
+
+```haskell
+-- enumFrom n = n : enumFrom (succ n)
+putStrLn (show (head (map (*2)
+                          (1 : enumFrom (succ 1)))))
 -- apply map
-putStrLn (show (head ((1*2) : map (*2) (enumFrom (succ 1)))))
+putStrLn (show (head
+                  ((1*2) :
+                   map (*2) (enumFrom (succ 1)))))
+```
+
+# Non-Strict Evaluation {.big-code}
+
+```haskell
+-- apply map
+putStrLn (show (head ((1*2) : …)))
 -- apply head
 putStrLn (show (1*2))
+```
+
+# Non-Strict Evaluation {.big-code}
+
+```haskell
+-- apply head
+putStrLn (show (1*2))
+-- show pattern matches on its argument
+putStrLn (show 2)
+```
+
+# Non-Strict Evaluation {.big-code}
+
+```haskell
 -- show pattern matches on its argument
 putStrLn (show 2)
 -- apply show
@@ -1032,29 +1347,6 @@ h> let f x = heads True
       `reads' (imported from Prelude), `head' (imported from Prelude)
 ```
 
-# No Null References
-
-* Haskell doesn't repeat Hoare's "[Billion Dollar Mistake](http://www.infoq.com/presentations/Null-References-The-Billion-Dollar-Mistake-Tony-Hoare)"
-* Instead of `NULL`, wrap the value in a sum type such as `Maybe` or `Either`
-* Bottom ⊥ can be expressed in any type, as it's always possible to
-  express a computation that does not terminate
-
-# {#no-null-code .big-code}
-
-```haskell
-
-data Maybe a = Just a
-             | Nothing
-
-data Either a b = Left a
-                | Right b
-
-parseBit :: Char -> Maybe Int
-parseBit '0' = Just 0
-parseBit '1' = Just 1
-parseBit _ = Nothing
-```
-
 # {#bottoms}
 ```haskell
 
@@ -1097,47 +1389,6 @@ treeToList root = go root Nil
     -- Note that `go` returns a function!
     go (Leaf x)     = Cons x
     go (Branch l r) = go l . go r
-```
-
-# {#built-in-types .big-code}
-
-```haskell
-
--- (), pronounced "unit"
-unit :: ()
-unit = ()
-
--- Char
-someChar :: Char
-someChar = 'x'
-
--- Instances of Num typeclass
-someDouble :: Double
-someDouble = 1
-
--- Instances of Fractional typeclass
-someRatio :: Rational
-someRatio = 1.2345
-```
-
-# {#tuples .big-code}
-
-```haskell
-
--- [a], type can be written prefix as `[] a`
-someList, someOtherList :: [Int]
-someList = [1, 2, 3]
-someOtherList = (:) 4 (5 : (:) 6 [])
-
--- (a, b), can be written prefix as `(,) a b`
-someTuple, someOtherTuple :: (Int, Char)
-someTuple = (10, '4')
-someOtherTuple = (,) 4 '2'
-
--- [Char], also known as String
--- (also see the OverloadedStrings extension)
-someString :: String
-someString = "foo"
 ```
 
 # Typeclasses
@@ -1361,63 +1612,6 @@ rot180 g = backpermute e flop g
 
 # Concurrency
 
-# {#cost-of-concurrency}
-
-RAM footprint per unit of concurrency (approx)
-
-<table id="concurrency-table">
-<tr class="haskell">
-    <td class="num">1.3KB</td>
-    <td class="name">
-        <div class="bar-ctr"><div class="bar"></div></div>
-        <span>Haskell ThreadId + MVar (GHC 7.6.3, 64-bit)</span>
-    </td>
-</tr>
-<tr class="erlang">
-    <td class="num">2.6 KB</td>
-    <td class="name">
-        <div class="bar-ctr"><div class="bar"></div></div>
-        <span>Erlang process (64-bit)</span>
-    </td>
-</tr>
-<tr class="go">
-    <td class="num">8.0 KB</td>
-    <td class="name">
-        <div class="bar-ctr"><div class="bar"></div></div>
-        <span>Go goroutine</span>
-    </td>
-</tr>
-<tr class="java-min">
-    <td class="num">64.0 KB</td>
-    <td class="name">
-        <div class="bar-ctr"><div class="bar"></div></div>
-        <span>Java thread stack (minimum)</span>
-    </td>
-</tr>
-<tr class="c-min">
-    <td class="num">64.0 KB</td>
-    <td class="name">
-        <div class="bar-ctr"><div class="bar"></div></div>
-        <span>C pthread stack (minimum)</span>
-    </td>
-</tr>
-<tr class="placeholder"><td colspan="2"><hr/></td></td>
-<tr class="java">
-    <td class="num">1 MB</td>
-    <td class="name">
-        <div class="bar-ctr"><div class="bar"></div></div>
-        <span>Java thread stack (default)</span>
-    </td>
-</tr>
-<tr class="c">
-    <td class="num">8 MB</td>
-    <td class="name">
-        <div class="bar-ctr"><div class="bar"></div></div>
-        <span>C pthread stack (default, 64-bit Mac OS X)</span>
-    </td>
-</tr>
-</table>
-
 # {#concurrent-http}
 
 ```haskell
@@ -1458,41 +1652,6 @@ the problem?</em>
 Terminology from category theory can be intimidating (at first)!
 
 `return` probably doesn't mean what you think it means.
-
-# {#mutable-state-js .big-code}
-
-```javascript
-
-function main() {
-  var foo = {bar: 1, baz: 20};
-  while (foo.baz > foo.bar) {
-    foo.bar += 1;
-  }
-  console.log(foo);
-}
-```
-
-# {#mutable-state-hs .big-code}
-
-```haskell
-import Control.Concurrent
-data Foo = Foo {bar :: Int, baz :: Int}
-         deriving (Show)
-
-main :: IO ()
-main = do
-  fooVar <- newMVar (Foo { bar = 1, baz = 20 })
-  let whileLoop = do
-      foo <- takeMVar fooVar
-      if baz foo > bar foo
-      then do
-        putMVar fooVar (foo { bar = 1 + bar foo })
-        whileLoop
-      else
-        putMVar fooVar foo
-  whileLoop
-  withMVar fooVar print
-```
 
 # {#laziness-behavior-1 .big-code}
 

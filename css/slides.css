@@ -8,6 +8,8 @@
   font-weight: normal;
 }
 
+#title h3 { line-height: 1.25em; }
+
 .reveal { font-family: "Gill Sans", sans-serif; font-weight: normal; }
 
 .reveal section h1 { margin-bottom: 30px; font-size: 2.5em; }
@@ -15,6 +17,7 @@
 
 .reveal ul { display: block; margin-left: 1em; }
 
+.reveal li { margin-bottom: 0.5em; }
 .reveal dl dt { text-align: left; font-weight: bold; }
 .reveal dl dd { text-align: left; margin-left: 1.5em; }
 .syntax pre { box-shadow: none; font-size: 1.2em; }
@@ -61,4 +64,14 @@ body > div.reveal {
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-position: center;
+}
+
+.highlight .hl,
+.highlight-type .hl-type,
+.highlight-constructor .hl-constructor {
+  background-color: #ffff00;
+}
+
+.reveal blockquote {
+  margin-top: 1em;
 }
