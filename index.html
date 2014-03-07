@@ -861,6 +861,36 @@ someString <span class="fu">=</span> <span class="st">&quot;foo&quot;</span></co
                           isEqual as bs
   isEqual as     bs     <span class="fu">=</span> null as <span class="fu">&amp;&amp;</span> null bs</code></pre>
 </section>
+<section id="quickcheck" class="slide level1 big-code">
+<h1>QuickCheck</h1>
+<pre class="sourceCode erlang"><code class="sourceCode erlang"><span class="fu">prop_itsthere()</span> <span class="kw">-&gt;</span>
+    <span class="fu">?</span><span class="dt">FORALL</span><span class="fu">(</span><span class="dt">I</span><span class="fu">,int(),</span>
+        <span class="fu">[</span><span class="dt">I</span><span class="fu">]</span> <span class="kw">==</span> <span class="fu">queue:to_list(</span>
+            <span class="fu">queue:cons(</span><span class="dt">I</span><span class="fu">,</span>
+                <span class="fu">queue:new()))).</span></code></pre>
+</section>
+<section id="quickcheck-1" class="slide level1 big-code">
+<h1>QuickCheck</h1>
+<pre class="sourceCode haskell"><code class="sourceCode haskell"><span class="kw">import</span> Data.Sequence ((|&gt;), empty)
+<span class="kw">import</span> Data.Foldable (toList)
+
+<span class="ot">prop_itsthere ::</span> <span class="dt">Int</span> <span class="ot">-&gt;</span> <span class="dt">Bool</span>
+prop_itsthere i <span class="fu">=</span> [i] <span class="fu">==</span> toList (empty <span class="fu">|&gt;</span> i)</code></pre>
+</section>
+<section id="quickcheck-2" class="slide level1 big-code">
+<h1>QuickCheck</h1>
+<pre class="sourceCode bash"><code class="sourceCode bash">$ <span class="kw">ghci</span></code></pre>
+<pre class="sourceCode haskell"><code class="sourceCode haskell">λ&gt; <span class="kw">import</span> Test.QuickCheck
+λ&gt; <span class="kw">import</span> Data.Foldable
+λ&gt; <span class="kw">import</span> Data.Sequence
+λ&gt; quickCheck (\i <span class="ot">-&gt;</span> [<span class="ot">i ::</span> <span class="dt">Int</span>] <span class="fu">==</span>
+                       toList (empty <span class="fu">|&gt;</span> i))
+<span class="fu">+++</span> <span class="dt">OK</span>, passed <span class="dv">100</span> tests<span class="fu">.</span></code></pre>
+</section>
+<section id="quickcheck-3" class="slide level1 big-code">
+<h1>QuickCheck</h1>
+<p>```haskell import Data.QuickCheck</p>
+</section>
 <section id="do-syntax" class="slide level1 big-code">
 <h1>Do syntax</h1>
 <pre class="sourceCode erlang"><code class="sourceCode erlang"><span class="kw">-</span><span class="ch">spec</span> <span class="fu">main([string()])</span> <span class="kw">-&gt;</span> <span class="ch">ok</span><span class="fu">.</span>

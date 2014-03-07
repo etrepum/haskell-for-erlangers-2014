@@ -770,6 +770,46 @@ instance (Equals a) => Equals [a] where
   isEqual as     bs     = null as && null bs
 ```
 
+# QuickCheck {.big-code}
+
+```erlang
+prop_itsthere() ->
+    ?FORALL(I,int(),
+        [I] == queue:to_list(
+            queue:cons(I,
+                queue:new()))).
+```
+
+# QuickCheck {.big-code}
+
+```haskell
+import Data.Sequence ((|>), empty)
+import Data.Foldable (toList)
+
+prop_itsthere :: Int -> Bool
+prop_itsthere i = [i] == toList (empty |> i)
+```
+
+# QuickCheck {.big-code}
+
+```bash
+$ ghci
+```
+```haskell
+λ> import Test.QuickCheck
+λ> import Data.Foldable
+λ> import Data.Sequence
+λ> quickCheck (\i -> [i :: Int] ==
+                       toList (empty |> i))
++++ OK, passed 100 tests.
+```
+
+# QuickCheck {.big-code}
+
+```haskell
+import Data.QuickCheck
+
+
 # Do syntax {.big-code}
 
 ```erlang
