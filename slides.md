@@ -9,6 +9,9 @@
     Erlang Factory SF<br>
     March 7, 2014
 </h3>
+<h4>
+[bob.ippoli.to/haskell-for-erlangers-2014]
+</h4>
 
 # Who am I?
 
@@ -406,6 +409,10 @@ data Choice = Definitely
 ```haskell
 -- product type, 9 possible values (3 * 3)
 data Choices = Choices Choice Choice
+
+-- as a tuple with a type alias
+-- NOT THE SAME AS ABOVE! :)
+type Choices = (Choice, Choice)
 ```
 
 # Product Type (Record) {.small-title .big-code}
@@ -492,6 +499,9 @@ fstChoice (<span class="dt hl-constructor">Choices</span> a _) <span class="fu">
 # Using Types {.big-code}
 
 ```haskell
+-- Values can be annotated in-line
+2 ^ (1 :: Int)
+
 -- Bindings can be annotated
 success :: a -> Maybe a
 -- Constructors are values
@@ -503,10 +513,6 @@ success x = Just x
 case success True of
   Just True -> ()
   _         -> ()
-
--- Values can be annotated in-line
-2 ^ (1 :: Int)
-
 ```
 
 # Pattern Matching {.big-code}
@@ -739,7 +745,8 @@ some_string() ->
 -- [a], type can be written prefix as `[] a`
 someList, someOtherList :: [Int]
 someList = [1, 2, 3]
-someOtherList = (:) 4 (5 : (:) 6 [])
+someOtherList = 4 : 5 : 6 : []
+dontWriteThis = (:) 4 (5 : (:) 6 [])
 
 -- (a, b), can be written prefix as `(,) a b`
 someTuple, someOtherTuple :: (Int, Char)
@@ -751,6 +758,13 @@ someOtherTuple = (,) 4 '2'
 someString :: String
 someString = "foo"
 ```
+
+# Typeclass Syntax {.big-code}
+
+* Erlang doesn't have typeclasses.
+
+* Elixir has Protocols, which are closer,
+  but they are also not typeclasses.
 
 # Typeclass Syntax {.big-code}
 
@@ -768,6 +782,40 @@ instance (Equals a) => Equals [a] where
   isEqual (a:as) (b:bs) = isEqual a b &&
                           isEqual as bs
   isEqual as     bs     = null as && null bs
+```
+
+# Typeclass Syntax {.big-code}
+
+```haskell
+{-
+class Eq a where
+  (==) :: a -> a -> Bool
+-}
+
+instance Eq Choice where
+  Definitely == Definitely = True
+  Possibly   == Possibly   = True
+  NoWay      == NoWay      = True
+  _          == _          = False
+```
+
+# Typeclass Syntax {.big-code}
+
+```haskell
+data Choice = Definitely
+            | Possibly
+            | NoWay
+            deriving (Eq)
+```
+
+# Typeclass Syntax {.big-code}
+
+```haskell
+data Choice = Definitely
+            | Possibly
+            | NoWay
+            deriving ( Eq, Ord, Enum, Bounded
+                     , Show, Read )
 ```
 
 # QuickCheck {.big-code}
@@ -804,15 +852,13 @@ $ ghci
 +++ OK, passed 100 tests.
 ```
 
-# Do syntax {.big-code}
+# Do syntax {.big-code .highlight}
 
-```erlang
--spec main([string()]) -> ok.
-main(_Args) ->
-  {ok, Secret} = file:read_file("/etc/passwd"),
-  file:write_file("/tmp/passwd", Secret),
-  ok.
-```
+<pre class="sourceCode erlang"><code class="sourceCode erlang"><span class="kw">-</span><span class="ch">spec</span> <span class="fu">main([string()])</span> <span class="kw">-&gt;</span> <span class="ch">ok</span><span class="fu">.</span>
+<span class="fu">main(</span><span class="dt">_Args</span><span class="fu">)</span> <span class="kw">-&gt;</span>
+  <span class="fu">{</span><span class="ch">ok</span><span class="fu">,</span> <span class="dt">Secret</span><span class="fu">}</span> <span class="kw">=</span> <span class="fu">file:read_file(</span><span class="st">"/etc/passwd"</span><span class="fu">)<span class="hl">,</span></span>
+  <span class="fu">file:write_file(</span><span class="st">"/tmp/passwd"</span><span class="fu">,</span> <span class="dt">Secret</span><span class="fu">)<span class="hl">,</span></span>
+  <span class="ch">ok</span><span class="fu"><span class="hl">.</span></span></code></pre>
 
 # Do syntax (IO) {.big-code}
 
@@ -842,6 +888,44 @@ do m
 -- desugars to:
 m >> return ()
 ```
+
+# Do syntax (IO) {.big-code .highlight}
+
+<pre class="sourceCode haskell"><code class="sourceCode haskell"><span class="ot">main ::</span> <span class="dt">IO</span> ()
+main <span class="fu">=</span> <span class="hl"><span class="kw">do</span></span>
+  <span class="hl">secret <span class="ot">&lt;-</span></span> readFile <span class="st">"/etc/passwd"</span>
+  writeFile <span class="st">"/tmp/passwd"</span> secret
+  return ()</code></pre>
+
+# Do syntax (IO) {.big-code .highlight}
+
+<pre class="sourceCode haskell"><code class="sourceCode haskell"><span class="ot">main ::</span> <span class="dt">IO</span> ()
+main <span class="fu">=</span>
+  readFile <span class="st">"/etc/passwd"</span> <span class="hl">&gt;&gt;= \secret -> do</span>
+  writeFile <span class="st">"/tmp/passwd"</span> secret
+  return ()</code></pre>
+
+# Do syntax (IO) {.big-code .highlight}
+
+<pre class="sourceCode haskell"><code class="sourceCode haskell"><span class="ot">main ::</span> <span class="dt">IO</span> ()
+main <span class="fu">=</span>
+  readFile <span class="st">"/etc/passwd"</span> <span class="fu">&gt;&gt;=</span> \secret <span class="ot">-></span>
+  writeFile <span class="st">"/tmp/passwd"</span> secret <span class="hl">&gt;&gt;</span>
+  return ()</code></pre>
+
+# Do syntax (IO) {.big-code .highlight}
+
+<pre class="sourceCode haskell"><code class="sourceCode haskell"><span class="ot">main ::</span> <span class="dt">IO</span> ()
+main <span class="fu">=</span>
+  readFile <span class="st">"/etc/passwd"</span> <span class="fu">&gt;&gt;=</span><span class="hl"> \secret <span class="ot">-></span></span>
+  writeFile <span class="st">"/tmp/passwd"</span> <span class="hl">secret</span></code></pre>
+
+# Do syntax (IO) {.big-code .highlight}
+
+<pre class="sourceCode haskell"><code class="sourceCode haskell"><span class="ot">main ::</span> <span class="dt">IO</span> ()
+main <span class="fu">=</span>
+  readFile <span class="st">"/etc/passwd"</span> <span class="fu">&gt;&gt;=</span>
+  writeFile <span class="st">"/tmp/passwd"</span></code></pre>
 
 # Do syntax ([a]) {.big-code}
 
