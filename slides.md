@@ -804,12 +804,6 @@ $ ghci
 +++ OK, passed 100 tests.
 ```
 
-# QuickCheck {.big-code}
-
-```haskell
-import Data.QuickCheck
-
-
 # Do syntax {.big-code}
 
 ```erlang
