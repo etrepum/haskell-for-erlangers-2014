@@ -71,6 +71,12 @@ body > div.reveal {
 .highlight-constructor .hl-constructor {
   background-color: #ffff00;
 }
+.highlight .hl1 {
+  background-color: #eeee00;
+}
+.highlight .hl2 {
+  background-color: #dddd00;
+}
 
 .reveal blockquote {
   margin-top: 1em;

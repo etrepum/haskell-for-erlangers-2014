@@ -1246,74 +1246,60 @@ http://research.microsoft.com/apps/pubs/default.aspx?id=67083
 print (head (map (*2) [1..]))
 ```
 
-# Non-Strict Evaluation {.big-code}
+# Non-Strict Evaluation {.big-code .highlight}
 
-```haskell
--- [1..] is an infinite list, [1, 2, 3, ...]
-print (head (map (*2) [1..]))
--- Outside in, print x = putStrLn (show x)
-putStrLn (show (head (map (*2) [1..]))
-```
+<pre class="sourceCode haskell"><code class="sourceCode haskell"><span class="co">-- [1..] is an infinite list, [1, 2, 3, ...]</span>
+<span class="hl">print (</span>head (map (<span class="fu">*</span><span class="dv">2</span>) [<span class="dv">1</span><span class="fu">..</span>])<span class="hl">)</span>
+<span class="co">-- Outside in, print x = putStrLn (show x)</span>
+<span class="hl">putStrLn (show (</span>head (map (<span class="fu">*</span><span class="dv">2</span>) [<span class="dv">1</span><span class="fu">..</span>]<span class="hl">))</span></code></pre>
 
-# Non-Strict Evaluation {.big-code}
+# Non-Strict Evaluation {.big-code .highlight}
 
-```haskell
--- Outside in, print x = putStrLn (show x)
-putStrLn (show (head (map (*2) [1..]))
--- head (x:_) = x
--- map f (x:xs) = f x : map f xs
--- desugar [1..] syntax
-putStrLn (show (head (map (*2) (enumFrom 1))))
-```
+<pre class="sourceCode haskell"><code class="sourceCode haskell"><span class="co">-- Outside in, print x = putStrLn (show x)</span>
+putStrLn (show (<span class="hl2">head (<span class="hl1">map (<span class="fu">*</span><span class="dv">2</span>) <span class="hl">[<span class="dv">1</span><span class="fu">..</span>]</span>)</span>)</span>
+<span class="co">-- head (x:_) = x</span>
+<span class="co">-- map f (x:xs) = f x : map f xs</span>
+<span class="co">-- desugar [1..] syntax</span>
+putStrLn (show (head (map (<span class="fu">*</span><span class="dv">2</span>) (<span class="hl">enumFrom <span class="dv">1</span></span>))))</code></pre>
 
-# Non-Strict Evaluation {.big-code}
+# Non-Strict Evaluation {.big-code .highlight}
 
-```haskell
--- desugar [1..] syntax
-putStrLn (show (head (map (*2) (enumFrom 1))))
--- enumFrom n = n : enumFrom (succ n)
-putStrLn (show (head (map (*2)
-                          (1 : enumFrom (succ 1)))))
-```
+<pre class="sourceCode haskell"><code class="sourceCode haskell"><span class="co">-- desugar [1..] syntax</span>
+putStrLn (show (head (map (<span class="fu">*</span><span class="dv">2</span>) (<span class="hl">enumFrom <span class="dv">1</span></span>))))
+<span class="co">-- enumFrom n = n : enumFrom (succ n)</span>
+putStrLn (show (head (map (<span class="fu">*</span><span class="dv">2</span>)
+                          (<span class="hl"><span class="dv">1</span> <span class="fu">:</span> enumFrom (succ <span class="dv">1</span>)</span>))))</code></pre>
 
-# Non-Strict Evaluation {.big-code}
+# Non-Strict Evaluation {.big-code .highlight}
 
-```haskell
--- enumFrom n = n : enumFrom (succ n)
-putStrLn (show (head (map (*2)
-                          (1 : enumFrom (succ 1)))))
--- apply map
+<pre class="sourceCode haskell"><code class="sourceCode haskell"><span class="co">-- enumFrom n = n : enumFrom (succ n)</span>
+putStrLn (show (head (<span class="hl1">map (<span class="fu">*</span><span class="dv">2</span>)</span>
+                          <span class="hl1">(<span class="hl"><span class="dv">1</span> <span class="fu">:</span></span> enumFrom (succ <span class="dv">1</span>))</span>)))
+<span class="co">-- apply map</span>
 putStrLn (show (head
-                  ((1*2) :
-                   map (*2) (enumFrom (succ 1)))))
-```
+                  (<span class="hl">(<span class="dv">1</span><span class="fu">*</span><span class="dv">2</span>) <span class="fu">:</span></span>
+                   <span class="hl1">map (<span class="fu">*</span><span class="dv">2</span>) (enumFrom (succ <span class="dv">1</span>))</span>)))</code></pre>
 
-# Non-Strict Evaluation {.big-code}
+# Non-Strict Evaluation {.big-code .highlight}
 
-```haskell
--- apply map
-putStrLn (show (head ((1*2) : …)))
--- apply head
-putStrLn (show (1*2))
-```
+<pre class="sourceCode haskell"><code class="sourceCode haskell"><span class="co">-- apply map</span>
+putStrLn (show (<span class="hl1">head (<span class="hl">(<span class="dv">1</span><span class="fu">*</span><span class="dv">2</span>)</span> <span class="fu">:</span> …)</span>))
+<span class="co">-- apply head</span>
+putStrLn (show <span class="hl">(<span class="dv">1</span><span class="fu">*</span><span class="dv">2</span>)</span>)</code></pre>
 
-# Non-Strict Evaluation {.big-code}
+# Non-Strict Evaluation {.big-code .highlight}
 
-```haskell
--- apply head
-putStrLn (show (1*2))
--- show pattern matches on its argument
-putStrLn (show 2)
-```
+<pre class="sourceCode haskell"><code class="sourceCode haskell"><span class="co">-- apply head</span>
+putStrLn (show <span class="hl">(<span class="dv">1</span><span class="fu">*</span><span class="dv">2</span>)</span>)
+<span class="co">-- show pattern matches on its argument</span>
+putStrLn (show <span class="hl"><span class="dv">2</span></span>)</code></pre>
 
-# Non-Strict Evaluation {.big-code}
+# Non-Strict Evaluation {.big-code .highlight}
 
-```haskell
--- show pattern matches on its argument
-putStrLn (show 2)
--- apply show
-putStrLn "2"
-```
+<pre class="sourceCode haskell"><code class="sourceCode haskell"><span class="co">-- show pattern matches on its argument</span>
+putStrLn (<span class="hl">show <span class="dv">2</span></span>)
+<span class="co">-- apply show</span>
+putStrLn <span class="hl"><span class="st">"2"</span></span></code></pre>
 
 # {#control-flow .big-code}
 

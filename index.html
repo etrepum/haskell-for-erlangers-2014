@@ -1257,60 +1257,67 @@ http://research.microsoft.com/apps/pubs/default.aspx?id=67083
 <pre class="sourceCode haskell"><code class="sourceCode haskell"><span class="co">-- [1..] is an infinite list, [1, 2, 3, ...]</span>
 print (head (map (<span class="fu">*</span><span class="dv">2</span>) [<span class="dv">1</span><span class="fu">..</span>]))</code></pre>
 </section>
-<section id="non-strict-evaluation-1" class="slide level1 big-code">
+<section id="non-strict-evaluation-1" class="slide level1 big-code highlight">
 <h1>Non-Strict Evaluation</h1>
 <pre class="sourceCode haskell"><code class="sourceCode haskell"><span class="co">-- [1..] is an infinite list, [1, 2, 3, ...]</span>
-print (head (map (<span class="fu">*</span><span class="dv">2</span>) [<span class="dv">1</span><span class="fu">..</span>]))
+<span class="hl">print (</span>head (map (<span class="fu">*</span><span class="dv">2</span>) [<span class="dv">1</span><span class="fu">..</span>])<span class="hl">)</span>
 <span class="co">-- Outside in, print x = putStrLn (show x)</span>
-putStrLn (show (head (map (<span class="fu">*</span><span class="dv">2</span>) [<span class="dv">1</span><span class="fu">..</span>]))</code></pre>
+<span class="hl">putStrLn (show (</span>head (map (<span class="fu">*</span><span class="dv">2</span>) [<span class="dv">1</span><span class="fu">..</span>]<span class="hl">))</span></code></pre>
+
 </section>
-<section id="non-strict-evaluation-2" class="slide level1 big-code">
+<section id="non-strict-evaluation-2" class="slide level1 big-code highlight">
 <h1>Non-Strict Evaluation</h1>
 <pre class="sourceCode haskell"><code class="sourceCode haskell"><span class="co">-- Outside in, print x = putStrLn (show x)</span>
-putStrLn (show (head (map (<span class="fu">*</span><span class="dv">2</span>) [<span class="dv">1</span><span class="fu">..</span>]))
+putStrLn (show (<span class="hl2">head (<span class="hl1">map (<span class="fu">*</span><span class="dv">2</span>) <span class="hl">[<span class="dv">1</span><span class="fu">..</span>]</span>)</span>)</span>
 <span class="co">-- head (x:_) = x</span>
 <span class="co">-- map f (x:xs) = f x : map f xs</span>
 <span class="co">-- desugar [1..] syntax</span>
-putStrLn (show (head (map (<span class="fu">*</span><span class="dv">2</span>) (enumFrom <span class="dv">1</span>))))</code></pre>
+putStrLn (show (head (map (<span class="fu">*</span><span class="dv">2</span>) (<span class="hl">enumFrom <span class="dv">1</span></span>))))</code></pre>
+
 </section>
-<section id="non-strict-evaluation-3" class="slide level1 big-code">
+<section id="non-strict-evaluation-3" class="slide level1 big-code highlight">
 <h1>Non-Strict Evaluation</h1>
 <pre class="sourceCode haskell"><code class="sourceCode haskell"><span class="co">-- desugar [1..] syntax</span>
-putStrLn (show (head (map (<span class="fu">*</span><span class="dv">2</span>) (enumFrom <span class="dv">1</span>))))
+putStrLn (show (head (map (<span class="fu">*</span><span class="dv">2</span>) (<span class="hl">enumFrom <span class="dv">1</span></span>))))
 <span class="co">-- enumFrom n = n : enumFrom (succ n)</span>
 putStrLn (show (head (map (<span class="fu">*</span><span class="dv">2</span>)
-                          (<span class="dv">1</span> <span class="fu">:</span> enumFrom (succ <span class="dv">1</span>)))))</code></pre>
+                          (<span class="hl"><span class="dv">1</span> <span class="fu">:</span> enumFrom (succ <span class="dv">1</span>)</span>))))</code></pre>
+
 </section>
-<section id="non-strict-evaluation-4" class="slide level1 big-code">
+<section id="non-strict-evaluation-4" class="slide level1 big-code highlight">
 <h1>Non-Strict Evaluation</h1>
 <pre class="sourceCode haskell"><code class="sourceCode haskell"><span class="co">-- enumFrom n = n : enumFrom (succ n)</span>
-putStrLn (show (head (map (<span class="fu">*</span><span class="dv">2</span>)
-                          (<span class="dv">1</span> <span class="fu">:</span> enumFrom (succ <span class="dv">1</span>)))))
+putStrLn (show (head (<span class="hl1">map (<span class="fu">*</span><span class="dv">2</span>)</span>
+                          <span class="hl1">(<span class="hl"><span class="dv">1</span> <span class="fu">:</span></span> enumFrom (succ <span class="dv">1</span>))</span>)))
 <span class="co">-- apply map</span>
 putStrLn (show (head
-                  ((<span class="dv">1</span><span class="fu">*</span><span class="dv">2</span>) <span class="fu">:</span>
-                   map (<span class="fu">*</span><span class="dv">2</span>) (enumFrom (succ <span class="dv">1</span>)))))</code></pre>
+                  (<span class="hl">(<span class="dv">1</span><span class="fu">*</span><span class="dv">2</span>) <span class="fu">:</span></span>
+                   <span class="hl1">map (<span class="fu">*</span><span class="dv">2</span>) (enumFrom (succ <span class="dv">1</span>))</span>)))</code></pre>
+
 </section>
-<section id="non-strict-evaluation-5" class="slide level1 big-code">
+<section id="non-strict-evaluation-5" class="slide level1 big-code highlight">
 <h1>Non-Strict Evaluation</h1>
 <pre class="sourceCode haskell"><code class="sourceCode haskell"><span class="co">-- apply map</span>
-putStrLn (show (head ((<span class="dv">1</span><span class="fu">*</span><span class="dv">2</span>) <span class="fu">:</span> …)))
+putStrLn (show (<span class="hl1">head (<span class="hl">(<span class="dv">1</span><span class="fu">*</span><span class="dv">2</span>)</span> <span class="fu">:</span> …)</span>))
 <span class="co">-- apply head</span>
-putStrLn (show (<span class="dv">1</span><span class="fu">*</span><span class="dv">2</span>))</code></pre>
+putStrLn (show <span class="hl">(<span class="dv">1</span><span class="fu">*</span><span class="dv">2</span>)</span>)</code></pre>
+
 </section>
-<section id="non-strict-evaluation-6" class="slide level1 big-code">
+<section id="non-strict-evaluation-6" class="slide level1 big-code highlight">
 <h1>Non-Strict Evaluation</h1>
 <pre class="sourceCode haskell"><code class="sourceCode haskell"><span class="co">-- apply head</span>
-putStrLn (show (<span class="dv">1</span><span class="fu">*</span><span class="dv">2</span>))
+putStrLn (show <span class="hl">(<span class="dv">1</span><span class="fu">*</span><span class="dv">2</span>)</span>)
 <span class="co">-- show pattern matches on its argument</span>
-putStrLn (show <span class="dv">2</span>)</code></pre>
+putStrLn (show <span class="hl"><span class="dv">2</span></span>)</code></pre>
+
 </section>
-<section id="non-strict-evaluation-7" class="slide level1 big-code">
+<section id="non-strict-evaluation-7" class="slide level1 big-code highlight">
 <h1>Non-Strict Evaluation</h1>
 <pre class="sourceCode haskell"><code class="sourceCode haskell"><span class="co">-- show pattern matches on its argument</span>
-putStrLn (show <span class="dv">2</span>)
+putStrLn (<span class="hl">show <span class="dv">2</span></span>)
 <span class="co">-- apply show</span>
-putStrLn <span class="st">&quot;2&quot;</span></code></pre>
+putStrLn <span class="hl"><span class="st">"2"</span></span></code></pre>
+
 </section>
 <section id="control-flow" class="slide level1 big-code">
 <h1></h1>
