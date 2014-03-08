@@ -803,6 +803,18 @@ isNegative x
   <span class="fu">|</span> x <span class="fu">&lt;</span> <span class="dv">0</span>     <span class="fu">=</span> <span class="dt">True</span>
   <span class="fu">|</span> otherwise <span class="fu">=</span> <span class="dt">False</span></code></pre>
 </section>
+<section id="guards-2" class="slide level1 big-code">
+<h1>Guards</h1>
+<pre class="sourceCode haskell"><code class="sourceCode haskell"><span class="ot">isNegative ::</span> (<span class="dt">Num</span> a) <span class="ot">=&gt;</span> a <span class="ot">-&gt;</span> <span class="dt">Bool</span>
+isNegative x
+  <span class="fu">|</span> x <span class="fu">&lt;</span> <span class="dv">0</span>     <span class="fu">=</span> <span class="dt">True</span>
+  <span class="fu">|</span> otherwise <span class="fu">=</span> <span class="dt">False</span>
+
+<span class="ot">absoluteValue ::</span> (<span class="dt">Num</span> a) <span class="ot">=&gt;</span> a <span class="ot">-&gt;</span> <span class="dt">Bool</span>
+absoluteValue x
+  <span class="fu">|</span> isNegative x <span class="fu">=</span> <span class="fu">-</span>x
+  <span class="fu">|</span> otherwise    <span class="fu">=</span> x</code></pre>
+</section>
 <section id="built-in-types" class="slide level1 big-code small-title">
 <h1>Built-in types</h1>
 <pre class="sourceCode haskell"><code class="sourceCode haskell"><span class="co">-- (), pronounced &quot;unit&quot;</span>

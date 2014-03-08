@@ -703,6 +703,20 @@ isNegative x
   | otherwise = False
 ```
 
+# Guards {.big-code}
+
+```haskell
+isNegative :: (Num a) => a -> Bool
+isNegative x
+  | x < 0     = True
+  | otherwise = False
+
+absoluteValue :: (Num a) => a -> Bool
+absoluteValue x
+  | isNegative x = -x
+  | otherwise    = x
+```
+
 # Built-in types {.big-code .small-title}
 
 ```haskell
