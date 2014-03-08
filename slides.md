@@ -310,7 +310,7 @@ Values
 * Syntax is minimal & familiar
 * Haskell's pattern matching is not as clever as Erlang's
 * Types are kinda like having Dialyzer for every compile<br>
-  (although Dialyzer is smarter than Haskell!)
+  (although Dialyzer is really quite different!)
 * Typeclasses are nice, Erlang doesn't have them
 * Erlang is probably (much) better for long-running systems
 
@@ -535,7 +535,7 @@ isJust Nothing  = False
 
 # Pattern Matching {.big-code}
 
-Erlang's pattern matching is very powerful!
+Erlang's pattern matching allows non-linear patterns.
 
 ```erlang
 -spec is_equal(A, A) -> boolean() when
@@ -546,7 +546,7 @@ is_equal(_, _) -> false.
 
 # Pattern Matching {.big-code}
 
-Haskell's... not so much. 
+Haskell's... does not.
 
 ```haskell
 isEqual :: a -> a -> Bool

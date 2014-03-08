@@ -452,7 +452,7 @@ Haskell: Batteries Included
 <ul>
 <li>Syntax is minimal &amp; familiar</li>
 <li>Haskell's pattern matching is not as clever as Erlang's</li>
-<li>Types are kinda like having Dialyzer for every compile<br> (although Dialyzer is smarter than Haskell!)</li>
+<li>Types are kinda like having Dialyzer for every compile<br> (although Dialyzer is really quite different!)</li>
 <li>Typeclasses are nice, Erlang doesn't have them</li>
 <li>Erlang is probably (much) better for long-running systems</li>
 </ul>
@@ -650,7 +650,7 @@ isJust <span class="dt">Nothing</span>  <span class="fu">=</span> <span class="d
 </section>
 <section id="pattern-matching-2" class="slide level1 big-code">
 <h1>Pattern Matching</h1>
-<p>Erlang's pattern matching is very powerful!</p>
+<p>Erlang's pattern matching allows non-linear patterns.</p>
 <pre class="sourceCode erlang"><code class="sourceCode erlang"><span class="kw">-</span><span class="ch">spec</span> <span class="fu">is_equal(</span><span class="dt">A</span><span class="fu">,</span> <span class="dt">A</span><span class="fu">)</span> <span class="kw">-&gt;</span> <span class="fu">boolean()</span> <span class="ch">when</span>
       <span class="dt">A</span> <span class="fu">::</span> <span class="fu">term().</span>
 <span class="fu">is_equal(</span><span class="dt">A</span><span class="fu">,</span> <span class="dt">A</span><span class="fu">)</span> <span class="kw">-&gt;</span> <span class="ch">true</span><span class="fu">;</span>
@@ -658,7 +658,7 @@ isJust <span class="dt">Nothing</span>  <span class="fu">=</span> <span class="d
 </section>
 <section id="pattern-matching-3" class="slide level1 big-code">
 <h1>Pattern Matching</h1>
-<p>Haskell's... not so much.</p>
+<p>Haskell's... does not.</p>
 <pre class="sourceCode haskell"><code class="sourceCode haskell"><span class="ot">isEqual ::</span> a <span class="ot">-&gt;</span> a <span class="ot">-&gt;</span> <span class="dt">Bool</span>
 isEqual a b <span class="fu">=</span> undefined</code></pre>
 <blockquote>
