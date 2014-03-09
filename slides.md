@@ -55,6 +55,7 @@ RAM footprint per unit of concurrency (approx)
     <td class="name">
         <div class="bar-ctr"><div class="bar"></div></div>
         <span>Go goroutine</span>
+        <!-- http://golang.org/doc/go1.2#stack_size -->
     </td>
 </tr>
 <tr class="java-min">
@@ -1191,7 +1192,7 @@ main = getContents >>= print . length . words
 * `do` is just syntax sugar for the `>>=` (bind) operator.
 * IO is still purely functional, we are just building a graph
   of actions, *not* executing them in-place!
-* Starting from `main`, the Haskell runtime will *interpret* these actions
+* Starting from `main`, the Haskell runtime will *evaluate* these actions
 * It works much like continuation passing style, with a state
   variable for the current world state (behind the scenes)
 * There are ways to cheat and write code that is not pure, but you
