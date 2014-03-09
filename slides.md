@@ -55,8 +55,16 @@ RAM footprint per unit of concurrency (approx)
     <td class="name">
         <div class="bar-ctr"><div class="bar"></div></div>
         <span>Go goroutine</span>
-        <!-- http://golang.org/doc/go1.2#stack_size -->
     </td>
+    <!-- http://golang.org/doc/go1.2#stack_size -->
+</tr>
+<tr class="c-min">
+    <td class="num">9.0 KB</td>
+    <td class="name">
+        <div class="bar-ctr"><div class="bar"></div></div>
+        <span>C pthread (minimum, 64-bit Mac OS X)</span>
+    </td>
+    <!-- http://opensource.apple.com/source/Libc/Libc-594.9.5/include/limits.h -->
 </tr>
 <tr class="java-min">
     <td class="num">64.0 KB</td>
@@ -64,28 +72,24 @@ RAM footprint per unit of concurrency (approx)
         <div class="bar-ctr"><div class="bar"></div></div>
         <span>Java thread stack (minimum)</span>
     </td>
-</tr>
-<tr class="c-min">
-    <td class="num">64.0 KB</td>
-    <td class="name">
-        <div class="bar-ctr"><div class="bar"></div></div>
-        <span>C pthread stack (minimum)</span>
-    </td>
+    <!-- http://www.oracle.com/technetwork/java/hotspotfaq-138619.html#threads_oom -->
 </tr>
 <tr class="placeholder"><td colspan="2"><hr/></td></td>
+<tr class="c">
+    <td class="num">513 KB</td>
+    <td class="name">
+        <div class="bar-ctr"><div class="bar"></div></div>
+        <span>C pthread (default, 64-bit Mac OS X)</span>
+    </td>
+    <!-- https://developer.apple.com/library/mac/documentation/cocoa/conceptual/Multithreading/CreatingThreads/CreatingThreads.html#//apple_ref/doc/uid/10000057i-CH15-SW7 -->
+</tr>
 <tr class="java">
-    <td class="num">1 MB</td>
+    <td class="num">1024 KB</td>
     <td class="name">
         <div class="bar-ctr"><div class="bar"></div></div>
         <span>Java thread stack (default)</span>
     </td>
-</tr>
-<tr class="c">
-    <td class="num">8 MB</td>
-    <td class="name">
-        <div class="bar-ctr"><div class="bar"></div></div>
-        <span>C pthread stack (default, 64-bit Mac OS X)</span>
-    </td>
+    <!-- http://www.oracle.com/technetwork/java/hotspotfaq-138619.html#threads_oom -->
 </tr>
 </table>
 

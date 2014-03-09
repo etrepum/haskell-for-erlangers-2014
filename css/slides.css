@@ -38,9 +38,9 @@
 #concurrency-table .erlang .bar { width: 4.0625%; }
 #concurrency-table .go .bar { width: 12.5%; }
 #concurrency-table .java-min .bar { width: 100%; }
-#concurrency-table .c-min .bar { width: 100%; }
-#concurrency-table .java .bar { width: 12.5%; background-color: #fcc; }
-#concurrency-table .c .bar { width: 100%; background-color: #fcc; }
+#concurrency-table .c-min .bar { width: 14.0625%; }
+#concurrency-table .java .bar { width: 100%; background-color: #fcc; }
+#concurrency-table .c .bar { width: 50%; background-color: #fcc; }
 
 section.logos img { border: none; box-shadow: none; max-width: 150px; vertical-align: middle; margin: 1em; }
 

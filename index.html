@@ -111,6 +111,18 @@ Bob Ippolito (<a href="https://twitter.com/etrepum"><span class="citation" data-
         
 <span>Go goroutine</span>
 </td>
+    <!-- http://golang.org/doc/go1.2#stack_size -->
+</tr>
+<tr class="c-min">
+    <td class="num">
+9.0 KB
+</td>
+    <td class="name">
+        <div class="bar-ctr"><div class="bar"></div></div>
+        
+<span>C pthread (minimum, 64-bit Mac OS X)</span>
+</td>
+    <!-- http://opensource.apple.com/source/Libc/Libc-594.9.5/include/limits.h -->
 </tr>
 <tr class="java-min">
     <td class="num">
@@ -121,37 +133,30 @@ Bob Ippolito (<a href="https://twitter.com/etrepum"><span class="citation" data-
         
 <span>Java thread stack (minimum)</span>
 </td>
+    <!-- http://www.oracle.com/technetwork/java/hotspotfaq-138619.html#threads_oom -->
 </tr>
-<tr class="c-min">
+<tr class="placeholder"><td colspan="2"><hr/></td></td>
+<tr class="c">
     <td class="num">
-64.0 KB
+513 KB
 </td>
     <td class="name">
         <div class="bar-ctr"><div class="bar"></div></div>
         
-<span>C pthread stack (minimum)</span>
+<span>C pthread (default, 64-bit Mac OS X)</span>
 </td>
+    <!-- https://developer.apple.com/library/mac/documentation/cocoa/conceptual/Multithreading/CreatingThreads/CreatingThreads.html#//apple_ref/doc/uid/10000057i-CH15-SW7 -->
 </tr>
-<tr class="placeholder"><td colspan="2"><hr/></td></td>
 <tr class="java">
     <td class="num">
-1 MB
+1024 KB
 </td>
     <td class="name">
         <div class="bar-ctr"><div class="bar"></div></div>
         
 <span>Java thread stack (default)</span>
 </td>
-</tr>
-<tr class="c">
-    <td class="num">
-8 MB
-</td>
-    <td class="name">
-        <div class="bar-ctr"><div class="bar"></div></div>
-        
-<span>C pthread stack (default, 64-bit Mac OS X)</span>
-</td>
+    <!-- http://www.oracle.com/technetwork/java/hotspotfaq-138619.html#threads_oom -->
 </tr>
 </table>
 
@@ -1248,7 +1253,7 @@ main <span class="fu">=</span> getContents <span class="fu">&gt;&gt;=</span> pri
 <ul>
 <li><code>do</code> is just syntax sugar for the <code>&gt;&gt;=</code> (bind) operator.</li>
 <li>IO is still purely functional, we are just building a graph of actions, <em>not</em> executing them in-place!</li>
-<li>Starting from <code>main</code>, the Haskell runtime will <em>interpret</em> these actions</li>
+<li>Starting from <code>main</code>, the Haskell runtime will <em>evaluate</em> these actions</li>
 <li>It works much like continuation passing style, with a state variable for the current world state (behind the scenes)</li>
 <li>There are ways to cheat and write code that is not pure, but you will have to go out of your way to do it</li>
 </ul>
