@@ -87,8 +87,11 @@ Bob Ippolito (<a href="https://twitter.com/etrepum"><span class="citation" data-
 1.3KB
 </td>
     <td class="name">
-        <div class="bar-ctr"><div class="bar"></div></div>
-        
+<div class="bar-ctr">
+<div class="bar">
+
+</div>
+</div>
 <span>Haskell ThreadId + MVar (GHC 7.6.3, 64-bit)</span>
 </td>
 </tr>
@@ -97,29 +100,38 @@ Bob Ippolito (<a href="https://twitter.com/etrepum"><span class="citation" data-
 2.6 KB
 </td>
     <td class="name">
-        <div class="bar-ctr"><div class="bar"></div></div>
-        
+<div class="bar-ctr">
+<div class="bar">
+
+</div>
+</div>
 <span>Erlang process (64-bit)</span>
 </td>
 </tr>
 <tr class="go">
     <td class="num">
-8.0 KB
+4.0 KB
 </td>
     <td class="name">
-        <div class="bar-ctr"><div class="bar"></div></div>
-        
+<div class="bar-ctr">
+<div class="bar">
+
+</div>
+</div>
 <span>Go goroutine</span>
 </td>
-    <!-- http://golang.org/doc/go1.2#stack_size -->
+    <!-- http://tip.golang.org/doc/go1.3#stack_size -->
 </tr>
 <tr class="c-min">
     <td class="num">
 9.0 KB
 </td>
     <td class="name">
-        <div class="bar-ctr"><div class="bar"></div></div>
-        
+<div class="bar-ctr">
+<div class="bar">
+
+</div>
+</div>
 <span>C pthread (minimum, 64-bit Mac OS X)</span>
 </td>
     <!-- http://opensource.apple.com/source/Libc/Libc-594.9.5/include/limits.h -->
@@ -129,8 +141,11 @@ Bob Ippolito (<a href="https://twitter.com/etrepum"><span class="citation" data-
 64.0 KB
 </td>
     <td class="name">
-        <div class="bar-ctr"><div class="bar"></div></div>
-        
+<div class="bar-ctr">
+<div class="bar">
+
+</div>
+</div>
 <span>Java thread stack (minimum)</span>
 </td>
     <!-- http://www.oracle.com/technetwork/java/hotspotfaq-138619.html#threads_oom -->
@@ -141,8 +156,11 @@ Bob Ippolito (<a href="https://twitter.com/etrepum"><span class="citation" data-
 513 KB
 </td>
     <td class="name">
-        <div class="bar-ctr"><div class="bar"></div></div>
-        
+<div class="bar-ctr">
+<div class="bar">
+
+</div>
+</div>
 <span>C pthread (default, 64-bit Mac OS X)</span>
 </td>
     <!-- https://developer.apple.com/library/mac/documentation/cocoa/conceptual/Multithreading/CreatingThreads/CreatingThreads.html#//apple_ref/doc/uid/10000057i-CH15-SW7 -->
@@ -152,8 +170,11 @@ Bob Ippolito (<a href="https://twitter.com/etrepum"><span class="citation" data-
 1024 KB
 </td>
     <td class="name">
-        <div class="bar-ctr"><div class="bar"></div></div>
-        
+<div class="bar-ctr">
+<div class="bar">
+
+</div>
+</div>
 <span>Java thread stack (default)</span>
 </td>
     <!-- http://www.oracle.com/technetwork/java/hotspotfaq-138619.html#threads_oom -->
@@ -932,8 +953,8 @@ someString <span class="fu">=</span> <span class="st">&quot;foo&quot;</span></co
 </section>
 <section id="quickcheck-1" class="slide level1 big-code">
 <h1>QuickCheck</h1>
-<pre class="sourceCode haskell"><code class="sourceCode haskell"><span class="kw">import</span> Data.Sequence ((|&gt;), empty)
-<span class="kw">import</span> Data.Foldable (toList)
+<pre class="sourceCode haskell"><code class="sourceCode haskell"><span class="kw">import </span><span class="dt">Data.Sequence</span> ((|&gt;), empty)
+<span class="kw">import </span><span class="dt">Data.Foldable</span> (toList)
 
 <span class="ot">prop_itsthere ::</span> <span class="dt">Int</span> <span class="ot">-&gt;</span> <span class="dt">Bool</span>
 prop_itsthere i <span class="fu">=</span> [i] <span class="fu">==</span> toList (empty <span class="fu">|&gt;</span> i)</code></pre>
@@ -941,9 +962,9 @@ prop_itsthere i <span class="fu">=</span> [i] <span class="fu">==</span> toList 
 <section id="quickcheck-2" class="slide level1 big-code">
 <h1>QuickCheck</h1>
 <pre class="sourceCode bash"><code class="sourceCode bash">$ <span class="kw">ghci</span></code></pre>
-<pre class="sourceCode haskell"><code class="sourceCode haskell">λ&gt; <span class="kw">import</span> Test.QuickCheck
-λ&gt; <span class="kw">import</span> Data.Foldable
-λ&gt; <span class="kw">import</span> Data.Sequence
+<pre class="sourceCode haskell"><code class="sourceCode haskell">λ&gt; <span class="kw">import </span><span class="dt">Test.QuickCheck</span>
+λ&gt; <span class="kw">import </span><span class="dt">Data.Foldable</span>
+λ&gt; <span class="kw">import </span><span class="dt">Data.Sequence</span>
 λ&gt; quickCheck (\i <span class="ot">-&gt;</span> [<span class="ot">i ::</span> <span class="dt">Int</span>] <span class="fu">==</span>
                        toList (empty <span class="fu">|&gt;</span> i))
 <span class="fu">+++</span> <span class="dt">OK</span>, passed <span class="dv">100</span> tests<span class="fu">.</span></code></pre>
@@ -1183,8 +1204,8 @@ h<span class="fu">&gt;</span> <span class="fu">:</span>info (<span class="fu">&g
 </h2>
 <pre class="sourceCode haskell"><code class="sourceCode haskell">
 h<span class="fu">&gt;</span> <span class="fu">:</span>info <span class="dt">Int</span>
-<span class="kw">data</span> <span class="dt">Int</span> <span class="fu">=</span> ghc<span class="fu">-</span>prim<span class="fu">:</span><span class="dt">GHC.Types.I</span><span class="fu">#</span>
-  ghc<span class="fu">-</span>prim<span class="fu">:</span><span class="dt">GHC.Prim.Int</span><span class="fu">#</span>
+<span class="kw">data</span> <span class="dt">Int</span> <span class="fu">=</span> ghc<span class="fu">-</span>prim<span class="fu">:</span><span class="dt">GHC.Types.I</span><span class="st">#</span>
+  ghc<span class="fu">-</span>prim<span class="fu">:</span><span class="dt">GHC.Prim.Int</span><span class="st">#</span>
   <span class="co">-- Defined in `ghc-prim:GHC.Types&#39;</span>
 <span class="kw">instance</span> <span class="dt">Bounded</span> <span class="dt">Int</span> <span class="co">-- Defined in `GHC.Enum&#39;</span>
 <span class="kw">instance</span> <span class="dt">Enum</span> <span class="dt">Int</span> <span class="co">-- Defined in `GHC.Enum&#39;</span>
@@ -1283,11 +1304,15 @@ f <span class="fu">$</span> x <span class="fu">=</span>  f x</code></pre>
 <!--
 https://ghc.haskell.org/trac/ghc/wiki/Commentary/Compiler/HscMain
 -->
-<p><svg viewBox="0 0 1000 1000" class="full diagram"> <defs> <marker id="Triangle"
+<svg viewBox="0 0 1000 1000" class="full diagram">
+  
+<defs> <marker id="Triangle"
       viewBox="0 0 10 10" refX="0" refY="5" 
       markerUnits="strokeWidth"
       markerWidth="4" markerHeight="3"
-      orient="auto"> <path d="M 0 0 L 10 5 L 0 10 z" /> </marker> </defs> <g class="right-title" transform="translate(1000, 20)"> <text>GHC compilation phases</text> </g> <g class="phase parse" transform="translate(500, 85)"> <line y1="-85" y2="-65" marker-end="url(#Triangle)" /> <ellipse rx="120" ry="35"/> <text>Parse</text> </g> <g class="phase rename" transform="translate(500, 215)"> <line y1="-85" y2="-65" marker-end="url(#Triangle)" /> <ellipse rx="120" ry="35"/> <text>Rename</text> </g> <g class="phase typecheck" transform="translate(500, 345)"> <line y1="-85" y2="-65" marker-end="url(#Triangle)" /> <ellipse rx="120" ry="35"/> <text>Typecheck</text> </g> <g class="phase desugar" transform="translate(500, 475)"> <line y1="-85" y2="-65" marker-end="url(#Triangle)" /> <ellipse rx="120" ry="35"/> <text>Desugar</text> </g> <g class="phase optimize" transform="translate(500, 605)"> <line y1="-85" y2="-65" marker-end="url(#Triangle)" /> <path d="M 65,35 a 160,80 0 1,0 40,-80" marker-end="url(#Triangle)"/> <text x="220" class="outside">Core</text> <ellipse rx="120" ry="35"/> <text>Optimize</text> </g> <g class="phase codegen" transform="translate(500, 735)"> <line y1="-85" y2="-65" marker-end="url(#Triangle)" /> <ellipse rx="120" ry="35"/> <text>Code gen</text> </g> <g class="phase llvm" transform="translate(500, 865)"> <line y1="-85" y2="-65" marker-end="url(#Triangle)" /> <ellipse rx="120" ry="35"/> <text>LLVM</text> <line y1="45" y2="65" marker-end="url(#Triangle)" /> </g> </svg></p>
+      orient="auto"> <path d="M 0 0 L 10 5 L 0 10 z" /> </marker> </defs> <g class="right-title" transform="translate(1000, 20)"> <text>GHC compilation phases</text> </g> <g class="phase parse" transform="translate(500, 85)"> <line y1="-85" y2="-65" marker-end="url(#Triangle)" /> <ellipse rx="120" ry="35"/> <text>Parse</text> </g> <g class="phase rename" transform="translate(500, 215)"> <line y1="-85" y2="-65" marker-end="url(#Triangle)" /> <ellipse rx="120" ry="35"/> <text>Rename</text> </g> <g class="phase typecheck" transform="translate(500, 345)"> <line y1="-85" y2="-65" marker-end="url(#Triangle)" /> <ellipse rx="120" ry="35"/> <text>Typecheck</text> </g> <g class="phase desugar" transform="translate(500, 475)"> <line y1="-85" y2="-65" marker-end="url(#Triangle)" /> <ellipse rx="120" ry="35"/> <text>Desugar</text> </g> <g class="phase optimize" transform="translate(500, 605)"> <line y1="-85" y2="-65" marker-end="url(#Triangle)" /> <path d="M 65,35 a 160,80 0 1,0 40,-80" marker-end="url(#Triangle)"/> <text x="220" class="outside">Core</text> <ellipse rx="120" ry="35"/> <text>Optimize</text> </g> <g class="phase codegen" transform="translate(500, 735)"> <line y1="-85" y2="-65" marker-end="url(#Triangle)" /> <ellipse rx="120" ry="35"/> <text>Code gen</text> </g> <g class="phase llvm" transform="translate(500, 865)"> <line y1="-85" y2="-65" marker-end="url(#Triangle)" /> <ellipse rx="120" ry="35"/> <text>LLVM</text> <line y1="45" y2="65" marker-end="url(#Triangle)" /> </g>
+</svg>
+
 </section>
 <section id="optimizations" class="slide level1">
 <h1>Optimizations</h1>
@@ -1348,7 +1373,7 @@ https://ghc.haskell.org/trac/ghc/wiki/RewriteRules
 <span class="co">    break (==x) = breakByte x</span>
 <span class="co">  #-}</span>
 
-<span class="kw">import</span> Data.ByteString.Char8 (ByteString, break)
+<span class="kw">import </span><span class="dt">Data.ByteString.Char8</span> (<span class="dt">ByteString</span>, break)
 
 <span class="ot">splitLine ::</span> <span class="dt">ByteString</span> <span class="ot">-&gt;</span> (<span class="dt">ByteString</span>, <span class="dt">ByteString</span>)
 splitLine <span class="fu">=</span> break (<span class="fu">==</span><span class="ch">&#39;\n&#39;</span>)</code></pre>
@@ -1363,7 +1388,7 @@ splitLine <span class="fu">=</span> break (<span class="fu">==</span><span class
 <span class="co">    break (==x) = breakByte x</span>
 <span class="co">  #-}</span>
 
-<span class="kw">import</span> Data.ByteString.Char8 (ByteString, break)
+<span class="kw">import </span><span class="dt">Data.ByteString.Char8</span> (<span class="dt">ByteString</span>, break)
 
 <span class="ot">splitLine ::</span> <span class="dt">ByteString</span> <span class="ot">-&gt;</span> (<span class="dt">ByteString</span>, <span class="dt">ByteString</span>)
 splitLine <span class="fu">=</span> breakByte <span class="ch">&#39;\n&#39;</span></code></pre>
@@ -1524,7 +1549,7 @@ h<span class="fu">&gt;</span> <span class="kw">let</span> f x <span class="fu">=
 <span class="ot">&lt;interactive&gt;:24:11:</span>
 <span class="ot">    Not in scope: `</span>heads&#39;
     <span class="dt">Perhaps</span> you meant one <span class="kw">of</span> these<span class="fu">:</span>
-      <span class="ot">`reads&#39; (imported from Prelude), `</span>head&#39; (<span class="kw">import</span>ed from Prelude)</code></pre>
+      <span class="ot">`reads&#39; (imported from Prelude), `</span>head&#39; (imported from <span class="dt">Prelude</span>)</code></pre>
 </section>
 <section id="bottoms" class="slide level1">
 <h1></h1>
@@ -1607,7 +1632,7 @@ treeToList root <span class="fu">=</span> go root <span class="dt">Nil</span>
 <section id="newtype" class="slide level1 big-code">
 <h1></h1>
 <pre class="sourceCode haskell"><code class="sourceCode haskell">
-<span class="kw">import</span> Data.List (sort)
+<span class="kw">import </span><span class="dt">Data.List</span> (sort)
 
 <span class="kw">newtype</span> <span class="dt">Down</span> a <span class="fu">=</span> <span class="dt">Down</span> {<span class="ot"> unDown ::</span> a }
                  <span class="kw">deriving</span> (<span class="dt">Eq</span>)
@@ -1708,10 +1733,10 @@ reverseSort <span class="fu">=</span> map unDown <span class="fu">.</span> sort 
 <h1></h1>
 <pre class="sourceCode haskell"><code class="sourceCode haskell"><span class="ot">{-# LANGUAGE OverloadedStrings #-}</span>
 <span class="kw">module</span> <span class="dt">SJSON</span> <span class="kw">where</span>
-<span class="kw">import</span> Prelude <span class="kw">hiding</span> (concat)
-<span class="kw">import</span> Data.Text (Text, concat)
-<span class="kw">import</span> Data.Attoparsec.Text
-<span class="kw">import</span> Control.Applicative
+<span class="kw">import </span><span class="dt">Prelude</span> <span class="kw">hiding</span> (concat)
+<span class="kw">import </span><span class="dt">Data.Text</span> (<span class="dt">Text</span>, concat)
+<span class="kw">import </span><span class="dt">Data.Attoparsec.Text</span>
+<span class="kw">import </span><span class="dt">Control.Applicative</span>
 
 <span class="kw">data</span> <span class="dt">JSON</span> <span class="fu">=</span> <span class="dt">JArray</span> [<span class="dt">JSON</span>]
           <span class="fu">|</span> <span class="dt">JObject</span> [(<span class="dt">Text</span>, <span class="dt">JSON</span>)]
@@ -1738,10 +1763,10 @@ pJSON <span class="fu">=</span> choice [ pText, pObject, pArray ]
 <pre class="sourceCode haskell"><code class="sourceCode haskell">
 <span class="ot">{-# LANGUAGE ForeignFunctionInterface #-}</span>
 
-<span class="kw">import</span> Foreign.C.Types
-<span class="kw">import</span> Control.Monad
+<span class="kw">import </span><span class="dt">Foreign.C.Types</span>
+<span class="kw">import </span><span class="dt">Control.Monad</span>
 
-foreign <span class="kw">import</span> ccall unsafe &quot;stdlib.h rand&quot;
+foreign <span class="kw">import </span>ccall unsafe &quot;stdlib.h rand&quot;
 <span class="ot">     c_rand ::</span> <span class="dt">IO</span> <span class="dt">CUInt</span>
 
 <span class="ot">main ::</span> <span class="dt">IO</span> ()
@@ -1753,11 +1778,11 @@ main <span class="fu">=</span> replicateM_ <span class="dv">20</span> (c_rand <s
 <section id="parallel-flip-image" class="slide level1">
 <h1></h1>
 <pre class="sourceCode haskell"><code class="sourceCode haskell"><span class="co">-- FlipImage.hs</span>
-<span class="kw">import</span> System.Environment
-<span class="kw">import</span> Data.Word
-<span class="kw">import</span> Data.Array.Repa <span class="kw">hiding</span> ((++))
-<span class="kw">import</span> Data.Array.Repa.IO.DevIL
-<span class="kw">import</span> Data.Array.Repa.Repr.ForeignPtr
+<span class="kw">import </span><span class="dt">System.Environment</span>
+<span class="kw">import </span><span class="dt">Data.Word</span>
+<span class="kw">import </span><span class="dt">Data.Array.Repa</span> <span class="kw">hiding</span> ((++))
+<span class="kw">import </span><span class="dt">Data.Array.Repa.IO.DevIL</span>
+<span class="kw">import </span><span class="dt">Data.Array.Repa.Repr.ForeignPtr</span>
 
 <span class="ot">main ::</span> <span class="dt">IO</span> () 
 main <span class="fu">=</span> <span class="kw">do</span>
@@ -1779,8 +1804,8 @@ rot180 g <span class="fu">=</span> backpermute e flop g
 <section id="concurrent-http" class="slide level1">
 <h1></h1>
 <pre class="sourceCode haskell"><code class="sourceCode haskell">
-<span class="kw">import</span> Control.Concurrent
-<span class="kw">import</span> Network.HTTP
+<span class="kw">import </span><span class="dt">Control.Concurrent</span>
+<span class="kw">import </span><span class="dt">Network.HTTP</span>
 
 <span class="ot">getHTTP ::</span> <span class="dt">String</span> <span class="ot">-&gt;</span> <span class="dt">IO</span> <span class="dt">String</span>
 getHTTP url <span class="fu">=</span> simpleHTTP (getRequest url) <span class="fu">&gt;&gt;=</span> getResponseBody
@@ -1983,7 +2008,11 @@ sum <span class="fu">=</span> go <span class="dv">0</span>
 <section id="thanks" class="slide level1">
 <h1>Thanks!</h1>
 <table>
-<col style="width: 19%" /><col style="width: 69%" /><tbody>
+<colgroup>
+<col style="width: 19%" />
+<col style="width: 69%" />
+</colgroup>
+<tbody>
 <tr class="odd">
 <td style="text-align: left;"><p><strong>Slides</strong></p></td>
 <td style="text-align: left;"><p><a href="http://bob.ippoli.to/haskell-for-erlangers-2014/">bob.ippoli.to/haskell-for-erlangers-2014</a></p></td>

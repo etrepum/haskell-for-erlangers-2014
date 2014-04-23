@@ -38,57 +38,36 @@ RAM footprint per unit of concurrency (approx)
 <table id="concurrency-table">
 <tr class="haskell">
     <td class="num">1.3KB</td>
-    <td class="name">
-        <div class="bar-ctr"><div class="bar"></div></div>
-        <span>Haskell ThreadId + MVar (GHC 7.6.3, 64-bit)</span>
-    </td>
+    <td class="name"><div class="bar-ctr"><div class="bar"></div></div><span>Haskell ThreadId + MVar (GHC 7.6.3, 64-bit)</span></td>
 </tr>
 <tr class="erlang">
     <td class="num">2.6 KB</td>
-    <td class="name">
-        <div class="bar-ctr"><div class="bar"></div></div>
-        <span>Erlang process (64-bit)</span>
-    </td>
+    <td class="name"><div class="bar-ctr"><div class="bar"></div></div><span>Erlang process (64-bit)</span></td>
 </tr>
 <tr class="go">
-    <td class="num">8.0 KB</td>
-    <td class="name">
-        <div class="bar-ctr"><div class="bar"></div></div>
-        <span>Go goroutine</span>
-    </td>
-    <!-- http://golang.org/doc/go1.2#stack_size -->
+    <td class="num">4.0 KB</td>
+    <td class="name"><div class="bar-ctr"><div class="bar"></div></div><span>Go goroutine</span></td>
+	<!-- http://tip.golang.org/doc/go1.3#stack_size -->
 </tr>
 <tr class="c-min">
     <td class="num">9.0 KB</td>
-    <td class="name">
-        <div class="bar-ctr"><div class="bar"></div></div>
-        <span>C pthread (minimum, 64-bit Mac OS X)</span>
-    </td>
+    <td class="name"><div class="bar-ctr"><div class="bar"></div></div><span>C pthread (minimum, 64-bit Mac OS X)</span></td>
     <!-- http://opensource.apple.com/source/Libc/Libc-594.9.5/include/limits.h -->
 </tr>
 <tr class="java-min">
     <td class="num">64.0 KB</td>
-    <td class="name">
-        <div class="bar-ctr"><div class="bar"></div></div>
-        <span>Java thread stack (minimum)</span>
-    </td>
+    <td class="name"><div class="bar-ctr"><div class="bar"></div></div><span>Java thread stack (minimum)</span></td>
     <!-- http://www.oracle.com/technetwork/java/hotspotfaq-138619.html#threads_oom -->
 </tr>
 <tr class="placeholder"><td colspan="2"><hr/></td></td>
 <tr class="c">
     <td class="num">513 KB</td>
-    <td class="name">
-        <div class="bar-ctr"><div class="bar"></div></div>
-        <span>C pthread (default, 64-bit Mac OS X)</span>
-    </td>
+    <td class="name"><div class="bar-ctr"><div class="bar"></div></div><span>C pthread (default, 64-bit Mac OS X)</span></td>
     <!-- https://developer.apple.com/library/mac/documentation/cocoa/conceptual/Multithreading/CreatingThreads/CreatingThreads.html#//apple_ref/doc/uid/10000057i-CH15-SW7 -->
 </tr>
 <tr class="java">
     <td class="num">1024 KB</td>
-    <td class="name">
-        <div class="bar-ctr"><div class="bar"></div></div>
-        <span>Java thread stack (default)</span>
-    </td>
+    <td class="name"><div class="bar-ctr"><div class="bar"></div></div><span>Java thread stack (default)</span></td>
     <!-- http://www.oracle.com/technetwork/java/hotspotfaq-138619.html#threads_oom -->
 </tr>
 </table>

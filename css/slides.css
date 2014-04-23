@@ -36,7 +36,7 @@
 #concurrency-table .haskell { color: #66f; }
 #concurrency-table .haskell .bar { width: 1.99%; }
 #concurrency-table .erlang .bar { width: 4.0625%; }
-#concurrency-table .go .bar { width: 12.5%; }
+#concurrency-table .go .bar { width: 6.25%; }
 #concurrency-table .java-min .bar { width: 100%; }
 #concurrency-table .c-min .bar { width: 14.0625%; }
 #concurrency-table .java .bar { width: 100%; background-color: #fcc; }
